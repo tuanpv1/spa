@@ -51,9 +51,6 @@ class NewsController extends Controller
 
         /** @var User $user */
         $user = Yii::$app->user->identity;
-        if ($user->lead_donor_id) {
-            $params['NewsSearch']['lead_donor_id'] = $user->lead_donor_id;
-        }
 
         $params['NewsSearch']['type'] = $type;
 

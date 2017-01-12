@@ -9,20 +9,10 @@ use yii\helpers\Html;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $type */
 
-$this->title = News::getNameByType($type);
 $this->params['breadcrumbs'][] = $this->title;
 
 $visible_campaign = false;
 $visible_village = false;
-if ($type) {
-    if ($type == News::TYPE_CAMPAIGN) {
-        $visible_campaign = true;
-    }
-
-    if ($type == News::TYPE_TRADE || $type == News::TYPE_IDEA) {
-        $visible_village = true;
-    }
-}
 ?>
 
 <div class="row">

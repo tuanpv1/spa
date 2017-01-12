@@ -30,32 +30,20 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $type
- * @property integer $lead_donor_id
  * @property integer $gender
  * @property string $birthday
  *
  * @property AuthAssignment[] $authAssignments
  * @property AuthItem[] $itemNames
- * @property Campaign[] $campaigns
- * @property Campaign[] $campaigns0
- * @property Campaign[] $campaignFollowings
- * @property DonationRequest[] $donationRequests
  * @property News[] $news
- * @property Transaction[] $transactions
  * @property UserActivity[] $userActivities
  * @property UserToken[] $userTokens
- * @property Campaign[] $donatedCampaign
- * @property DonationRequest[] $donationRequestsTo
  * @property UserFollowing[] $follows
  */
 class User extends ActiveRecord implements IdentityInterface
 {
     const TYPE_ADMIN = 1;
-    const TYPE_MINISTRY_EDITOR = 2;    // tai khoan quan ly cac bai viet chung
-    const TYPE_LEAD_DONOR = 3;      // tai khoan cua doanh nghiep do dau
-    const TYPE_VILLAGE = 4;         // tai khoan cua xa
-    const TYPE_USER = 5;            // tai khoan cua nguoi dung
-    const TYPE_MANAGER = 6;         // tai khoan cua manager
+    const TYPE_USER = 2;            // tai khoan cua nguoi dung
 
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 1;
@@ -287,22 +275,6 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCampaigns()
-    {
-        return $this->hasMany(Campaign::className(), ['created_by' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCampaigns0()
-    {
-        return $this->hasMany(Campaign::className(), ['created_for_user' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getFollows()
     {
         return $this->hasMany(UserFollowing::className(), ['user_id' => 'id']);
@@ -311,46 +283,9 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCampaignFollowings()
-    {
-        return $this->hasMany(Campaign::className(), ['id' => 'campaign_id'])->viaTable('campaign_following', ['user_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDonationRequests()
-    {
-        return $this->hasMany(DonationRequest::className(), ['created_by' => 'id']);
-    }
-
-    public function getDonationRequestsTo()
-    {
-        return $this->hasMany(DonationRequest::className(), ['organization_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getNews()
     {
         return $this->hasMany(News::className(), ['user_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTransactions()
-    {
-        return $this->hasMany(Transaction::className(), ['user_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDonatedCampaign()
-    {
-        return $this->hasMany(Campaign::className(), ['id' => 'campaign_id'])->viaTable('transaction', ['user_id' => 'id']);
     }
 
     /**
@@ -414,7 +349,7 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByAdminUsername($username)
     {
         return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE,
-            'type' => [self::TYPE_ADMIN, self::TYPE_VILLAGE, self::TYPE_MANAGER, self::TYPE_MINISTRY_EDITOR, self::TYPE_LEAD_DONOR]]);
+            'type' => [self::TYPE_ADMIN]]);
     }
 
     /**
@@ -577,11 +512,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $lst = [
             self::TYPE_ADMIN => 'Admin',
-            self::TYPE_MINISTRY_EDITOR => 'Ban biên tập tin tức',
-            self::TYPE_LEAD_DONOR => 'DN đỡ đầu',
-            self::TYPE_VILLAGE => 'Xã',
             self::TYPE_USER => 'Người dùng',
-            self::TYPE_MANAGER => 'Bộ KHĐT',
         ];
         return $lst;
     }
@@ -643,40 +574,6 @@ class User extends ActiveRecord implements IdentityInterface
                 return Yii::$app->session->setFlash('error', 'Tạo quyền cho tài khoản không thành công!');
             };
         }
-        if ($type == User::TYPE_MANAGER) {
-            $auth->item_name = 'Manager';
-            $auth->user_id = $id_user;
-            if($auth->save()){
-            }else{
-                return Yii::$app->session->setFlash('error', 'Tạo quyền cho tài khoản không thành công!');
-            };
-        }
-        if ($type == User::TYPE_LEAD_DONOR) {
-            $auth->item_name = 'LeadDonor';
-            $auth->user_id = $id_user;
-            if($auth->save()){
-            }else{
-                return Yii::$app->session->setFlash('error', 'Tạo quyền cho tài khoản không thành công!');
-            };
-        }
-        if ($type == User::TYPE_VILLAGE) {
-            $auth->item_name = 'Village';
-            $auth->user_id = $id_user;
-            if($auth->save()){
-            }else{
-                return Yii::$app->session->setFlash('error', 'Tạo quyền cho tài khoản không thành công!');
-            };
-        }
-        if ($type == User::TYPE_MINISTRY_EDITOR) {
-            $auth->item_name = 'Editor';
-            $auth->user_id = $id_user;
-            if($auth->save()){
-            }else{
-                return Yii::$app->session->setFlash('error', 'Tạo quyền cho tài khoản không thành công!');
-            };
-        }
-
-
     }
 
     public static function checkUser($username, $pass)
@@ -715,27 +612,12 @@ class User extends ActiveRecord implements IdentityInterface
         $user->setPassword($password);
 
         if ($user->save()) {
-            $user->setUserCode();
             return $user;
         } else {
             Yii::error($user->getErrors());
             return null;
         }
 
-    }
-
-
-    public function followCampaign($campaign)
-    {
-        $campaignFollowing = CampaignFollowing::find()->andWhere(['user_id' => $this->id])->andWhere(['campaign_id' => $campaign->id])->one();
-        if ($campaignFollowing) {
-            $campaignFollowing->delete();
-            return 1;
-        }
-        $campaignFollowing = new CampaignFollowing();
-        $campaignFollowing->user_id = $this->id;
-        $campaignFollowing->campaign_id = $campaign->id;
-        return $campaignFollowing->save();
     }
 
     public function getName()
@@ -770,16 +652,6 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->getDonationRequestsTo()->count();
     }
 
-    public function totalMyCampaignDone()
-    {
-        return $this->getCampaigns()->andWhere(['campaign.status' => Campaign::STATUS_DONE])->count();
-    }
-
-    public function totalMyCampaignActive()
-    {
-        return $this->getCampaigns()->andWhere(['campaign.status' => Campaign::STATUS_ACTIVE])->count();
-    }
-
     /**
      * @param $followed User
      * @return bool|int
@@ -796,11 +668,5 @@ class User extends ActiveRecord implements IdentityInterface
         $userFollow->user_id = $this->id;
         $userFollow->user_followed_id = $followed->id;
         return $userFollow->save();
-    }
-
-    public static function listOrganization()
-    {
-        return static::find()->andWhere(['type' => self::TYPE_LEAD_DONOR])
-            ->andWhere(['status' => self::STATUS_ACTIVE])->all();
     }
 }
