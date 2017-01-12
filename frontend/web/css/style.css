@@ -698,6 +698,7 @@ body {
   background-image: url(../images/icons/nav-bg.png);
   background-repeat: no-repeat;
   background-position: right , 100px;
+  margin-top: -10px;
 }
 .main-nav li {
   display: inline-block;
