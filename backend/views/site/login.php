@@ -5,31 +5,40 @@
 /* @var $model \common\models\LoginForm */
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
+use kartik\form\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
+<?php $form = ActiveForm::begin(['id' => 'login-form' ]); ?>
+    <div class="form-group">
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+        <?= $form->field($model, 'username', [
+                'addon' => [
+                    'prepend' => ['content' => '<i class="fa fa-user"></i>','options'=>['style'=>'background-color:#ffffff !important']],
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                ],
+                'showLabels' => false,
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
+            ]
+        )->textInput(['class'=>'form-control placeholder-no-fix','autocomplete'=>'off','placeholder' => $model->getAttributeLabel('username')])
+        ?>
     </div>
-</div>
+
+    <div class="form-group">
+        <?= $form->field($model, 'password', [
+                'addon' => ['prepend' => ['content' => '<i class="fa fa-lock"></i>','options'=>['style'=>'background-color:#ffffff !important']]],
+                'showLabels' => false,
+
+            ]
+        )->passwordInput(['class'=>'form-control placeholder-no-fix','autocomplete'=>'off','placeholder' => $model->getAttributeLabel('password')])
+        ?>
+    </div>
+
+    <div class="form-actions">
+        <label class="checkbox">
+            <?= $form->field($model, 'rememberMe')->checkbox(['class' => 'checker']) ?>
+        </label>
+        <?= Html::submitButton('Đăng nhập <i class="m-icon-swapright m-icon-white"></i>', ['class' => 'btn green-haze pull-right', 'name' => 'login-button']) ?>
+    </div>
+<?php ActiveForm::end(); ?>

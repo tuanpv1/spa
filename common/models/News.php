@@ -42,9 +42,6 @@ use yii\helpers\Url;
  * @property integer $lead_donor_id
  * @property string $price
  * @property integer $category_id
- *
- * @property Campaign $campaign
- * @property LeadDonor $leadDonor
  * @property User $user
  * @property NewsCategoryAsm $newsCategoryAsms
  */
@@ -105,8 +102,8 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['campaign_id', 'type', 'view_count', 'like_count', 'comment_count', 'favorite_count', 'honor',
-                'status', 'created_user_id', 'created_at', 'updated_at', 'user_id',
-                'all_village', 'lead_donor_id', 'category_id', 'published_at','type_video'], 'integer'],
+                'status', 'created_user_id', 'created_at', 'updated_at', 'user_id'
+                , 'category_id', 'published_at','type_video'], 'integer'],
             [['title', 'user_id'], 'required'],
             [['video'], 'file', 'extensions' => ['mp4', 'avi'], 'maxSize' => 1024 * 1024 * 500, 'tooBig' => 'Video vượt quá dung lượng cho phép!'],
             [['thumbnail'], 'required', 'on' => 'create'],
@@ -117,40 +114,6 @@ class News extends \yii\db\ActiveRecord
             [['video_url','select'],'safe'],
             [['thumbnail'], 'image', 'extensions' => 'png,jpg,jpeg,gif',
                 'maxSize' => 1024 * 1024 * 10, 'tooBig' => 'Ảnh upload vượt quá dung lượng cho phép!'
-            ],
-            [['village_array', 'price'], 'required', 'when' => function ($model) {
-                return $model->type == self::TYPE_TRADE;
-            },
-                'whenClient' => "function (attribute, value) {
-                    return $('#type').val() == '" . self::TYPE_TRADE . "';
-                }",
-                'on' => ['create', 'update']
-            ],
-
-            [['village_array'], 'required', 'when' => function ($model) {
-                return $model->type == self::TYPE_IDEA;
-            },
-                'whenClient' => "function (attribute, value) {
-                    return $('#type').val() == " . self::TYPE_IDEA . ";
-                }",
-                'on' => ['create', 'update']
-            ],
-
-            [['campaign_id'], 'required', 'when' => function ($model) {
-                return $model->type == self::TYPE_CAMPAIGN;
-            },
-                'whenClient' => "function (attribute, value) {
-                    return $('#type').val() == " . self::TYPE_CAMPAIGN . ";
-                }",
-                'on' => ['create', 'update']
-            ],
-
-            [['lead_donor_id'], 'required', 'when' => function ($model) {
-                return $model->type == self::TYPE_DONOR;
-            },
-                'whenClient' => "function (attribute, value) {
-                    return $('#type').val() == " . self::TYPE_DONOR . ";
-                }", 'on' => ['create', 'update']
             ],
         ];
     }
@@ -186,8 +149,6 @@ class News extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
             'user_id' => Yii::t('app', 'User ID'),
             'price' => Yii::t('app', 'Giá'),
-            'village_array' => Yii::t('app', 'Xã'),
-            'lead_donor_id' => Yii::t('app', 'Danh nghiệp đỡ đầu'),
             'category_id' => Yii::t('app', 'Danh mục'),
         ];
     }
