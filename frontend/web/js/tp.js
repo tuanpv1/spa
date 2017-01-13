@@ -10,6 +10,7 @@ $(document).ready(function(){
     $('#email_re').focusout(function(){
         if(($(this).val().trim() == null || $(this).val().trim() == "")){
             $('#error_null').show();
+            $('#error_email').hide();
         }else{
             $('#error_null').hide();
             if(IsEmail($(this).val())==false){
@@ -21,24 +22,32 @@ $(document).ready(function(){
     });
     $('#subscribe_submit').click(function(){
         var email = $('#email_re').val();
-        if(email.trim() != ''){
-            $.ajax({
-                type: "POST",
-                url: baseurl+'site/register-email',
-                data: {
-                    email:email
-                },
-                success: function(data) {
-                    var rs = JSON.parse(data);
-                    if (rs['success']) {
-                        alert(rs['message']);
-                    }else {
-                        alert(rs['message']);
-                    }
-                }
-            });
-        }else{
+        if((email.trim() == null || email.trim() == "")) {
+            $('#error_email').hide();
             $('#error_null').show();
+        }else{
+            $('#error_null').hide();
+            if(IsEmail(email.trim())==false){
+                $('#error_email').show();
+            }else{
+                $('#error_email').hide();
+                $('#error_null').hide();
+                $.ajax({
+                    type: "POST",
+                    url: baseurl+'site/register-email',
+                    data: {
+                        email:email
+                    },
+                    success: function(data) {
+                        var rs = JSON.parse(data);
+                        if (rs['success']) {
+                            alert(rs['message']);
+                        }else {
+                            alert(rs['message']);
+                        }
+                    }
+                });
+            }
         }
     });
 });
