@@ -224,7 +224,7 @@ AppAsset::register($this);
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
     <div class="container-fluid">
-        <p><b>&copy;Copyright <?php echo date('Y'); ?> </b>. vnDonor-CMS by VIVAS Co.,Ltd.</p>
+        <p><b>&copy;Copyright 2017 </b>. CMS by DH-TP.</p>
     </div>
 </div>
 <div class="scroll-to-top">
