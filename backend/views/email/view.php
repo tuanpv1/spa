@@ -1,14 +1,13 @@
 <?php
 
-use common\models\Banner;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Banner */
+/* @var $model common\models\Email */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app','QL Banner'), 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Emails', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -40,31 +39,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
+                            'id',
+                            'email:email',
                             [
-                                'attribute' => 'image',
-                                'format' => 'html',
-                                'value' => Html::img(Yii::getAlias('@web') . "/" . Yii::getAlias('@image_banner') . "/" .$model->image, ['width' => '200px']),
-                            ],
-                            'name',
-                            'des:ntext',
-                //            'price',
-                            [
-                                'attribute' => 'status',
-                                'format' => 'raw',
-                                'value' => ($model->status == Banner::STATUS_ACTIVE) ?
-                                    '<span class="label label-success">' . $model->getStatusName() . '</span>' :
-                                    '<span class="label label-danger">' . $model->getStatusName() . '</span>',
-                            ],
-                            [                      // the owner name of the model
                                 'attribute' => 'created_at',
                                 'value' => date('d/m/Y H:i:s', $model->created_at),
                             ],
-                            [                      // the owner name of the model
+                            [
                                 'attribute' => 'updated_at',
                                 'value' => date('d/m/Y H:i:s', $model->updated_at),
                             ],
                         ],
                     ]) ?>
+
                 </div>
             </div>
         </div>

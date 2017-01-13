@@ -141,9 +141,22 @@ AppAsset::register($this);
             'url' => ['banner/index'],
         ],
         [
-            'encode' => false,
             'label' => Yii::t('app','QL Tài khoản'),
-            'url' => ['user/index', "type" => User::TYPE_ADMIN],
+            'url' => 'javascript:;',
+            'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
+            'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
+            'items' => [
+                [
+                    'encode' => false,
+                    'label' => Yii::t('app','QL Tài khoản Admin'),
+                    'url' => ['user/index', "type" => User::TYPE_ADMIN],
+                ],
+                [
+                    'encode' => false,
+                    'label' => Yii::t('app','QL Đăng kí nhận tin'),
+                    'url' => ['email/index'],
+                ],
+            ]
         ],
         [
             'encode' => false,

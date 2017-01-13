@@ -49,7 +49,7 @@ $avatarPreview = !$model->isNewRecord && !empty($model->image);
     <?= $form->field($model, 'status')->dropDownList(Banner::getListStatus()) ?>
 
     <div class="row text-center">
-        <?= Html::submitButton($model->isNewRecord ? 'Tạo mới' : 'Cập nhật', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ?  Yii::t('app','Tạo mới') : Yii::t('app','Cập nhật'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <?= Html::a('Hủy', ['index'], ['class' => 'btn btn-default']) ?>
     </div>
 
