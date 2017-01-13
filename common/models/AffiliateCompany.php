@@ -68,7 +68,6 @@ class AffiliateCompany extends \yii\db\ActiveRecord
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['image', 'name', 'about', 'url'], 'string', 'max' => 255],
             ['name','required','message'=>Yii::t('app','{attribute} không được để trống')],
-            ['url','required','message'=>Yii::t('app','{attribute} không được để trống')],
             ['image','required','message'=>Yii::t('app','{attribute} không được để trống')],
         ];
     }

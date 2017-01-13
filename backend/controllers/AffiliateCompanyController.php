@@ -80,7 +80,7 @@ class AffiliateCompanyController extends Controller
             }
             if($model->save(false)){
                 \Yii::$app->getSession()->setFlash('success',Yii::t('app', 'Thêm mới công ty liên kết thành công'));
-                return $this->render('view',['model'=>$model]);
+                return $this->redirect(['index']);
             }else{
                 \Yii::$app->getSession()->setFlash('error',Yii::t('app', 'Thêm mới công ty liên kết không thành thành công'));
                 return $this->render('create',['model'=>$model]);
@@ -116,7 +116,7 @@ class AffiliateCompanyController extends Controller
             }
             if($model->update(false)){
                 \Yii::$app->getSession()->setFlash('success',Yii::t('app', 'Thêm mới công ty liên kết thành công'));
-                return $this->render('view',['model'=>$model]);
+                return $this->redirect(['index']);
             }else{
                 \Yii::$app->getSession()->setFlash('error',Yii::t('app', 'Thêm mới công ty liên kết không thành thành công'));
                 return $this->render('create',['model'=>$model]);
