@@ -180,7 +180,7 @@ AppAsset::register($this);
         ],
         [
             'encode' => false,
-            'label' => Yii::t('app','QL Thông tin'),
+            'label' => Yii::t('app','Cấu hình'),
             'url' => ['info-public/index'],
         ],
         [
