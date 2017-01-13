@@ -168,7 +168,7 @@ $this->title = 'Vinpearl Condotel';
                                     <?= $item->title ?>
                                 </div>
                                 <div class="benef-box-content">
-                                    <?= \common\helpers\CUtils::subString($item->short_description,100) ?>
+                                    <?= \common\helpers\CUtils::subString(trim($item->short_description),300) ?>
                                 </div>
                             </div>
                         </div>
