@@ -35,47 +35,20 @@ $visible_village = false;
                     'filterModel' => $searchModel,
                     'columns' => [
                         [
+                            'attribute'=>'thumbnail',
+                            'width'=>'60px',
+                            'format' => 'html',
+                            'value' => function ($model, $key, $index, $widget) {
+                                return $model->image ? Html::img(Yii::getAlias('@web') . "/" . Yii::getAlias('@image_new') . "/" . $model->thumbnail, ['width' => '100px']) : '';
+                            }
+                        ],
+                        [
                             'class' => '\kartik\grid\DataColumn',
                             'attribute' => 'title',
                             'format' => 'html',
                             'value' => function ($model, $key, $index, $widget) {
                                 return Html::a($model->title, ['update', 'id' => $model->id], ['class' => 'label label-primary']);
                             },
-                        ],
-                        [
-                            'class' => '\kartik\grid\DataColumn',
-                            'header' => 'Tên chiến dịch',
-                            'value' => function ($model, $key, $index, $widget) {
-                                /** @var $model \common\models\News */
-                                return $model->campaign ? $model->campaign->name : '';
-                            },
-                            'visible' => $visible_campaign
-                        ],
-                        [
-                            'class' => '\kartik\grid\DataColumn',
-                            'header' => 'Tên xã',
-                            'value' => function ($model, $key, $index, $widget) {
-                                /** @var $model \common\models\News */
-                                return $model->getListVillage();
-                            },
-                            'visible' => $visible_village
-                        ],
-                        [
-                            'class' => '\kartik\grid\DataColumn',
-//                            'attribute' => 'type',
-                            'header' => 'Loại bài viết',
-                            'format' => 'html',
-                            'value' => function ($model, $key, $index, $widget) {
-                                /** @var $model \common\models\News */
-                                return $model->getTypeName();
-                            },
-//                            'filterType' => GridView::FILTER_SELECT2,
-//                            'filter' => \common\models\News::listType(),
-//                            'filterWidgetOptions' => [
-//                                'pluginOptions' => ['allowClear' => true],
-//                            ],
-//                            'filterInputOptions' => ['placeholder' => "Tất cả"],
-
                         ],
                         [
                             'class' => '\kartik\grid\DataColumn',

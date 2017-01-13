@@ -1,10 +1,6 @@
 <?php
 
-use common\models\Campaign;
-use common\models\Category;
-use common\models\LeadDonor;
 use common\models\News;
-use common\models\Village;
 use common\widgets\Player;
 use kartik\file\FileInput;
 use kartik\form\ActiveForm;
@@ -147,58 +143,14 @@ $this->registerJs($js, \yii\web\View::POS_READY);
         ]); ?>
     <?php } ?>
 
-    <?= $form->field($model, 'short_description')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()
-        ->andWhere(['status' => Category::STATUS_ACTIVE])->all(), 'id', 'display_name')) ?>
+    <?= $form->field($model, 'short_description')->textarea(['rows' => 4]) ?>
 
     <?= $form->field($model, 'content')->widget(\common\widgets\CKEditor::className(), [
         'options' => [
-            'rows' => 6,
+            'rows' => 8,
         ],
         'preset' => 'basic'
     ]) ?>
-
-    <?= $form->field($model, 'select')->dropDownList(News::getTypeTP())->label(Yii::t('app','Chọn hình thức tải video')) ?>
-
-    <div id="id_video">
-
-    <?= $form->field($model, 'video')->widget(\kartik\file\FileInput::classname(), [
-        'pluginOptions' => [
-
-//            'showPreview' => false,
-            'showCaption' => false,
-            'showRemove' => false,
-            'showUpload' => false,
-            'browseClass' => 'btn btn-primary btn-block',
-            'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-            'browseLabel' => 'Chọn video giới thiệu',
-            'initialPreview' => $videoPreview ? [
-                "<video width='213px' height='160px' controls>
-                    <source src='".Yii::getAlias('@web') . '/' . Yii::getAlias('@uploads') . "/" . $model->video."' type='video/mp4'>
-                    <div class='file-preview-other'>
-                        <span class='file-icon-4x'><i class='glyphicon glyphicon-file'></i></span>
-                    </div>
-                </video>"
-            ] : [],
-        ],
-        'options' => [
-            'accept' => 'video/*',
-        ],
-    ]);
-    ?>
-
-    <?php
-    if($model->video){
-        echo Player::widget(['video_url' => $model->getVideoUrl()]);
-    }
-    ?>
-
-    </div>
-
-    <div id="id_url">
-        <?= $form->field($model, 'url_video_new')->textInput() ?>
-    </div>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app','Tạo mới') : Yii::t('app','Cập nhật'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

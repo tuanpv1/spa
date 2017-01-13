@@ -37,27 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'model' => $model,
                     'attributes' => [
                         'title',
-                        [
-                            'attribute' => 'type',
-                            'style' => 'width: 20%',
-                            'value' => $model->getTypeName(),
-                        ],
-                        [
-                            'attribute' => 'campaign_id',
-                            'value' => $model->campaign ? $model->campaign->name : '',
-                            'visible' => $model->type == \common\models\News::TYPE_CAMPAIGN ? true : false
-                        ],
-
-                        [
-                            'label' => 'Tên xã',
-                            'value' => $model->getListVillage(),
-                            'visible' => $model->type == News::TYPE_IDEA || $model->type == News::TYPE_TRADE ? true : false
-                        ],
-                        [
-                            'label' => 'Giá',
-                            'value' => $model->price,
-                            'visible' => $model->type == News::TYPE_TRADE ? true : false
-                        ],
+//                        [
+//                            'attribute' => 'type',
+//                            'style' => 'width: 20%',
+//                            'value' => $model->getTypeName(),
+//                        ],
                         [
                             'attribute' => 'status',
                             'value' => $model->getStatusName(),
@@ -67,18 +51,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             'value' => $model->thumbnail ? Html::img($model->getThumbnailLink()) : '',
                             'format' => 'html'
                         ],
-                        [
-                            'attribute' => 'video',
-                            'value' =>$model->video?
-                                "<video width='400' controls>
-                                            <source src='".Yii::getAlias('@web') . '/' . Yii::getAlias('@uploads') . "/" . $model->video."' type='video/mp4'>
-                                            <source src='".Yii::getAlias('@web') . '/' . Yii::getAlias('@uploads') . "/" . $model->video."' type='video/avi'>
-                                </video>":'',
-                        ],
-                        [
-                            'attribute' => 'video_url',
-                            'value' =>$model->video_url?$model->video_url:'',
-                        ],
+//                        [
+//                            'attribute' => 'video',
+//                            'value' =>$model->video?
+//                                "<video width='400' controls>
+//                                            <source src='".Yii::getAlias('@web') . '/' . Yii::getAlias('@uploads') . "/" . $model->video."' type='video/mp4'>
+//                                            <source src='".Yii::getAlias('@web') . '/' . Yii::getAlias('@uploads') . "/" . $model->video."' type='video/avi'>
+//                                </video>":'',
+//                        ],
+//                        [
+//                            'attribute' => 'video_url',
+//                            'value' =>$model->video_url?$model->video_url:'',
+//                        ],
                         'short_description',
                         'content:html',
                     ],

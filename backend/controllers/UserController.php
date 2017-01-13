@@ -98,7 +98,6 @@ class UserController extends Controller
             $model->generateAuthKey();
             $model->type = $type;
             if ($model->save()) {
-                User::getItemNameFromAuthAssignment($model->id,$type);
                 Yii::$app->session->setFlash('success', 'Tạo tài khoản thành công!');
                 return $this->redirect(['view', 'id' => $model->id]);
             } else {

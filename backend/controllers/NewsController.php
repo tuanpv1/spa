@@ -95,7 +95,7 @@ class NewsController extends Controller
                 $file = UploadedFile::getInstance($model, 'thumbnail');
                 if ($file) {
                     $file_name = uniqid() . time() . '.' . $file->extension;
-                    if ($file->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@uploads') . "/" . $file_name)) {
+                    if ($file->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
                         $model->thumbnail = $file_name;
 
                     } else {
@@ -106,7 +106,7 @@ class NewsController extends Controller
                 $video = UploadedFile::getInstance($model, 'video');
                 if ($video) {
                     $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $video->extension;
-                    if ($video->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@uploads') . "/" . $file_name)) {
+                    if ($video->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
                         $model->video = $file_name;
                         $model->video_url = News::TYPE_VIDEO;
                     }
@@ -119,29 +119,11 @@ class NewsController extends Controller
 
                 $model->user_id = $user->id;
                 $model->created_user_id = $user->id;
-                if ($user->lead_donor_id) {
-                    $model->lead_donor_id = $user->lead_donor_id;
-                }
                 if($model->status == News::STATUS_ACTIVE){
                     $model->published_at = time();
                 }
 
                 if ($model->save()) {
-                    if ($model->type == News::TYPE_TRADE || $model->type == News::TYPE_IDEA) {
-                        if (isset($model->village_array)) {
-                            foreach ($model->village_array as $village_id) {
-                                $asm = new NewsVillageAsm();
-                                $asm->village_id = $village_id;
-                                $asm->news_id = $model->id;
-                                if (!$asm->save()) {
-                                    Yii::error($asm->getErrors());
-                                }
-                            }
-                        }
-                    }
-
-                    NewsCategoryAsm::newNewsCategoryAsm($model->id, $model->category_id);
-
                     $db_transaction->commit();
                     Yii::$app->getSession()->setFlash('success', 'Thêm bài viết thành công');
                     return $this->redirect(['view', 'id' => $model->id]);
@@ -187,7 +169,7 @@ class NewsController extends Controller
                 $file = UploadedFile::getInstance($model, 'thumbnail');
                 if ($file) {
                     $file_name = uniqid() . time() . '.' . $file->extension;
-                    if ($file->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@uploads') . "/" . $file_name)) {
+                    if ($file->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
                         $model->thumbnail = $file_name;
                     } else {
                         Yii::$app->getSession()->setFlash('error', 'Lỗi hệ thống, vui lòng thử lại');
@@ -199,7 +181,7 @@ class NewsController extends Controller
                 $video = UploadedFile::getInstance($model, 'video');
                 if ($video) {
                     $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $video->extension;
-                    if ($video->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@uploads') . "/" . $file_name)) {
+                    if ($video->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
                         $model->video = $file_name;
                         $model->video_url = News::TYPE_VIDEO;
                     }
@@ -209,20 +191,6 @@ class NewsController extends Controller
                 }
 
                 if ($model->save()) {
-                    if ($model->type == News::TYPE_TRADE || $model->type == News::TYPE_IDEA) {
-                        if (isset($model->village_array)) {
-                            Yii::$app->db->createCommand()->delete('news_village_asm', ['news_id' => $model->id])->execute();
-                            foreach ($model->village_array as $village_id) {
-                                $asm = new NewsVillageAsm();
-                                $asm->village_id = $village_id;
-                                $asm->news_id = $model->id;
-                                if (!$asm->save()) {
-                                    Yii::error($asm->getErrors());
-                                }
-                            }
-                        }
-                    }
-                    NewsCategoryAsm::newNewsCategoryAsm($model->id, $model->category_id);
                     $db_transaction->commit();
                     Yii::$app->getSession()->setFlash('success', 'Cập nhật bài viết thành công');
                     return $this->redirect(['index', 'type' => $model->type]);

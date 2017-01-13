@@ -572,19 +572,6 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->status;
     }
 
-    public static function getItemNameFromAuthAssignment($id_user, $type)
-    {
-        $auth = new AuthAssignment();
-        if ($type == User::TYPE_ADMIN) {
-            $auth->item_name = 'Admin';
-            $auth->user_id = $id_user;
-            if($auth->save()){
-            }else{
-                return Yii::$app->session->setFlash('error', 'Tạo quyền cho tài khoản không thành công!');
-            };
-        }
-    }
-
     public static function checkUser($username, $pass)
     {
         $user = User::findOne(['username' => $username]);

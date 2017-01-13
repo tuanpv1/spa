@@ -12,7 +12,6 @@ use yii\helpers\Url;
  * This is the model class for table "{{%news}}".
  *
  * @property integer $id
- * @property integer $campaign_id
  * @property string $title
  * @property string $url_video_new
  * @property string $title_ascii
@@ -59,7 +58,6 @@ class News extends \yii\db\ActiveRecord
     const TYPE_DONOR = 3;
     const TYPE_VILLAGE = 4;
     const TYPE_COMMON = 5;
-    const TYPE_CAMPAIGN = 6;
     const TYPE_EXPERIENCE = 7;
 
     public $village_array;
@@ -101,7 +99,7 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['campaign_id', 'type', 'view_count', 'like_count', 'comment_count', 'favorite_count', 'honor',
+            [['type', 'view_count', 'like_count', 'comment_count', 'favorite_count', 'honor',
                 'status', 'created_user_id', 'created_at', 'updated_at', 'user_id'
                 , 'category_id', 'published_at','type_video'], 'integer'],
             [['title', 'user_id'], 'required'],
@@ -125,7 +123,6 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'campaign_id' => Yii::t('app', 'Chiến dịch'),
             'title' => Yii::t('app', 'Tiêu đề'),
             'title_ascii' => Yii::t('app', 'Title Ascii'),
             'content' => Yii::t('app', 'Nội dung'),
@@ -165,22 +162,6 @@ class News extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCampaign()
-    {
-        return $this->hasOne(Campaign::className(), ['id' => 'campaign_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getLeadDonor()
-    {
-        return $this->hasOne(LeadDonor::className(), ['id' => 'lead_donor_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'created_user_id']);
@@ -188,7 +169,7 @@ class News extends \yii\db\ActiveRecord
 
     public function getThumbnailLink()
     {
-        $pathLink = Yii::getAlias('@web') . '/' . Yii::getAlias('@uploads') . '/';
+        $pathLink = Yii::getAlias('@web') . '/' . Yii::getAlias('@image_new') . '/';
         $filename = null;
 
         if ($this->thumbnail) {
@@ -227,7 +208,6 @@ class News extends \yii\db\ActiveRecord
             self::TYPE_IDEA => 'Tin tức ý tưởng',
             self::TYPE_DONOR => 'Tin tức DN đỡ đầu',
             self::TYPE_TRADE => 'Tin tức giao thương',
-            self::TYPE_CAMPAIGN => 'Tin tức chiến dịch',
             self::TYPE_EXPERIENCE => 'Kinh nghiệm',
         ];
         return $lst;
@@ -267,7 +247,7 @@ class News extends \yii\db\ActiveRecord
     {
         $image = $this->thumbnail;
         if ($image) {
-            return Url::to(Yii::getAlias('@web') . '/' . Yii::getAlias('@uploads') . '/' . $image, true);
+            return Url::to(Yii::getAlias('@web') . '/' . Yii::getAlias('@image_new') . '/' . $image, true);
         }
     }
 
@@ -275,40 +255,6 @@ class News extends \yii\db\ActiveRecord
     {
         $content = str_replace("/uploads/ckeditor/", Yii::$app->params['ApiAddress'] . "/uploads/ckeditor/", $this->content);
         return $content;
-    }
-
-    public static function listNews($campaign_id = 0)
-    {
-        $query = static::find()->andWhere(['status' => News::STATUS_ACTIVE]);
-
-        if ($campaign_id > 0) {
-            $query->andWhere(['campaign_id' => $campaign_id]);
-        }
-
-        $provider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'defaultPageSize' => 20,
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'created_at' => SORT_DESC,
-                ]
-            ],
-        ]);
-        return $provider;
-    }
-
-    public function getListVillage()
-    {
-        /** @var NewsVillageAsm[] $asm */
-        $asm = NewsVillageAsm::find()->andWhere(['news_id' => $this->id])->all();
-        $rs = '';
-        foreach ($asm as $item) {
-            $rs .= $item->village->name . ',';
-        }
-        $rs = $rs ? substr($rs, 0, strlen($rs) - 1) : $rs;
-        return $rs;
     }
 
     public function getListVillageSelect2()
