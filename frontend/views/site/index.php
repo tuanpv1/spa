@@ -94,12 +94,24 @@ $this->title = 'Vinpearl Condotel';
 
     <div class="main-invest ovfh">
         <div class="container">
+            <?php if(isset($gioithieu) && !empty($gioithieu)){
+                /** @var $gioithieu \common\models\News */
+                ?>
             <div class="grid4">
                 <div class="posr">
-                    <img class="animation-flower" src="images/icons/flower.png" alt="#">
+                    <img class="animation-flower" src="<?= $gioithieu->getImage() ?>" alt="#">
                     <img class="posa" src="images/icons/home-logo-color-2.png" alt="#">
                 </div>
             </div>
+                <div class="grid8">
+                    <p class="UTMYenTu">
+                        <span class="wow fadeInLeft" data-wow-duration="2s"><?= substr($gioithieu->title,0,20) ?></span>
+                        <span class="tar wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".3s"><?= substr($gioithieu->title,21) ?></span>
+                    </p>
+                    <p class="segoeuil wow fadeIn segoeui taj" data-wow-duratioon="1s" data-wow-delay="1s"><?= trim($gioithieu->description) ?></p>
+                </div>
+
+            <?php }else{?>
             <div class="grid8">
                 <p class="UTMYenTu">
                     <span class="wow fadeInLeft" data-wow-duration="2s">Kết hợp hoàn hảo giữa căn hộ cao cấp</span>
@@ -112,6 +124,7 @@ $this->title = 'Vinpearl Condotel';
                     Quốc, Hạ Long,… và mang tới cho các nhà đầu tư cơ hội sở hữu những căn hộ khách sạn đẳng cấp cũng
                     như cơ hội tận hưởng những kỳ nghỉ riêng tư, thư giãn tuyệt vời.</p>
             </div>
+            <?php } ?>
         </div>
     </div>
     <div class="main-project main-section">

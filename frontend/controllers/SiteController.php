@@ -86,7 +86,12 @@ class SiteController extends Controller
 
         $listDoiTac = AffiliateCompany::findAll(['type' => AffiliateCompany::TYPE_DOITAC, 'status' => AffiliateCompany::STATUS_ACTIVE]);
 
-        return $this->render('index', ['listBanner' => $listBanner, 'listNews' => $listNews, 'listDoiTac' => $listDoiTac]);
+        $gioithieu = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type' => News::TYPE_GIOITHIEU])
+            ->orderBy(['updated_at' => SORT_DESC])->one();
+
+        return $this->render('index', ['listBanner' => $listBanner, 'listNews' => $listNews, 'listDoiTac' => $listDoiTac
+        ,'gioithieu' => $gioithieu ]);
     }
 
     /**
