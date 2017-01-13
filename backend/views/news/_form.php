@@ -79,40 +79,8 @@ $this->registerJs($js, \yii\web\View::POS_READY);
     ); ?>
 
     <?= $form->field($model, 'type')->hiddenInput(['id' => 'type'])->label(false) ?>
+    
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?php
-    if ($model->type == News::TYPE_CAMPAIGN) {
-        echo $form->field($model, 'campaign_id')->dropDownList(
-            ArrayHelper::map(Campaign::getCampaignByUser(), 'id', 'name'),
-            ['id' => 'campaign_id', ['prompt' => 'Chọn chiến dịch ...']])->label('Chiến dịch (*)');
-    }
-    ?>
-
-    <?php
-    if ($model->type == News::TYPE_IDEA || $model->type == News::TYPE_TRADE) {
-        echo $form->field($model, 'village_array')->widget(Select2::classname(), [
-            'data' => ArrayHelper::map(Village::getVillageByUser(), 'id', 'name'),
-            'options' => [
-                'placeholder' => 'Chọn xã ...',
-                'multiple' => true
-            ],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ])->label('Xã (*)');
-        if ($model->type == News::TYPE_TRADE) {
-            echo $form->field($model, 'price')->textInput(['maxlength' => true])->label('Giá (*)');
-        }
-    }
-    ?>
-    <?php
-    if ($model->type == News::TYPE_DONOR) {
-        echo $form->field($model, 'lead_donor_id')->dropDownList(
-            ArrayHelper::map(LeadDonor::getLeadDonorByUser(), 'id', 'name'),
-            [['prompt' => 'Chọn doanh nghiệp đỡ đầu ...']])->label('Doanh nghiệp đỡ đầu (*)');
-    }
-    ?>
 
     <?= $form->field($model, 'status')->dropDownList(\common\models\News::listStatus()) ?>
 
