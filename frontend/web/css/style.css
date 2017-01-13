@@ -657,7 +657,11 @@ body {
 .flex-nav-next {
   right: 0;
   background-image: url(../images/icons/next.png);
-  border-radius: 3px 0px 0px 3 !important;
+  border-radius: 3px 0px 0px 3px !important;
+}
+.flex-nav-next a,.flex-nav-prev a{
+  color: #fff;
+
 }
 .main-banner .flex-viewport ul li {
   position: relative;
