@@ -79,7 +79,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
     ); ?>
 
     <?= $form->field($model, 'type')->hiddenInput(['id' => 'type'])->label(false) ?>
-    
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList(\common\models\News::listStatus()) ?>
