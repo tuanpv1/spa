@@ -5,7 +5,6 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\AffiliateCompany;
 
 /**
  * AffiliateCompanySearch represents the model behind the search form about `common\models\AffiliateCompany`.
@@ -39,9 +38,9 @@ class AffiliateCompanySearch extends AffiliateCompany
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $type)
     {
-        $query = AffiliateCompany::find();
+        $query = AffiliateCompany::find()->andWhere(['type' => $type]);
 
         // add conditions that should always apply here
 

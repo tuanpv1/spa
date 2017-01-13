@@ -16,6 +16,7 @@ use yii\helpers\Url;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $type
  * @property string $url
  */
 class AffiliateCompany extends \yii\db\ActiveRecord
@@ -25,6 +26,9 @@ class AffiliateCompany extends \yii\db\ActiveRecord
     const STATUS_INACTIVE = 0;
     const STATUS_DELETED = 2;
 
+    const TYPE_UNITLINK = 1;
+    const TYPE_DOITAC = 2;
+
     public static function listStatus()
     {
         $lst = [
@@ -32,6 +36,14 @@ class AffiliateCompany extends \yii\db\ActiveRecord
             self::STATUS_INACTIVE => 'Tạm dừng',
         ];
         return $lst;
+    }
+
+    public static function getTypeName($type =  AffiliateCompany::TYPE_UNITLINK){
+        if($type == AffiliateCompany::TYPE_UNITLINK){
+            return 'Quản lý công ty liên kết';
+        }else{
+            return 'Quản lý đối tác';
+        }
     }
 
     /**
@@ -66,7 +78,7 @@ class AffiliateCompany extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['status', 'created_at', 'updated_at','type'], 'integer'],
             [['image', 'name', 'about', 'url'], 'string', 'max' => 255],
             ['image','required','message'=>Yii::t('app','{attribute} không được để trống')],
         ];

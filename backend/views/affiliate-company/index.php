@@ -8,7 +8,7 @@ use kartik\grid\GridView;
 /* @var $searchModel common\models\AffiliateCompanySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app','Quản lý Công ty liên kết');
+$this->title = Yii::t('app',AffiliateCompany::getTypeName($type));
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
