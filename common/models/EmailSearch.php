@@ -47,6 +47,11 @@ class EmailSearch extends Email
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_DESC,
+                ]
+            ],
         ]);
 
         $query->andWhere("status != :status")->addParams([':status' => self::STATUS_DELETED]);
