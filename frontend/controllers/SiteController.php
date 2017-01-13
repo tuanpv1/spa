@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use common\models\Banner;
 use common\models\LoginForm;
+use common\models\News;
 use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
@@ -75,7 +76,10 @@ class SiteController extends Controller
     {
         $listBanner = Banner::findAll(['status' => Banner::STATUS_ACTIVE]);
 
-        return $this->render('index', ['listBanner' => $listBanner]);
+        $listNews = News::find()->andWhere(['status'=>News::STATUS_ACTIVE])
+            ->orderBy(['updated_at'=>SORT_DESC])->all();
+
+        return $this->render('index', ['listBanner' => $listBanner,'listNews' => $listNews]);
     }
 
     /**
