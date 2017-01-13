@@ -1,8 +1,10 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Email;
 use Yii;
 use yii\base\InvalidParamException;
+use yii\helpers\Json;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -18,6 +20,7 @@ use frontend\models\ContactForm;
  */
 class SiteController extends Controller
 {
+    public $enableCsrfValidation = false;
     /**
      * @inheritdoc
      */
@@ -209,5 +212,19 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionRegisterEmail(){
+        $email = $_POST['email'];
+        $model = new Email();
+        $model->email = $email;
+        $model->status = Email::STATUS_ACTIVE;
+        if($model->save(false)){
+            $message = 'Đăng kí nhận tin thành công.';
+            return Json::encode(['success' => true, 'message' => $message]);
+        }else{
+            $message = 'Đăng kí nhận tin không thành công.';
+            return Json::encode(['success' => false, 'message' => $message]);
+        }
     }
 }

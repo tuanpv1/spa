@@ -40,13 +40,12 @@
         <div class="grid4 footer--text footer-register">
             <p class="utm-trajan">Đăng ký nhận bản tin</p>
             <p class="footer--text-register">Xin vui lòng để lại địa chỉ email, chúng tôi sẽ cập nhật những tin tức quan trọng của Vinpearl Condotel tới Quý khách!</p>
-            <form action="#" id="subscribe_form" mothed="POST">
-                <input type="hidden" name="action" value="frontend__subscribe_email">
-                <input type="hidden" name="nonce" value="4d2518e4af">
-                <input type="text" name="subscribe_name" placeholder="Họ tên">
-                <input type="text" name="subscribe_email" placeholder="Email *" required="required">
-                <button id="subscribe_submit" class="curp view-more-page" type="submit" ><p>Đăng Ký<span></span></p></button>
+            <form id="subscribe_form">
+                <input id="email_re" type="text" name="subscribe_email" placeholder="Email *" required="required">
+                <span style="color: red" id="error_email"><?= Yii::t('app','Email không đúng định dạng') ?></span>
+                <span style="color: red" id="error_null"><?= Yii::t('app','Email không được để trống')?></span>
             </form>
+            <button id="subscribe_submit" class="curp view-more-page" type="submit" ><p>Đăng Ký<span></span></p></button>
         </div>
     </div>
     <div class="footer-last tac ttu segoeui ovfh">
@@ -70,28 +69,3 @@
     </ul>
     <a class="back-to-top posf" href="javascript:;"><i class="fa fa-angle-up"></i></a>
 </div>
-<script type='text/javascript' src='js/wp-embed.min.js'></script>
-
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $('#subscribe_form').submit(function(event){
-            event.preventDefault();
-            var contactForm = $(this);
-            var data = $(this).serialize();
-            $.ajax({
-                url: 'http://vinpearl-condotel.vn/wp-admin/admin-ajax.php',
-                type: 'POST',
-                data: data,
-                success: function(response) {
-                    contactForm.find('p.message').remove();
-                    $('#subscribe_submit').before(response);
-                    contactForm.find('input[type="text"]').val('');
-
-                    ga('create', 'UA-64285630-20');
-                    ga('set', 'nonInteraction', true);
-                    ga('send', 'event', 'Form', 'Submit', 'subscribe_form');
-                }
-            });
-        })
-    });
-</script>
