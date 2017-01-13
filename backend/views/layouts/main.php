@@ -133,6 +133,11 @@ AppAsset::register($this);
                     'label' => Yii::t('app','Tin tức'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_COMMON],
                 ],
+                [
+                    'encode' => false,
+                    'label' => Yii::t('app','Tin tức'),
+                    'url' => ['news/index', 'type' => \common\models\News::TYPE_GIOITHIEU],
+                ],
             ]
         ],
         [

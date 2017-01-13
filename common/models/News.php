@@ -58,6 +58,7 @@ class News extends \yii\db\ActiveRecord
     const TYPE_DONOR = 3;
     const TYPE_VILLAGE = 4;
     const TYPE_COMMON = 5;
+    const TYPE_GIOITHIEU = 6;
     const TYPE_EXPERIENCE = 7;
 
     public $village_array;
