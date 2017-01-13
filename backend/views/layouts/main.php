@@ -118,31 +118,36 @@ AppAsset::register($this);
     $menuItems = [
 
         [
-            'label' => 'QL Tin tức',
+            'label' => Yii::t('app','QL Tin tức'),
             'url' => 'javascript:;',
             'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
             'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
             'items' => [
                 [
                     'encode' => false,
-                    'label' => 'Danh mục tin tức',
+                    'label' => Yii::t('app','Danh mục tin tức'),
                     'url' => ['category/index'],
                 ],
                 [
                     'encode' => false,
-                    'label' => 'Tin tức',
+                    'label' => Yii::t('app','Tin tức'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_COMMON],
                 ],
             ]
         ],
         [
             'encode' => false,
-            'label' => 'QL Tài khoản',
+            'label' => Yii::t('app','QL Banner'),
+            'url' => ['banner/index'],
+        ],
+        [
+            'encode' => false,
+            'label' => Yii::t('app','QL Tài khoản'),
             'url' => ['user/index', "type" => User::TYPE_ADMIN],
         ],
         [
             'encode' => false,
-            'label' => 'QL Công ty liên kết',
+            'label' => Yii::t('app','QL Công ty liên kết'),
             'url' => ['affiliate-company/index'],
         ],
         [
