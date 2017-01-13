@@ -132,15 +132,24 @@ class User extends ActiveRecord implements IdentityInterface
             [['auth_key', 'password_hash'], 'required'],
 
             ['username', 'filter', 'filter' => 'trim'],
-            [['username'], 'required', 'on' => 'create', 'message' => 'Tên đăng nhập không được để trống'],
-            [['username'], 'unique', 'on' => 'create', 'message' => 'Tên đăng nhập đã tồn tại, vui lòng chọn tên khác!'],
+            [['username'], 'required', 'on' => 'create', 'message' => Yii::t('app','{attribute} không được để trống')],
+            [['username'], 'unique', 'on' => 'create', 'message' => Yii::t('app','{attribute} đã tồn tại, vui lòng chọn {attribute} khác!'),'filter' =>
+                [
+                    'status'=>User::STATUS_ACTIVE.'&&',
+                ],
+            ],
             [['username'], 'string', 'on' => 'create', 'min' => 2, 'max' => 255],
 
 
             ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required', 'message' => 'Địa chỉ email không được để trống'],
+            ['email', 'required', 'message' => Yii::t('app','{attribute} không được để trống')],
             ['email', 'email','message'=>'Địa chỉ email không hợp lệ!'],
             ['email', 'string', 'max' => 255],
+            [['email'], 'unique', 'on' => 'create', 'message' => Yii::t('app','{attribute} đã tồn tại, vui lòng chọn {attribute} khác!'),'filter' =>
+                [
+                    'status'=>User::STATUS_ACTIVE.'&&',
+                ],
+            ],
 //            ['email', 'unique', 'on' => 'create', 'message' => 'Địa chỉ Email đã tồn tại.'],
 
             [['birthday'], 'safe'],
@@ -173,17 +182,17 @@ class User extends ActiveRecord implements IdentityInterface
                 'message' => 'Xác nhận mật khẩu chưa đúng.',
                 'on' => 'change-password'
             ],
-            [['new_password'], 'required', 'message' => 'Mật khẩu không được để trống.', 'on' => 'change-password'],
+            [['new_password'], 'required', 'message' => Yii::t('app','{attribute} không được để trống'), 'on' => 'change-password'],
             [['confirm_password'], 'required', 'message' => 'Xác nhận mật khẩu không được để trống.', 'on' => 'change-password'],
             [['file_excel'], 'file', 'extensions' => 'xlsx, xls'],
 
 
             [['file_excel', 'setting_new_password', 'old_password'],'safe'],
-            [['old_password'], 'required', 'message'=>'Mật khẩu cũ không được để trống.','on' => 'user-setting'],
+            [['old_password'], 'required', 'message'=>Yii::t('app','{attribute} không được để trống'),'on' => 'user-setting'],
             ['old_password', 'validator_password','on' => 'user-setting'],
-            [['setting_new_password'], 'required', 'message'=>'Mật khẩu mới không được để trống.','on' => 'user-setting'],
+            [['setting_new_password'], 'required', 'message'=>Yii::t('app','{attribute} không được để trống'),'on' => 'user-setting'],
             ['setting_new_password','checkNewPassword','on' => 'user-setting'],
-            [['confirm_password'], 'required', 'message' => 'Xác nhận mật khẩu mới không được để trống.','on' => 'user-setting'],
+            [['confirm_password'], 'required', 'message' => Yii::t('app','{attribute} không được để trống'),'on' => 'user-setting'],
             [
                 ['confirm_password'],
                 'compare',

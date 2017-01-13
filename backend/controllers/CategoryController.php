@@ -105,8 +105,7 @@ class CategoryController extends Controller
                     $model->child_count = 0;
                     $maxOrder = Category::find()
                         ->select(['max(order_number) as `order`'])
-                        ->where('level=0')
-                        ->andWhere(['type' => $model->type])->scalar();
+                        ->where('level=0')->scalar();
                     $model->order_number = $maxOrder + 1;
                 }
                 if ($model->save()) {

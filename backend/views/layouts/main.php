@@ -130,7 +130,7 @@ AppAsset::register($this);
                 ],
                 [
                     'encode' => false,
-                    'label' => 'Tin tức chung',
+                    'label' => 'Tin tức',
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_COMMON],
                 ],
             ]
@@ -139,6 +139,11 @@ AppAsset::register($this);
             'encode' => false,
             'label' => 'QL Tài khoản',
             'url' => ['user/index', "type" => User::TYPE_ADMIN],
+        ],
+        [
+            'encode' => false,
+            'label' => 'QL Công ty liên kết',
+            'url' => ['affiliate-company/index'],
         ],
         [
             'label' => Yii::t('app','QL Phân quyền'),

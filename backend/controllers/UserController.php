@@ -85,10 +85,6 @@ class UserController extends Controller
      */
     public function actionCreate($type = User::TYPE_ADMIN)
     {
-//        if ($type != User::TYPE_ADMIN && $type != User::TYPE_ORGANIZATION) {
-//            Yii::$app->session->setFlash('error', 'Không có quyền tạo!');
-//            return $this->redirect(['index', "type" => $type]);
-//        }
         $model = new User();
         $model->type = $type;
         $model->setScenario('create');
@@ -102,8 +98,6 @@ class UserController extends Controller
             $model->generateAuthKey();
             $model->type = $type;
             if ($model->save()) {
-                $model->setUserCode();
-                $model->save();
                 User::getItemNameFromAuthAssignment($model->id,$type);
                 Yii::$app->session->setFlash('success', 'Tạo tài khoản thành công!');
                 return $this->redirect(['view', 'id' => $model->id]);

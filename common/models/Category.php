@@ -10,7 +10,6 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property string $display_name
- * @property integer $type
  * @property string $description
  * @property integer $status
  * @property integer $order_number
@@ -22,7 +21,6 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property CampaignCategoryAsm[] $campaignCategoryAsms
  * @property Category $parent
  * @property Category[] $categories
  */
@@ -55,7 +53,7 @@ class Category extends \yii\db\ActiveRecord
         return [
             [['display_name'], 'required'],
 //            [['display_name'], 'unique', 'message' => 'Tên danh mục đã tồn tại. Vui lòng chọn tên khác!'],
-            [['id', 'type', 'status', 'order_number', 'parent_id', 'level',
+            [['id', 'status', 'order_number', 'parent_id', 'level',
                 'child_count', 'created_at', 'updated_at'], 'integer'],
             [['description'], 'string'],
             [['display_name', 'path'], 'string', 'max' => 200],
@@ -71,7 +69,6 @@ class Category extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'display_name' => Yii::t('app', 'Tên danh mục'),
-            'type' => Yii::t('app', 'Type'),
             'description' => Yii::t('app', 'Mô tả'),
             'status' => Yii::t('app', 'Trạng thái'),
             'order_number' => Yii::t('app', 'Order Number'),

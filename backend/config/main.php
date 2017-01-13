@@ -26,16 +26,6 @@ return [
 
     ],
     'language'=>'vi',
-    'aliases' => [
-        '@cat_image' => 'cat_image',
-        '@uploads' => 'uploads',
-        '@images' => 'images',
-        '@village_image' => 'village_image',
-        '@lead_donor_image' => 'lead_donor_image',
-        '@lead_donor_video' => 'lead_donor_video',
-        '@file_upload' => 'file_upload',
-        '@bank_image' => 'bank_image',
-    ],
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
