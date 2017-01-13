@@ -153,14 +153,6 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
         $thumbnail = $model->thumbnail;
-
-        /** @var NewsCategoryAsm $asm */
-        $asm = NewsCategoryAsm::findOne(['news_id' => $model->id]);
-        if ($asm) {
-            $model->category_id = $asm->category_id;
-        }
-
-        $model->village_array = $model->getListVillageSelect2();
         $model->setScenario('update');
 
         if ($model->load(Yii::$app->request->post())) {
