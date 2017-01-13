@@ -1,12 +1,13 @@
 <?php
 
+use common\models\News;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
 
 $this->title = 'Cập nhật: ' . ' ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Tin tức', 'url' => ['index', 'type' => $model->type]];
+$this->params['breadcrumbs'][] = ['label' => News::getTypeName($type), 'url' => ['index', 'type' => $model->type]];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Cập nhật';
 ?>

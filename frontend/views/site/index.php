@@ -94,36 +94,44 @@ $this->title = 'Vinpearl Condotel';
 
     <div class="main-invest ovfh">
         <div class="container">
-            <?php if(isset($gioithieu) && !empty($gioithieu)){
+            <?php if (isset($gioithieu) && !empty($gioithieu)) {
                 /** @var $gioithieu \common\models\News */
                 ?>
-            <div class="grid4">
-                <div class="posr">
-                    <img class="animation-flower" src="<?= $gioithieu->getImage() ?>" alt="#">
-                    <img class="posa" src="images/icons/home-logo-color-2.png" alt="#">
+                <div class="grid4">
+                    <div class="posr">
+                        <img class="animation-flower" src="<?= $gioithieu->getImage() ?>" alt="#">
+                        <img class="posa" src="images/icons/home-logo-color-2.png" alt="#">
+                    </div>
                 </div>
-            </div>
                 <div class="grid8">
                     <p class="UTMYenTu">
-                        <span class="wow fadeInLeft" data-wow-duration="2s"><?= \common\helpers\CUtils::subString1($gioithieu->title,50)  ?></span>
-                        <span class="tar wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".3s"><?= substr($gioithieu->title,strlen(\common\helpers\CUtils::subString1($gioithieu->title,50)) + 1) ?></span>
+                        <span class="wow fadeInLeft"
+                              data-wow-duration="2s"><?= \common\helpers\CUtils::subString1($gioithieu->title, 50) ?></span>
+                        <span class="tar wow fadeInLeft" data-wow-duration="2s"
+                              data-wow-delay=".3s"><?= substr($gioithieu->title, strlen(\common\helpers\CUtils::subString1($gioithieu->title, 50)) + 1) ?></span>
                     </p>
-                    <p class="segoeuil wow fadeIn segoeui taj" data-wow-duratioon="1s" data-wow-delay="1s"><?= $gioithieu->short_description ?></p>
+                    <p class="segoeuil wow fadeIn segoeui taj" data-wow-duratioon="1s"
+                       data-wow-delay="1s"><?= $gioithieu->short_description ?></p>
                 </div>
 
-            <?php }else{?>
-            <div class="grid8">
-                <p class="UTMYenTu">
-                    <span class="wow fadeInLeft" data-wow-duration="2s">Kết hợp hoàn hảo giữa căn hộ cao cấp</span>
-                    <span class="tar wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".3s">và tiện nghi khách sạn 5 sao</span>
-                </p>
-                <p class="segoeuil wow fadeIn segoeui taj" data-wow-duratioon="1s" data-wow-delay="1s">Là chuỗi căn hộ,
-                    khách sạn được đầu tư xây dựng và quản lý bởi Tập đoàn Vingroup – Tập đoàn Bất động sản hàng đầu tại
-                    Việt Nam. Các căn hộ thuộc Vinpearl Condotel được thiết kế bởi các đối tác quốc tế hàng đầu sẽ tạo
-                    thành điểm nhấn nổi bật tại các địa điểm nghỉ dưỡng hàng đầu Việt Nam như Nha Trang, Đà Nẵng, Phú
-                    Quốc, Hạ Long,… và mang tới cho các nhà đầu tư cơ hội sở hữu những căn hộ khách sạn đẳng cấp cũng
-                    như cơ hội tận hưởng những kỳ nghỉ riêng tư, thư giãn tuyệt vời.</p>
-            </div>
+            <?php } else { ?>
+                <div class="grid8">
+                    <p class="UTMYenTu">
+                        <span class="wow fadeInLeft" data-wow-duration="2s">Kết hợp hoàn hảo giữa căn hộ cao cấp</span>
+                        <span class="tar wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".3s">và tiện nghi khách sạn 5 sao</span>
+                    </p>
+                    <p class="segoeuil wow fadeIn segoeui taj" data-wow-duratioon="1s" data-wow-delay="1s">Là chuỗi căn
+                        hộ,
+                        khách sạn được đầu tư xây dựng và quản lý bởi Tập đoàn Vingroup – Tập đoàn Bất động sản hàng đầu
+                        tại
+                        Việt Nam. Các căn hộ thuộc Vinpearl Condotel được thiết kế bởi các đối tác quốc tế hàng đầu sẽ
+                        tạo
+                        thành điểm nhấn nổi bật tại các địa điểm nghỉ dưỡng hàng đầu Việt Nam như Nha Trang, Đà Nẵng,
+                        Phú
+                        Quốc, Hạ Long,… và mang tới cho các nhà đầu tư cơ hội sở hữu những căn hộ khách sạn đẳng cấp
+                        cũng
+                        như cơ hội tận hưởng những kỳ nghỉ riêng tư, thư giãn tuyệt vời.</p>
+                </div>
             <?php } ?>
         </div>
     </div>
@@ -132,19 +140,50 @@ $this->title = 'Vinpearl Condotel';
             <span class="segoeui">Vinpearl Condotel</span>
             <h2 class="utm-trajan">Các dự án Condotel</h2>
         </div>
-        <div class="main-project-first container posr ovfh wow fadeIn" data-wow-duration="2s">
-            <div class="project-first-box-left posa">
-                <h3 class="ttu utm-trajan"><a href="">Vinpearl<br>Beachfront Condotel</a></h3>
-                <p class="segoeui">Vinpearl Beachfront Condotel thuộc hệ thống căn hộ-khách sạn được phát triển bởi Tập
-                    đoàn Vingroup với kỳ vọng mang đến những trải nghiệm nghỉ dưỡng hoàn toàn mới tại các thiên đường du
-                    lịch nổi tiếng của Việt Nam. Dự án sở hữu vị trí vàng toạ lạc tại số 78 – 80 đường Trần Phú, thành
-                    phố Nha Trang.</p>
-                <img src="images/icons/project-box-bg.png" alt="#" class="posa">
+        <?php if (isset($duantop) && !empty($duantop)) {
+            /** @var $duantop \common\models\News */
+            ?>
+
+            <div class="main-project-first container posr ovfh wow fadeIn" data-wow-duration="2s">
+                <div class="project-first-box-left posa">
+                    <h3 class="ttu utm-trajan"><a href="<?= $duantop->source_url ?>"><?= \common\helpers\CUtils::subString($duantop->title,1) ?><br><?= \common\helpers\CUtils::subString($duantop->title,strlen(\common\helpers\CUtils::subString($duantop->title,1)) + 1) ?></a></h3>
+                    <p class="segoeui"><?= $duantop->short_description ?></p>
+                    <img src="images/icons/project-box-bg.png" alt="#" class="posa">
+                </div>
+                <img src="<?= $duantop->getImage() ?>" alt="#" class="posr wow fadeIn" data-wow-duration="1s">
             </div>
-            <img src="images/project--second-bg.jpg" alt="#" class="posr wow fadeIn" data-wow-duration="1s">
-        </div>
+
+        <?php } else { ?>
+
+            <div class="main-project-first container posr ovfh wow fadeIn" data-wow-duration="2s">
+                <div class="project-first-box-left posa">
+                    <h3 class="ttu utm-trajan"><a href="">Vinpearl<br>Beachfront Condotel</a></h3>
+                    <p class="segoeui">Vinpearl Beachfront Condotel thuộc hệ thống căn hộ-khách sạn được phát triển bởi
+                        Tập
+                        đoàn Vingroup với kỳ vọng mang đến những trải nghiệm nghỉ dưỡng hoàn toàn mới tại các thiên
+                        đường du
+                        lịch nổi tiếng của Việt Nam. Dự án sở hữu vị trí vàng toạ lạc tại số 78 – 80 đường Trần Phú,
+                        thành
+                        phố Nha Trang.</p>
+                    <img src="images/icons/project-box-bg.png" alt="#" class="posa">
+                </div>
+                <img src="images/project--second-bg.jpg" alt="#" class="posr wow fadeIn" data-wow-duration="1s">
+            </div>
+        <?php } ?>
         <div class="container ovfh">
             <ul class="main-project-list fluid">
+                <?php if(isset($duankhac) && !empty($duankhac)){
+                    foreach($duankhac as $item){
+                        /** @var $item \common\models\News */
+                        ?>
+                        <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
+                            <img src="<?= $item->getImage() ?>" alt="#">
+                            <?php if(!empty($item->title)){ ?>
+                                <a href="<?= $item->source_url ?>"><?= \common\helpers\CUtils::subString($item->title,1) ?><br><?= \common\helpers\CUtils::subString($item->title,strlen(\common\helpers\CUtils::subString($item->title,1)) + 1) ?></a>
+                            <?php } ?>
+                        </li>
+                    <?php }
+                }else{ ?>
                 <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
                     <img src="images/p2.jpg" alt="#"><a href="">Vinpearl<br> Empire Condotel</a>
                 </li>
@@ -154,6 +193,7 @@ $this->title = 'Vinpearl Condotel';
                 <li class="grid4 wow fadeInUp" data-wow-delay=".7s">
                     <img src="images/p3.jpg" alt="#"><!-- <a href="#">vinpearl<br> condotel --></a>
                 </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
@@ -181,12 +221,12 @@ $this->title = 'Vinpearl Condotel';
                                     <?= $item->title ?>
                                 </div>
                                 <div class="benef-box-content">
-                                    <?= \common\helpers\CUtils::subString(trim($item->short_description),300) ?>
+                                    <?= \common\helpers\CUtils::subString(trim($item->short_description), 300) ?>
                                 </div>
                             </div>
                         </div>
                     <?php }
-                }else{?>
+                } else { ?>
                     <?= $this->render('news') ?>
                 <?php } ?>
             </div>
@@ -204,28 +244,34 @@ $this->title = 'Vinpearl Condotel';
         </div>
         <div class="container">
             <div id="owl-demo-2" class="owl-carousel owl-theme">
-                <?php if(isset($listDoiTac) && !empty($listDoiTac)) {
-                    foreach($listDoiTac as $item){
+                <?php if (isset($listDoiTac) && !empty($listDoiTac)) {
+                    foreach ($listDoiTac as $item) {
                         /** @var $item \common\models\AffiliateCompany */
                         ?>
                         <div class="item"><a href="<?= $item->url ?>" target="blank" rel="nofollow">
                                 <img src="<?= $item->getImage() ?>" alt="#"></a>
                         </div>
                     <?php }
-                } else{ ?>
-                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p3.png" alt="#"></a>
+                } else { ?>
+                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p3.png"
+                                                                                    alt="#"></a>
                     </div>
-                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p6.png" alt="#"></a>
+                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p6.png"
+                                                                                    alt="#"></a>
                     </div>
-                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p5.png" alt="#"></a>
+                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p5.png"
+                                                                                    alt="#"></a>
                     </div>
-                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p1.png" alt="#"></a>
+                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p1.png"
+                                                                                    alt="#"></a>
                     </div>
-                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p4.png" alt="#"></a>
+                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p4.png"
+                                                                                    alt="#"></a>
                     </div>
-                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p2.png" alt="#"></a>
+                    <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p2.png"
+                                                                                    alt="#"></a>
                     </div>
-                <?php }?>
+                <?php } ?>
 
             </div>
         </div>

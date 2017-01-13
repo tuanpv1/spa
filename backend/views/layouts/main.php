@@ -118,7 +118,7 @@ AppAsset::register($this);
     $menuItems = [
 
         [
-            'label' => Yii::t('app','QL Tin tức'),
+            'label' => Yii::t('app','QL Thông tin'),
             'url' => 'javascript:;',
             'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
             'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
@@ -130,7 +130,12 @@ AppAsset::register($this);
 //                ],
                 [
                     'encode' => false,
-                    'label' => Yii::t('app','Tin tức'),
+                    'label' => Yii::t('app','Dự án'),
+                    'url' => ['news/index', 'type' => \common\models\News::TYPE_PROJECT],
+                ],
+                [
+                    'encode' => false,
+                    'label' => Yii::t('app','Lợi ích đầu tư'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_COMMON],
                 ],
                 [

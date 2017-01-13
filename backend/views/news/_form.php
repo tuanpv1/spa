@@ -33,40 +33,6 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
 ]);
 
 // Set kcfinder session options
-Yii::$app->session->set('KCFINDER', $kcfOptions);
-
-$type = Html::getInputId($model, 'select');
-
-$type_video = News::TYPE_UPLOAD_VIDEO;
-$type_url = News::TYPE_URL;
-
-$js = <<<JS
-    $("#$type").change(function () {
-        var type = $('#$type').val();
-        if(type == {$type_video}){
-            $('#id_video').show();
-            $('#id_url').hide();
-        }
-        else{
-            $('#id_url').show();
-            $('#id_video').hide();
-        }
-    });
-JS;
-$js_default = <<<JS
-    var type = $('#$type').val();
-    if(type == {$type_video}){
-       $('#id_url').hide();
-        $('#id_video').show();
-    }
-    else{
-        $('#id_url').show();
-        $('#id_video').hide();
-    }
-JS;
-
-$this->registerJs($js_default, \yii\web\View::POS_READY);
-$this->registerJs($js, \yii\web\View::POS_READY);
 ?>
 
 <div class="form-body">
@@ -83,7 +49,12 @@ $this->registerJs($js, \yii\web\View::POS_READY);
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList(\common\models\News::listStatus()) ?>
-
+    <?php
+    if($type == \common\models\News::TYPE_PROJECT){ ?>
+        <?= $form->field($model,'position')->dropDownList(News::listPosition()) ?>
+        <?= $form->field($model, 'source_url')->textInput(['maxlength' => true]) ?>
+    <?php }
+    ?>
     <?php if ($model->isNewRecord) { ?>
         <?= $form->field($model, 'thumbnail')->label('Ảnh đại diện')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],

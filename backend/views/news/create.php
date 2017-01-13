@@ -1,5 +1,6 @@
 <?php
 
+use common\models\News;
 use common\models\User;
 use yii\helpers\Html;
 
@@ -8,8 +9,8 @@ use yii\helpers\Html;
 /* @var $type */
 /* @var $model common\models\User */
 
-$this->title = "Tạo mới tin tức" ;
-$this->params['breadcrumbs'][] = ['label' => 'Tin tức', 'url' => ['index', 'type' => $type]];
+$this->title = News::getTypeName($type) ;
+$this->params['breadcrumbs'][] = ['label' => News::getTypeName($type), 'url' => ['index', 'type' => $type]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -21,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="portlet-body form">
                 <?= $this->render('_form', [
                     'model' => $model,
+                    'type' => $type
                 ]) ?>
             </div>
         </div>

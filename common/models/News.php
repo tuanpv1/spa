@@ -36,6 +36,7 @@ use yii\helpers\Url;
  * @property integer $updated_at
  * @property integer $published_at
  * @property integer $user_id
+ * @property integer $position
  * @property integer $all_village
  * @property integer $type_video
  * @property integer $lead_donor_id
@@ -56,10 +57,14 @@ class News extends \yii\db\ActiveRecord
     const TYPE_IDEA = 1;
     const TYPE_TRADE = 2;
     const TYPE_DONOR = 3;
-    const TYPE_VILLAGE = 4;
+    const TYPE_PROJECT = 4;
     const TYPE_COMMON = 5;
     const TYPE_GIOITHIEU = 6;
     const TYPE_EXPERIENCE = 7;
+
+
+    const POSITION_TOP = 1;
+    const POSITION_NOTTOP = 2;
 
     public $village_array;
     public $category_id;
@@ -102,7 +107,7 @@ class News extends \yii\db\ActiveRecord
         return [
             [['type', 'view_count', 'like_count', 'comment_count', 'favorite_count', 'honor',
                 'status', 'created_user_id', 'created_at', 'updated_at', 'user_id'
-                , 'category_id', 'published_at','type_video'], 'integer'],
+                , 'category_id', 'published_at','type_video','position'], 'integer'],
             [['title', 'user_id'], 'required'],
             [['video'], 'file', 'extensions' => ['mp4', 'avi'], 'maxSize' => 1024 * 1024 * 500, 'tooBig' => 'Video vượt quá dung lượng cho phép!'],
             [['thumbnail'], 'required', 'on' => 'create'],
@@ -140,7 +145,7 @@ class News extends \yii\db\ActiveRecord
             'favorite_count' => Yii::t('app', 'Favorite Count'),
             'honor' => Yii::t('app', 'Honor'),
             'source_name' => Yii::t('app', 'Source Name'),
-            'source_url' => Yii::t('app', 'Source Url'),
+            'source_url' => Yii::t('app', 'Url'),
             'status' => Yii::t('app', 'Trạng thái'),
             'created_user_id' => Yii::t('app', 'Created User ID'),
             'created_at' => Yii::t('app', 'Created At'),
@@ -148,6 +153,7 @@ class News extends \yii\db\ActiveRecord
             'user_id' => Yii::t('app', 'User ID'),
             'price' => Yii::t('app', 'Giá'),
             'category_id' => Yii::t('app', 'Danh mục'),
+            'position' => Yii::t('app','Vị trí')
         ];
     }
 
@@ -203,6 +209,13 @@ class News extends \yii\db\ActiveRecord
      * @return array
      */
 
+    public static function listPosition(){
+        $list = [
+            self::POSITION_NOTTOP => 'Vị trí khác',
+            self::POSITION_TOP => 'Vị trí top',
+        ];
+        return $list;
+    }
 
     /**
      * @return int
@@ -216,6 +229,25 @@ class News extends \yii\db\ActiveRecord
         return $this->status;
     }
 
+    public static function listStatusType()
+    {
+        $lst = [
+            self::TYPE_COMMON => 'Lợi ích đầu tư',
+            self::TYPE_GIOITHIEU => 'Giới thiệu',
+            self::TYPE_PROJECT => 'Dự án',
+        ];
+        return $lst;
+    }
+
+    public static function getTypeName($type)
+    {
+        $lst = self::listStatusType();
+        if (array_key_exists($type, $lst)) {
+            return $lst[$type];
+        }
+        return $type;
+    }
+
     public function getImage()
     {
         $image = $this->thumbnail;
@@ -223,5 +255,6 @@ class News extends \yii\db\ActiveRecord
             return Url::to(Yii::getAlias('@web') . '/' . Yii::getAlias('@image_new') . '/' . $image, true);
         }
     }
+
 
 }
