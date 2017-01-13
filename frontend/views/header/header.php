@@ -11,7 +11,7 @@
                     foreach($listUnitLink as $item){
                         /** @var $item \common\models\AffiliateCompany */
                     ?>
-                    <a class="item" href="" target="_blank" data-id="vinhomes">
+                    <a class="item" href="<?= $item->url ?>" target="_blank" data-id="vinhomes">
                         <img src="<?= $item->getImage()  ?>" alt="">
                     </a>
                 <?php } }else{ ?>

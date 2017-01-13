@@ -8,7 +8,7 @@ use kartik\grid\GridView;
 /* @var $searchModel common\models\AffiliateCompanySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app','Quản lý Công ty liên kết');
+$this->title = Yii::t('app',AffiliateCompany::getTypeName($type));
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="portlet-body">
                 <p>
-                    <?= Html::a('Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Thêm mới', ['create','type'=>$type], ['class' => 'btn btn-success']) ?>
                 </p>
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,

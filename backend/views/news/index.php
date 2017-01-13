@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $type */
-$this->title = Yii::t('app','Tin tức');
+$this->title = $type == News::TYPE_COMMON ? Yii::t('app','Tin tức') : Yii::t('app','Giới thiệu');
 $this->params['breadcrumbs'][] = $this->title;
 
 $visible_campaign = false;
@@ -28,7 +28,7 @@ $visible_village = false;
                 </div>
             </div>
             <div class="portlet-body">
-                <p><?= Html::a($type!=News::TYPE_EXPERIENCE?'Thêm tin tức':'Thêm kinh nghiệm', ['create', 'type' => $type], ['class' => 'btn btn-success']) ?> </p>
+                <p><?= Html::a($type!=News::TYPE_GIOITHIEU?'Thêm tin tức':'Thêm giới thiệu', ['create', 'type' => $type], ['class' => 'btn btn-success']) ?> </p>
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,

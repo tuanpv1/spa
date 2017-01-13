@@ -17,7 +17,7 @@ class Header extends Widget
     public function init()
     {
 
-        self::$listUnitLink = AffiliateCompany::findAll(['status' => AffiliateCompany::STATUS_ACTIVE]);
+        self::$listUnitLink = AffiliateCompany::findAll(['status' => AffiliateCompany::STATUS_ACTIVE,'type'=>AffiliateCompany::TYPE_UNITLINK ]);
     }
 
     public function run()

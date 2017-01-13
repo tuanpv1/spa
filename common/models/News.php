@@ -58,6 +58,7 @@ class News extends \yii\db\ActiveRecord
     const TYPE_DONOR = 3;
     const TYPE_VILLAGE = 4;
     const TYPE_COMMON = 5;
+    const TYPE_GIOITHIEU = 6;
     const TYPE_EXPERIENCE = 7;
 
     public $village_array;
@@ -201,35 +202,7 @@ class News extends \yii\db\ActiveRecord
     /**
      * @return array
      */
-    public static function listType()
-    {
-        $lst = [
-            self::TYPE_COMMON => 'Tin tức chung',
-            self::TYPE_IDEA => 'Tin tức ý tưởng',
-            self::TYPE_DONOR => 'Tin tức DN đỡ đầu',
-            self::TYPE_TRADE => 'Tin tức giao thương',
-            self::TYPE_EXPERIENCE => 'Kinh nghiệm',
-        ];
-        return $lst;
-    }
 
-    public function getTypeName()
-    {
-        $lst = self::listType();
-        if (array_key_exists($this->type, $lst)) {
-            return $lst[$this->type];
-        }
-        return $this->type;
-    }
-
-    public static function getNameByType($type)
-    {
-        $lst = self::listType();
-        if (array_key_exists($type, $lst)) {
-            return $lst[$type];
-        }
-        return $type;
-    }
 
     /**
      * @return int
@@ -251,34 +224,4 @@ class News extends \yii\db\ActiveRecord
         }
     }
 
-    public function getContent()
-    {
-        $content = str_replace("/uploads/ckeditor/", Yii::$app->params['ApiAddress'] . "/uploads/ckeditor/", $this->content);
-        return $content;
-    }
-
-    public function getListVillageSelect2()
-    {
-        /** @var NewsVillageAsm[] $asm */
-        $asm = NewsVillageAsm::find()->andWhere(['news_id' => $this->id])->all();
-        $lst = [];
-        foreach ($asm as $item) {
-            $lst[] = $item->village_id;
-        }
-
-        return $lst;
-    }
-
-    public function getVideoUrl()
-    {
-        return Yii::getAlias('@web') . '/' . Yii::getAlias('@uploads') . '/' . $this->video;
-    }
-
-    public function getVideoUrlFe()
-    {
-        $video = $this->video;
-        if ($video) {
-            return Url::to(Yii::getAlias('@web') . '/' . Yii::getAlias('@uploads') . '/' . $video, true);
-        }
-    }
 }

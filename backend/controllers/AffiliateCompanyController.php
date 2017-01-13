@@ -2,12 +2,12 @@
 
 namespace backend\controllers;
 
-use Yii;
 use common\models\AffiliateCompany;
 use common\models\AffiliateCompanySearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
@@ -34,14 +34,15 @@ class AffiliateCompanyController extends Controller
      * Lists all AffiliateCompany models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($type = AffiliateCompany::TYPE_UNITLINK)
     {
         $searchModel = new AffiliateCompanySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $type);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'type' => $type
         ]);
     }
 
@@ -62,15 +63,17 @@ class AffiliateCompanyController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($type = AffiliateCompany::TYPE_UNITLINK)
     {
         $model = new AffiliateCompany();
 
         if ($model->load(Yii::$app->request->post())) {
+
             $image = UploadedFile::getInstance($model, 'image');
             if ($image) {
+                $model->type = $type;
                 $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
-                $tmp       = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_affiliate_company') . '/';
+                $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_affiliate_company') . '/';
                 if (!file_exists($tmp)) {
                     mkdir($tmp, 0777, true);
                 }
@@ -78,16 +81,17 @@ class AffiliateCompanyController extends Controller
                     $model->image = $file_name;
                 }
             }
-            if($model->save(false)){
-                \Yii::$app->getSession()->setFlash('success',Yii::t('app', 'Thêm mới công ty liên kết thành công'));
-                return $this->redirect(['index']);
-            }else{
-                \Yii::$app->getSession()->setFlash('error',Yii::t('app', 'Thêm mới công ty liên kết không thành thành công'));
-                return $this->render('create',['model'=>$model]);
+            if ($model->save(false)) {
+                \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Thêm mới công ty liên kết thành công'));
+                return $this->redirect(['index', 'type' => $type]);
+            } else {
+                \Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Thêm mới công ty liên kết không thành thành công'));
+                return $this->render('create', ['model' => $model, 'type' => $type]);
             }
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'type' => $type
             ]);
         }
     }
@@ -101,12 +105,12 @@ class AffiliateCompanyController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $type = $model->type;
         if ($model->load(Yii::$app->request->post())) {
             $image = UploadedFile::getInstance($model, 'image');
             if ($image) {
                 $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
-                $tmp       = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_affiliate_company') . '/';
+                $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_affiliate_company') . '/';
                 if (!file_exists($tmp)) {
                     mkdir($tmp, 0777, true);
                 }
@@ -114,16 +118,17 @@ class AffiliateCompanyController extends Controller
                     $model->image = $file_name;
                 }
             }
-            if($model->update(false)){
-                \Yii::$app->getSession()->setFlash('success',Yii::t('app', 'Thêm mới công ty liên kết thành công'));
-                return $this->redirect(['index']);
-            }else{
-                \Yii::$app->getSession()->setFlash('error',Yii::t('app', 'Thêm mới công ty liên kết không thành thành công'));
-                return $this->render('create',['model'=>$model]);
+            if ($model->update(false)) {
+                \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Thêm mới công ty liên kết thành công'));
+                return $this->redirect(['index', 'type' => $type]);
+            } else {
+                \Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Thêm mới công ty liên kết không thành thành công'));
+                return $this->render('create', ['model' => $model, 'type' => $type]);
             }
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'type' => $type
             ]);
         }
     }
@@ -140,7 +145,7 @@ class AffiliateCompanyController extends Controller
         $model = $this->findModel($id);
         $model->status = AffiliateCompany::STATUS_DELETED;
         $model->update(false);
-        \Yii::$app->getSession()->setFlash('success',Yii::t('app', 'Xóa công ty liên kết thành công'));
+        \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Xóa công ty liên kết thành công'));
         return $this->redirect(['index']);
     }
 

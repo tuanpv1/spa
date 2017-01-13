@@ -8,8 +8,8 @@ use yii\helpers\Html;
 /* @var $type */
 /* @var $model common\models\User */
 
-$this->title = "Tạo mới ".\common\models\News::getNameByType($type);
-$this->params['breadcrumbs'][] = ['label' => \common\models\News::getNameByType($type), 'url' => ['index', 'type' => $type]];
+$this->title = "Tạo mới tin tức" ;
+$this->params['breadcrumbs'][] = ['label' => 'Tin tức', 'url' => ['index', 'type' => $type]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">

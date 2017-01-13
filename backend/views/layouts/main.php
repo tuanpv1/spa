@@ -123,15 +123,20 @@ AppAsset::register($this);
             'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
             'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
             'items' => [
-                [
-                    'encode' => false,
-                    'label' => Yii::t('app','Danh mục tin tức'),
-                    'url' => ['category/index'],
-                ],
+//                [
+//                    'encode' => false,
+//                    'label' => Yii::t('app','Danh mục tin tức'),
+//                    'url' => ['category/index'],
+//                ],
                 [
                     'encode' => false,
                     'label' => Yii::t('app','Tin tức'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_COMMON],
+                ],
+                [
+                    'encode' => false,
+                    'label' => Yii::t('app','Giới thiệu'),
+                    'url' => ['news/index', 'type' => \common\models\News::TYPE_GIOITHIEU],
                 ],
             ]
         ],
@@ -161,7 +166,12 @@ AppAsset::register($this);
         [
             'encode' => false,
             'label' => Yii::t('app','QL Công ty liên kết'),
-            'url' => ['affiliate-company/index'],
+            'url' => ['affiliate-company/index','type' => \common\models\AffiliateCompany::TYPE_UNITLINK ],
+        ],
+        [
+            'encode' => false,
+            'label' => Yii::t('app','Quản lý đối tác'),
+            'url' => ['affiliate-company/index','type' => \common\models\AffiliateCompany::TYPE_DOITAC ],
         ],
         [
             'label' => Yii::t('app','QL Phân quyền'),

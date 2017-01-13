@@ -9,11 +9,14 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\AffiliateCompany;
+use common\models\Banner;
 use common\models\LoginForm;
+use common\models\News;
+use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\models\ContactForm;
 
 /**
  * Site controller
@@ -75,7 +78,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $listBanner = Banner::findAll(['status' => Banner::STATUS_ACTIVE]);
+
+        $listNews = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type' => News::TYPE_COMMON])
+            ->orderBy(['updated_at' => SORT_DESC])->all();
+
+        $listDoiTac = AffiliateCompany::findAll(['type' => AffiliateCompany::TYPE_DOITAC, 'status' => AffiliateCompany::STATUS_ACTIVE]);
+
+        return $this->render('index', ['listBanner' => $listBanner, 'listNews' => $listNews, 'listDoiTac' => $listDoiTac]);
     }
 
     /**
