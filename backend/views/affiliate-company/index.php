@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="portlet-body">
                 <p>
-                    <?= Html::a('Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
+                    <?= Html::a('Thêm mới', ['create','type'=>$type], ['class' => 'btn btn-success']) ?>
                 </p>
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
