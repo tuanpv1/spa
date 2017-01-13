@@ -86,7 +86,6 @@ class NewsController extends Controller
         /** @var User $user */
         $user = Yii::$app->user->identity;
         $model = new News();
-        $model->setScenario('create');
         $model->type = $type;
 
         if ($model->load(Yii::$app->request->post())) {
@@ -153,7 +152,6 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
         $thumbnail = $model->thumbnail;
-        $model->setScenario('update');
 
         if ($model->load(Yii::$app->request->post())) {
             $db_transaction = Yii::$app->db->beginTransaction();
