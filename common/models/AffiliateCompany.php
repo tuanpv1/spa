@@ -93,7 +93,7 @@ class AffiliateCompany extends \yii\db\ActiveRecord
     {
         $image = $this->image;
         if ($image) {
-            return Url::to(Yii::getAlias('@web') . '/' . Yii::getAlias('@unitlink') . '/' . $image, true);
+            return Url::to(Yii::getAlias('@web') . '/' . Yii::getAlias('@image_affiliate_company') . '/' . $image, true);
         }
     }
 }
