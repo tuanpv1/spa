@@ -80,7 +80,7 @@ class AffiliateCompany extends \yii\db\ActiveRecord
         return [
             [['status', 'created_at', 'updated_at','type'], 'integer'],
             [['image', 'name', 'about', 'url'], 'string', 'max' => 255],
-            ['image','required','message'=>Yii::t('app','{attribute} không được để trống')],
+            ['image','required','message'=>Yii::t('app','{attribute} không được để trống'),'on'=>'create'],
         ];
     }
 

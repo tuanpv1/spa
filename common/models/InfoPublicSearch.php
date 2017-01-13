@@ -5,12 +5,12 @@ namespace common\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Email;
+use common\models\InfoPublic;
 
 /**
- * EmailSearch represents the model behind the search form about `common\models\Email`.
+ * InfoPublicSearch represents the model behind the search form about `common\models\InfoPublic`.
  */
-class EmailSearch extends Email
+class InfoPublicSearch extends InfoPublic
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class EmailSearch extends Email
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'integer'],
-            [['email'], 'safe'],
+            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['image_header', 'image_footer', 'email', 'phone', 'link_face', 'address'], 'safe'],
         ];
     }
 
@@ -41,17 +41,12 @@ class EmailSearch extends Email
      */
     public function search($params)
     {
-        $query = Email::find();
+        $query = InfoPublic::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort' => [
-                'defaultOrder' => [
-                    'created_at' => SORT_DESC,
-                ]
-            ],
         ]);
 
         $query->andWhere("status != :status")->addParams([':status' => self::STATUS_DELETED]);
@@ -67,11 +62,17 @@ class EmailSearch extends Email
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'email', $this->email]);
+        $query->andFilterWhere(['like', 'image_header', $this->image_header])
+            ->andFilterWhere(['like', 'image_footer', $this->image_footer])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'phone', $this->phone])
+            ->andFilterWhere(['like', 'link_face', $this->link_face])
+            ->andFilterWhere(['like', 'address', $this->address]);
 
         return $dataProvider;
     }

@@ -56,7 +56,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
     <?php }
     ?>
     <?php if ($model->isNewRecord) { ?>
-        <?= $form->field($model, 'thumbnail')->label('Ảnh đại diện')->widget(FileInput::classname(), [
+        <?= $form->field($model, 'thumbnail')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
             'pluginOptions' => [
                 'showPreview' => true,
@@ -66,7 +66,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
             ]
         ]); ?>
     <?php } else { ?>
-        <?= $form->field($model, 'thumbnail')->label('Ảnh đại diện')->widget(FileInput::classname(), [
+        <?= $form->field($model, 'thumbnail')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
             'pluginOptions' => [
                 'previewFileType' => 'any',
