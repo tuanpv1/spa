@@ -46,7 +46,7 @@ $visible_village = false;
                             'attribute' => 'title',
                             'format' => 'html',
                             'value' => function ($model, $key, $index, $widget) {
-                                return Html::a($model->title, ['update', 'id' => $model->id], ['class' => 'label label-primary']);
+                                return Html::a($model->title, ['view', 'id' => $model->id], ['class' => 'label label-primary']);
                             },
                         ],
                         [
