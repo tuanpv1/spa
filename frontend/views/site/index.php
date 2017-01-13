@@ -2,29 +2,8 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Vinpearl Condotel';
 ?>
-<div class="header posf">
-    <div class="tac posr">
-        <div class="menu-rps-992"><a href="#"><i class="fa fa-bars"></i></a></div>
-
-        <ul class="header-menu-left header-menu tar">
-            <li><a href="">Giới thiệu</a></li>
-            <li><a href="">Dự án</a></li>
-            <li><a href="">Tiến độ</a></li>
-        </ul>
-
-        <a href="">
-            <img src="images/icons/logo.png" alt="#">
-        </a>
-
-        <ul class="header-menu-right header-menu">
-            <li><a href="">Lợi ích đầu tư</a></li>
-            <li><a href="">Tin tức</a></li>
-            <li><a href="">Liên hệ</a></li>
-        </ul>
-    </div>
-</div>
 <div class="main ovfh">
     <div class="main-banner posr ovfh">
         <div class="flexslider">

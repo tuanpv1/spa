@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "affiliate_company".
@@ -86,5 +87,13 @@ class AffiliateCompany extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app','Ngày thay đổi thông tin'),
             'url' => Yii::t('app','Địa chỉ website'),
         ];
+    }
+
+    public function getImage()
+    {
+        $image = $this->image;
+        if ($image) {
+            return Url::to(Yii::getAlias('@web') . '/' . Yii::getAlias('@unitlink') . '/' . $image, true);
+        }
     }
 }
