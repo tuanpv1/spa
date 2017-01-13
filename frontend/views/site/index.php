@@ -105,8 +105,8 @@ $this->title = 'Vinpearl Condotel';
             </div>
                 <div class="grid8">
                     <p class="UTMYenTu">
-                        <span class="wow fadeInLeft" data-wow-duration="2s"><?= substr($gioithieu->title,0,20) ?></span>
-                        <span class="tar wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".3s"><?= substr($gioithieu->title,21) ?></span>
+                        <span class="wow fadeInLeft" data-wow-duration="2s"><?= \common\helpers\CUtils::subString1($gioithieu->title,20)  ?></span>
+                        <span class="tar wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".3s"><?= substr($gioithieu->title,strlen(\common\helpers\CUtils::subString1($gioithieu->title,20)) + 1) ?></span>
                     </p>
                     <p class="segoeuil wow fadeIn segoeui taj" data-wow-duratioon="1s" data-wow-delay="1s"><?= trim($gioithieu->description) ?></p>
                 </div>

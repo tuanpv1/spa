@@ -668,6 +668,23 @@ class CUtils {
         }
         return $sub . (($len < strlen($str)) ? '...' : '');
     }
+    public static  function subString1($str, $length, $minword = 3)
+    {
+        $sub = '';
+        $len = 0;
+        foreach (explode(' ', $str) as $word)
+        {
+            $part = (($sub != '') ? ' ' : '') . $word;
+            $sub .= $part;
+            $len += strlen($part);
+            if (strlen($word) > $minword && strlen($sub) >= $length)
+            {
+                break;
+            }
+        }
+        return $sub . (($len < strlen($str)) ? '' : '');
+    }
+
 }
 
 
