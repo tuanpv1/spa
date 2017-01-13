@@ -25,8 +25,6 @@ use common\models\User;
             ],
             'email:email',
             'phone_number',
-            'address',
-//                        'role',
             [
                 'attribute' => 'status',
                 'label' => 'Trạng thái',
