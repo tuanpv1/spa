@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = Yii::t('app','Cập nhật ');
             <div class="portlet-body form">
                 <?= $this->render('_form', [
                     'model' => $model,
+                    'type' => $type
                 ]) ?>
             </div>
         </div>
