@@ -80,10 +80,10 @@ class BannerController extends Controller
                 }
             }
             if($model->save()) {
-                Yii::$app->getSession()->setFlash('success', 'Tạo nhóm thành công');
+                Yii::$app->getSession()->setFlash('success', 'Tạo Banner thành công');
                 return $this->redirect(['view', 'id' => $model->id]);
             }else{
-                Yii::$app->getSession()->setFlash('error', 'Tạo nhóm không thành công');
+                Yii::$app->getSession()->setFlash('error', 'Tạo Banner không thành công');
                 return $this->render('create', [
                     'model' => $model,
                 ]);

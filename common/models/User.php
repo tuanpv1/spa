@@ -143,7 +143,7 @@ class User extends ActiveRecord implements IdentityInterface
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required', 'message' => Yii::t('app','{attribute} không được để trống')],
-            ['email', 'email','message'=>'Địa chỉ email không hợp lệ!'],
+            ['email', 'email','message'=>Yii::t('app','{attribute} không hợp lệ!')],
             ['email', 'string', 'max' => 255],
             [['email'], 'unique', 'on' => 'create', 'message' => Yii::t('app','{attribute} đã tồn tại, vui lòng chọn {attribute} khác!'),'filter' =>
                 [
