@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\AffiliateCompany;
 use common\models\Banner;
 use common\models\LoginForm;
 use common\models\News;
@@ -76,10 +77,12 @@ class SiteController extends Controller
     {
         $listBanner = Banner::findAll(['status' => Banner::STATUS_ACTIVE]);
 
-        $listNews = News::find()->andWhere(['status'=>News::STATUS_ACTIVE])
-            ->orderBy(['updated_at'=>SORT_DESC])->all();
+        $listNews = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
+            ->orderBy(['updated_at' => SORT_DESC])->all();
 
-        return $this->render('index', ['listBanner' => $listBanner,'listNews' => $listNews]);
+        $listDoiTac = AffiliateCompany::findAll(['type' => AffiliateCompany::TYPE_DOITAC, 'status' => AffiliateCompany::STATUS_ACTIVE]);
+
+        return $this->render('index', ['listBanner' => $listBanner, 'listNews' => $listNews,'listDoiTac' => $listDoiTac]);
     }
 
     /**
