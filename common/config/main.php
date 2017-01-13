@@ -8,7 +8,7 @@ return [
     ],
     'aliases' => [
         '@image_affiliate_company' => 'upload/image_affiliate_company',
-        '@image_banner' => 'uploads/image_banner',
-        '@image_new' => 'uploads/image_news',
+        '@image_banner' => 'upload/image_banner',
+        '@image_new' => 'upload/image_news',
     ],
 ];
