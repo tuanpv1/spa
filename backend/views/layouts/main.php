@@ -174,6 +174,11 @@ AppAsset::register($this);
             'url' => ['affiliate-company/index','type' => \common\models\AffiliateCompany::TYPE_DOITAC ],
         ],
         [
+            'encode' => false,
+            'label' => Yii::t('app','QL Thông tin'),
+            'url' => ['info-public/index'],
+        ],
+        [
             'label' => Yii::t('app','QL Phân quyền'),
             'url' => 'javascript:;',
             'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],

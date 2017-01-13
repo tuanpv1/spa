@@ -26,7 +26,7 @@ use yii\helpers\Url;
     ]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
+    <?php if ($model->isNewRecord) { ?>
     <?= $form->field($model, 'image')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
         'pluginOptions' => [
@@ -36,6 +36,22 @@ use yii\helpers\Url;
             'showUpload' => false
         ]
     ]); ?>
+    <?php } else { ?>
+        <?= $form->field($model, 'image')->widget(FileInput::classname(), [
+            'options' => ['accept' => 'image/*'],
+            'pluginOptions' => [
+                'previewFileType' => 'any',
+                'initialPreview' => [
+                    Html::img(Url::to($model->getImage()), ['class' => 'file-preview-image', 'alt' => $model->image, 'title' => $model->image]),
+                ],
+                'showPreview' => true,
+                'initialCaption' => $model->getImage(),
+                'overwriteInitial' => true,
+                'showRemove' => false,
+                'showUpload' => false
+            ]
+        ]); ?>
+    <?php } ?>
 
     <?= $form->field($model, 'about')->widget(\common\widgets\CKEditor::className(), [
         'options' => [

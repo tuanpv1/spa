@@ -40,7 +40,6 @@ $avatarPreview = !$model->isNewRecord && !empty($model->image);
         'options' => [
             'accept' => 'image/*',
         ],
-
     ]);
     ?>
 

@@ -85,7 +85,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
     <?= $form->field($model, 'status')->dropDownList(\common\models\News::listStatus()) ?>
 
     <?php if ($model->isNewRecord) { ?>
-        <?= $form->field($model, 'thumbnail')->label('Ảnh đại diện')->widget(FileInput::classname(), [
+        <?= $form->field($model, 'thumbnail')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
             'pluginOptions' => [
                 'showPreview' => true,
@@ -95,7 +95,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
             ]
         ]); ?>
     <?php } else { ?>
-        <?= $form->field($model, 'thumbnail')->label('Ảnh đại diện')->widget(FileInput::classname(), [
+        <?= $form->field($model, 'thumbnail')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
             'pluginOptions' => [
                 'previewFileType' => 'any',

@@ -66,7 +66,7 @@ class AffiliateCompanyController extends Controller
     public function actionCreate($type = AffiliateCompany::TYPE_UNITLINK)
     {
         $model = new AffiliateCompany();
-
+        $model->setScenario('create');
         if ($model->load(Yii::$app->request->post())) {
 
             $image = UploadedFile::getInstance($model, 'image');
@@ -106,6 +106,7 @@ class AffiliateCompanyController extends Controller
     {
         $model = $this->findModel($id);
         $type = $model->type;
+        $old_image = $model->image;
         if ($model->load(Yii::$app->request->post())) {
             $image = UploadedFile::getInstance($model, 'image');
             if ($image) {
@@ -117,6 +118,8 @@ class AffiliateCompanyController extends Controller
                 if ($image->saveAs($tmp . $file_name)) {
                     $model->image = $file_name;
                 }
+            }else{
+                $model->image = $old_image;
             }
             if ($model->update(false)) {
                 \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Thêm mới công ty liên kết thành công'));
@@ -144,9 +147,13 @@ class AffiliateCompanyController extends Controller
 
         $model = $this->findModel($id);
         $model->status = AffiliateCompany::STATUS_DELETED;
-        $model->update(false);
-        \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Xóa công ty liên kết thành công'));
-        return $this->redirect(['index']);
+        if($model->update(false)){
+            \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Xóa công ty liên kết thành công'));
+            return $this->redirect(['index']);
+        }else{
+            \Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Xóa công ty liên kết không thành thành công'));
+            return $this->render('view', ['model' => $model]);
+        }
     }
 
     /**
