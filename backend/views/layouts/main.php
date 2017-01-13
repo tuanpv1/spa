@@ -135,7 +135,7 @@ AppAsset::register($this);
                 ],
                 [
                     'encode' => false,
-                    'label' => Yii::t('app','Tin tức'),
+                    'label' => Yii::t('app','Giới thiệu'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_GIOITHIEU],
                 ],
             ]
