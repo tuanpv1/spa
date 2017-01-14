@@ -15,7 +15,7 @@
                 </p>
                 <p>
                     <i class="fa fa-phone"></i>
-                    <b><?= Yii::t('app','Số điện thoại: ') ?></b> <a href="tel:+84934246886"><?= $footer->phone?$footer->phone:'' ?></a>
+                    <b><?= Yii::t('app','Số điện thoại: ') ?></b> <a href="tel:<?= $footer->phone?$footer->phone:'' ?>"><?= $footer->phone?$footer->phone:'' ?></a>
                 </p>
                 <p>
                     <i class="fa fa-envelope-o"></i>
@@ -52,7 +52,8 @@
         </div>
     </div>
     <div class="footer-last tac ttu segoeui ovfh">
-        COPYRIGHT 2016 VINPEARL CONDOTEL. ALL RIGHTS RESERVED.          <p style="margin:10px 0 0;font-size:11px;"><?= Yii::t('app','Hình ảnh chỉ mang tính minh hoạ cho sản phẩm. Chúng tôi có quyền thay đổi thông tin mà không cần báo trước.') ?></p>
+        COPYRIGHT 2016 VINPEARL CONDOTEL. ALL RIGHTS RESERVED.
+        <p style="margin:10px 0 0;font-size:11px;"><?= Yii::t('app','Hình ảnh chỉ mang tính minh hoạ cho sản phẩm. Chúng tôi có quyền thay đổi thông tin mà không cần báo trước.') ?></p>
     </div>
 </div>
 
@@ -61,13 +62,13 @@
         <li>
             <p class="tool_hotline">
                 <span class="ttu">hotline</span>
-                <span>+84934246886</span>
+                <span><?= $footer->phone?$footer->phone:'' ?></span>
             </p>
-            <a href="tel:+84934246886"><img src="images/icons/to2.png" alt="#"></a>
+            <a href="tel:<?= $footer->phone?$footer->phone:'' ?>"><img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/to2.png" alt="#"></a>
         </li>
         <li>
             <span></span>
-            <a href=""><img src="images/icons/to3.png" alt="#"></a>
+            <a href="<?= $footer->link_face?$footer->link_face:'' ?>"><img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/to3.png" alt="#"></a>
         </li>
     </ul>
     <a class="back-to-top posf" href="javascript:;"><i class="fa fa-angle-up"></i></a>
