@@ -88,7 +88,7 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t5.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-5.png" alt="#">
             </a>
-            <a href="#">Tài liệu dự án</a>
+            <a id="main_about"  href="#">Tài liệu dự án</a>
         </li>
     </ul>
     <div class="main-invest ovfh">
@@ -98,7 +98,7 @@ $this->title = 'Vinpearl Condotel';
                 ?>
                 <div class="grid4">
                     <div class="posr">
-                        <img id="main_about"  class="animation-flower" src="<?= $gioithieu->getImage() ?>" alt="#">
+                        <img class="animation-flower" src="<?= $gioithieu->getImage() ?>" alt="#">
                         <img class="posa" src="images/icons/home-logo-color-2.png" alt="#">
                     </div>
                 </div>
