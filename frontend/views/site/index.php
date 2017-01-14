@@ -98,8 +98,8 @@ $this->title = 'Vinpearl Condotel';
                 ?>
                 <div class="grid4">
                     <div class="posr">
-                        <img class="animation-flower" src="<?= $gioithieu->getImage() ?>" alt="#">
-                        <img id="main_about" class="posa" src="images/icons/home-logo-color-2.png" alt="#">
+                        <img id="main_about"  class="animation-flower" src="<?= $gioithieu->getImage() ?>" alt="#">
+                        <img class="posa" src="images/icons/home-logo-color-2.png" alt="#">
                     </div>
                 </div>
                 <div class="grid8">
