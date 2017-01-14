@@ -2,6 +2,7 @@
 namespace frontend\widgets;
 
 use common\models\AffiliateCompany;
+use common\models\InfoPublic;
 use yii\base\Widget;
 
 /**
@@ -22,6 +23,7 @@ class Header extends Widget
 
     public function run()
     {
-        return $this->render('//header/header', ['listUnitLink' => self::$listUnitLink]);
+        $header = InfoPublic::findOne(['id'=>1]);
+        return $this->render('//header/header', ['listUnitLink' => self::$listUnitLink,'header'=>$header]);
     }
 }

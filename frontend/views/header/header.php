@@ -2,7 +2,14 @@
     <div id="vingroup_logos">
         <div id="vingroup_logo">
             <a class="item" href="" target="_blank">
-                <img src="images/icons/vingroup.png" alt="">
+                <?php
+                    if(isset($header)){
+                    /** @var $header \common\models\InfoPublic*/
+                ?>
+                 <img src="<?= $header->image_header?\common\models\InfoPublic::getImage($header->image_header):''?>" alt="">
+                <?php } else { ?>
+                    <img src="images/icons/vingroup.png" alt="">
+                <?php } ?>
             </a>
         </div>
         <div id="PnL_logos_1_container" class="slide-container">

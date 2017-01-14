@@ -9,6 +9,7 @@
 namespace frontend\widgets;
 
 
+use common\models\InfoPublic;
 use yii\base\Widget;
 
 class Footer extends  Widget
@@ -20,6 +21,7 @@ class Footer extends  Widget
 
     public function run()
     {
-        return $this->render('//footer/footer');
+        $footer = InfoPublic::findOne(['id'=>1]);
+        return $this->render('//footer/footer',['footer'=>$footer]);
     }
 }
