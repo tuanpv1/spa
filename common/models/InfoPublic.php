@@ -12,6 +12,7 @@ use yii\helpers\Url;
  * @property integer $id
  * @property string $image_header
  * @property string $image_footer
+ * @property string $image_menu
  * @property string $email
  * @property string $phone
  * @property string $link_face
@@ -66,7 +67,7 @@ class InfoPublic extends \yii\db\ActiveRecord
     {
         return [
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['image_header', 'image_footer', 'email', 'phone', 'link_face', 'address','youtube','twitter'], 'string', 'max' => 500],
+            [['image_menu','image_header', 'image_footer', 'email', 'phone', 'link_face', 'address','youtube','twitter'], 'string', 'max' => 500],
             ['image_header','required','message'=>Yii::t('app','{attribute} không được để trống'),'on'=>'create'],
             ['image_footer','required','message'=>Yii::t('app','{attribute} không được để trống'),'on'=>'create'],
             ['email', 'filter', 'filter' => 'trim'],
@@ -83,6 +84,7 @@ class InfoPublic extends \yii\db\ActiveRecord
             'id' => Yii::t('app','ID'),
             'image_header' => Yii::t('app','Logo Header'),
             'image_footer' => Yii::t('app','Logo Footer'),
+            'image_menu' => Yii::t('app','Logo Menu'),
             'email' => Yii::t('app','Email'),
             'phone' => Yii::t('app','Điện thoại'),
             'link_face' => Yii::t('app','Link facebook'),

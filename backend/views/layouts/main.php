@@ -123,11 +123,11 @@ AppAsset::register($this);
             'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
             'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
             'items' => [
-//                [
-//                    'encode' => false,
-//                    'label' => Yii::t('app','Danh mục tin tức'),
-//                    'url' => ['category/index'],
-//                ],
+                [
+                    'encode' => false,
+                    'label' => Yii::t('app','Danh mục'),
+                    'url' => ['category/index'],
+                ],
                 [
                     'encode' => false,
                     'label' => Yii::t('app','Dự án'),

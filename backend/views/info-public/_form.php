@@ -71,6 +71,33 @@ use yii\helpers\Url;
         ]); ?>
     <?php } ?>
 
+    <?php if ($model->isNewRecord) { ?>
+    <?= $form->field($model, 'image_menu')->widget(FileInput::classname(), [
+        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+            'showPreview' => true,
+            'overwriteInitial' => false,
+            'showRemove' => false,
+            'showUpload' => false
+        ]
+    ]); ?>
+    <?php } else { ?>
+        <?= $form->field($model, 'image_menu')->widget(FileInput::classname(), [
+            'options' => ['accept' => 'image/*'],
+            'pluginOptions' => [
+                'previewFileType' => 'any',
+                'initialPreview' => [
+                    Html::img(Url::to(InfoPublic::getImage($model->image_menu)), ['class' => 'file-preview-image', 'alt' => $model->image_menu, 'title' => $model->image_menu]),
+                ],
+                'showPreview' => true,
+                'initialCaption' =>InfoPublic::getImage($model->image_menu),
+                'overwriteInitial' => true,
+                'showRemove' => false,
+                'showUpload' => false
+            ]
+        ]); ?>
+    <?php } ?>
+
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
@@ -82,8 +109,6 @@ use yii\helpers\Url;
     <?= $form->field($model, 'twitter')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->dropDownList(InfoPublic::getListStatus()) ?>
 
     <div class="form-group text-center">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app','Tạo mới') : Yii::t('app','Cập nhật'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

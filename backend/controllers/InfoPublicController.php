@@ -85,6 +85,18 @@ class InfoPublicController extends Controller
                     $model->image_footer = $file_name;
                 }
             }
+            $image_menu = UploadedFile::getInstance($model, 'image_menu');
+            if ($image_menu) {
+                $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image_menu->extension;
+                $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_banner') . '/';
+                if (!file_exists($tmp)) {
+                    mkdir($tmp, 0777, true);
+                }
+                if ($image_menu->saveAs($tmp . $file_name)) {
+                    $model->image_menu = $file_name;
+                }
+            }
+            $model->status = InfoPublic::STATUS_ACTIVE;
             if ($model->save(false)) {
                 \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Thêm mới thông tin thành công'));
                 return $this->redirect(['index']);
@@ -110,6 +122,7 @@ class InfoPublicController extends Controller
         $model = $this->findModel($id);
         $old_image_header = $model->image_header;
         $old_image_footer = $model->image_footer;
+        $old_image_menu = $model->image_menu;
         if ($model->load(Yii::$app->request->post())) {
             $image_header = UploadedFile::getInstance($model, 'image_header');
             if ($image_header) {
@@ -136,6 +149,19 @@ class InfoPublicController extends Controller
                 }
             }else{
                 $model->image_footer = $old_image_footer;
+            }
+            $image_menu = UploadedFile::getInstance($model, 'image_menu');
+            if ($image_menu) {
+                $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image_menu->extension;
+                $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_banner') . '/';
+                if (!file_exists($tmp)) {
+                    mkdir($tmp, 0777, true);
+                }
+                if ($image_menu->saveAs($tmp . $file_name)) {
+                    $model->image_menu = $file_name;
+                }
+            }else{
+                $model->image_menu = $old_image_menu;
             }
             if ($model->update(false)) {
                 \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Cập nhật thông tin thành công'));

@@ -111,12 +111,12 @@ ul.main-service-list li {
 
 .connected-carousels .prev-stage span {
     left: -60px;
-    background-image: url(../img/benef-prev.png);
+    background-image: url(../images/icons/benef-prev.png);
 }
 
 .connected-carousels .next-stage span {
     right: -60px;
-    background-image: url(../img/benef-next.png);
+    background-image: url(../images/icons/benef-next.png);
 }
 /** Navigation carousel controls **/
 

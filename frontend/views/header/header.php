@@ -92,7 +92,6 @@
                         Ngôn ngữ
                         <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></div>
                     <div id="vingroup_line__right__dropdown__menu">
-                        <a class="item" target="_blank" href="" id="vingroup_line__right__dropdown__menu__link">&nbsp;</a>
                         <a class="item" target="_blank" href="">Tiếng việt</a>
                         <a class="item" target="_blank" href="">English</a>
                     </div>
@@ -166,21 +165,29 @@
 <div class="header posf">
     <div class="tac posr">
         <div class="menu-rps-992"><a href="#"><i class="fa fa-bars"></i></a></div>
-
-        <ul class="header-menu-left header-menu tar">
-            <li><a href="#main_about">Giới thiệu</a></li>
-            <li><a href="#main_da">Dự án</a></li>
-            <li><a href="#main_td">Tiến độ</a></li>
-        </ul>
-
-        <a href="">
-            <img src="images/icons/logo.png" alt="#">
-        </a>
-
-        <ul class="header-menu-right header-menu">
-            <li><a href="#main_lidt">Lợi ích đầu tư</a></li>
-            <li><a href="#main_new">Tin tức</a></li>
-            <li><a href="#main_contact">Liên hệ</a></li>
+            <?php if(isset($cate)){
+                /** @var \common\models\Category $item */
+                $i = 0;
+                foreach($cate as $item){
+            if($i == 0){
+                        ?>
+                        <ul class="header-menu-left header-menu tar">
+                        <?php }?>
+                            <li><a href=""><?= $item->display_name ?></a></li>
+                        <?php
+                        if ($i == 2){
+                        ?>
+                            </ul>
+                                <a href="">
+                                    <img src="images/icons/logo.png" alt="#">
+                                </a>
+                            <ul class="header-menu-right header-menu">
+                        <?php
+                            }
+                    $i++;
+                }
+            }
+            ?>
         </ul>
     </div>
 </div>

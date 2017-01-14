@@ -44,26 +44,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'format' => 'raw',
                                 'value'=>$model->image_footer ? Html::img(Yii::getAlias('@web') . "/" . Yii::getAlias('@image_banner') . "/" . $model->image_footer, ['width' => '100px']) : '',
                             ],
+                            [
+                                'attribute'=>'image_menu',
+                                'format' => 'raw',
+                                'value'=>$model->image_menu ? Html::img(Yii::getAlias('@web') . "/" . Yii::getAlias('@image_banner') . "/" . $model->image_menu, ['width' => '100px']) : '',
+                            ],
                             'email:email',
                             'phone',
                             'link_face',
                             'youtube',
                             'twitter',
                             'address',
-                            [
-                                'attribute' => 'status',
-                                'format' => 'raw',
-                                'value' => ($model->status == InfoPublic::STATUS_ACTIVE) ?
-                                    '<span class="label label-success">' . $model->getStatusName() . '</span>' :
-                                    '<span class="label label-danger">' . $model->getStatusName() . '</span>',
-                                'type' => DetailView::INPUT_SWITCH,
-                                'widgetOptions' => [
-                                    'pluginOptions' => [
-                                        'onText' => 'Active',
-                                        'offText' => 'Delete',
-                                    ]
-                                ]
-                            ],
                             [
                                 'attribute' => 'created_at',
                                 'value' => date('d/m/Y H:i:s', $model->created_at),
