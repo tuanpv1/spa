@@ -124,16 +124,16 @@ class NewsController extends Controller
 
                 if ($model->save()) {
                     $db_transaction->commit();
-                    Yii::$app->getSession()->setFlash('success', 'Thêm bài viết thành công');
+                    Yii::$app->getSession()->setFlash('success', Yii::t('app','Thêm bài viết thành công'));
                     return $this->redirect(['view', 'id' => $model->id]);
                 } else {
                     Yii::error($model->getErrors());
-                    Yii::$app->getSession()->setFlash('error', 'Lỗi hệ thống vui lòng thử lại');
+                    Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống vui lòng thử lại'));
                 }
             } catch (Exception $e) {
                 $db_transaction->rollBack();
                 Yii::error($e);
-                Yii::$app->getSession()->setFlash('error', 'Không thành công, vui lòng thử lại');
+                Yii::$app->getSession()->setFlash('error', Yii::t('app','Không thành công, vui lòng thử lại'));
             }
         }
         return $this->render('create', [
@@ -162,7 +162,7 @@ class NewsController extends Controller
                     if ($file->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
                         $model->thumbnail = $file_name;
                     } else {
-                        Yii::$app->getSession()->setFlash('error', 'Lỗi hệ thống, vui lòng thử lại');
+                        Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống, vui lòng thử lại'));
                     }
                 } else {
                     $model->thumbnail = $thumbnail;
@@ -182,17 +182,17 @@ class NewsController extends Controller
 
                 if ($model->save()) {
                     $db_transaction->commit();
-                    Yii::$app->getSession()->setFlash('success', 'Cập nhật bài viết thành công');
+                    Yii::$app->getSession()->setFlash('success', Yii::t('app','Cập nhật bài viết thành công'));
                     return $this->redirect(['index', 'type' => $model->type]);
                 } else {
                     Yii::error($model->getErrors());
-                    Yii::$app->getSession()->setFlash('error', 'Lỗi hệ thống vui lòng thử lại');
+                    Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống vui lòng thử lại'));
                 }
                 return $this->redirect(['view', 'id' => $model->id]);
             } catch (Exception $e) {
                 $db_transaction->rollBack();
                 Yii::error($e);
-                Yii::$app->getSession()->setFlash('error', 'Không thành công, vui lòng thử lại');
+                Yii::$app->getSession()->setFlash('error',Yii::t('app', 'Không thành công, vui lòng thử lại'));
             }
         } else {
             return $this->render('update', [

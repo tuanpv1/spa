@@ -135,8 +135,8 @@ $this->title = 'Vinpearl Condotel';
             <?php } ?>
         </div>
     </div>
-    <div class="main-project main-section">
-        <div id="main_da" class="main-title tac ttu">
+    <div id="main_da" class="main-project main-section">
+        <div class="main-title tac ttu">
             <span class="segoeui">Vinpearl Condotel</span>
             <h2 class="utm-trajan">Các dự án Condotel</h2>
         </div>

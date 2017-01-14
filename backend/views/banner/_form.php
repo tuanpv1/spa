@@ -40,7 +40,7 @@ $avatarPreview = !$model->isNewRecord && !empty($model->image);
         'options' => [
             'accept' => 'image/*',
         ],
-    ]);
+    ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 1920*785 để hiển thị tốt nhất '));
     ?>
 
     <?= $form->field($model, 'des')->textarea(['rows' => 6]) ?>

@@ -35,7 +35,7 @@ use yii\helpers\Url;
             'showRemove' => false,
             'showUpload' => false
         ]
-    ]); ?>
+    ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 90*80 để hiển thị tốt nhất')); ?>
     <?php } else { ?>
         <?= $form->field($model, 'image')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
@@ -50,7 +50,7 @@ use yii\helpers\Url;
                 'showRemove' => false,
                 'showUpload' => false
             ]
-        ]); ?>
+        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 90*80 để hiển thị tốt nhất')); ?>
     <?php } ?>
 
     <?= $form->field($model, 'about')->widget(\common\widgets\CKEditor::className(), [

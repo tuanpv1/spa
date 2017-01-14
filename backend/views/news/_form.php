@@ -50,7 +50,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
 
     <?= $form->field($model, 'status')->dropDownList(\common\models\News::listStatus()) ?>
     <?php
-    if($type == \common\models\News::TYPE_PROJECT){ ?>
+    if($model->type == \common\models\News::TYPE_PROJECT){ ?>
         <?= $form->field($model,'position')->dropDownList(News::listPosition()) ?>
         <?= $form->field($model, 'source_url')->textInput(['maxlength' => true]) ?>
     <?php }
@@ -64,7 +64,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
                 'showRemove' => false,
                 'showUpload' => false
             ]
-        ]); ?>
+        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 96*96 để hiển thị tốt nhất')); ?>
     <?php } else { ?>
         <?= $form->field($model, 'thumbnail')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
@@ -79,7 +79,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
                 'showRemove' => false,
                 'showUpload' => false
             ]
-        ]); ?>
+        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 96*96 để hiển thị tốt nhất')); ?>
     <?php } ?>
 
     <?= $form->field($model, 'short_description')->textarea(['rows' => 4]) ?>
