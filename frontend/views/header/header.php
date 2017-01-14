@@ -161,9 +161,9 @@
         <div class="menu-rps-992"><a href="#"><i class="fa fa-bars"></i></a></div>
 
         <ul class="header-menu-left header-menu tar">
-            <li><a href="">Giới thiệu</a></li>
-            <li><a href="">Dự án</a></li>
-            <li><a href="">Tiến độ</a></li>
+            <li><a href="#main_about">Giới thiệu</a></li>
+            <li><a href="#main_da">Dự án</a></li>
+            <li><a href="#main_td">Tiến độ</a></li>
         </ul>
 
         <a href="">
@@ -171,9 +171,9 @@
         </a>
 
         <ul class="header-menu-right header-menu">
-            <li><a href="">Lợi ích đầu tư</a></li>
-            <li><a href="">Tin tức</a></li>
-            <li><a href="">Liên hệ</a></li>
+            <li><a href="#main_lidt">Lợi ích đầu tư</a></li>
+            <li><a href="#main_new">Tin tức</a></li>
+            <li><a href="#main_contact">Liên hệ</a></li>
         </ul>
     </div>
 </div>

@@ -92,7 +92,7 @@ $this->title = 'Vinpearl Condotel';
         </li>
     </ul>
 
-    <div class="main-invest ovfh">
+    <div id="main_about" class="main-invest ovfh">
         <div class="container">
             <?php if (isset($gioithieu) && !empty($gioithieu)) {
                 /** @var $gioithieu \common\models\News */
@@ -136,7 +136,7 @@ $this->title = 'Vinpearl Condotel';
         </div>
     </div>
     <div class="main-project main-section">
-        <div class="main-title tac ttu">
+        <div id="main_da" class="main-title tac ttu">
             <span class="segoeui">Vinpearl Condotel</span>
             <h2 class="utm-trajan">Các dự án Condotel</h2>
         </div>
@@ -170,7 +170,7 @@ $this->title = 'Vinpearl Condotel';
                 <img src="images/project--second-bg.jpg" alt="#" class="posr wow fadeIn" data-wow-duration="1s">
             </div>
         <?php } ?>
-        <div class="container ovfh">
+        <div id="main_td" class="container ovfh">
             <ul class="main-project-list fluid">
                 <?php if(isset($duankhac) && !empty($duankhac)){
                     foreach($duankhac as $item){
@@ -198,7 +198,7 @@ $this->title = 'Vinpearl Condotel';
         </div>
     </div>
     <div class="main-benef main-section">
-        <div class="main-title tac ttu">
+        <div id="main_lidt"  class="main-title tac ttu">
             <span class="segoeui">Vinpearl Condotel</span>
             <h2 class="utm-trajan">Các lợi ích đầu tư</h2>
         </div>

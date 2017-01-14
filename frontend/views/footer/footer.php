@@ -1,4 +1,4 @@
-<div class="footer">
+<div id="main_contact" class="footer">
     <div class="container ovfh">
         <div class="grid4 footer-logo">
             <a href=""><img src="images/icons/logo-footer.png" alt="Vinpearl Condotel"></a>
