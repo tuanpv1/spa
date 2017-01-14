@@ -7,7 +7,7 @@ use kartik\detail\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\InfoPublic */
 
-$this->title = $model->id;
+$this->title = Yii::t('app','Xem thông tin cấu hình');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app','QL Thông tin'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -29,19 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <p>
                         <?= Html::a(Yii::t('app','Cập nhật'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                        <?= Html::a(Yii::t('app','Xóa'), ['delete', 'id' => $model->id], [
-                            'class' => 'btn btn-danger',
-                            'data' => [
-                                'confirm' => Yii::t('app','Bạn có muốn xóa danh mục này không?'),
-                                'method' => 'post',
-                            ],
-                        ]) ?>
                     </p>
 
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'id',
                             [
                                 'attribute'=>'image_header',
                                 'format' => 'raw',

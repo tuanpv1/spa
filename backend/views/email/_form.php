@@ -17,8 +17,9 @@ use kartik\form\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <div class="form-group">
+    <div class="form-group text-center">
         <?= Html::submitButton($model->isNewRecord ?  Yii::t('app','Tạo mới') : Yii::t('app','Cập nhật'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::a('Huỷ', ['index', 'type' => $model->type], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

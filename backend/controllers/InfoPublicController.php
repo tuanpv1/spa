@@ -34,14 +34,10 @@ class InfoPublicController extends Controller
      * Lists all InfoPublic models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id = 1)
     {
-        $searchModel = new InfoPublicSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+        return $this->render('view', [
+            'model' => $this->findModel($id),
         ]);
     }
 

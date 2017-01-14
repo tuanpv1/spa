@@ -81,8 +81,9 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'status')->dropDownList(InfoPublic::getListStatus()) ?>
 
-    <div class="form-group">
+    <div class="form-group text-center">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app','Tạo mới') : Yii::t('app','Cập nhật'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::a('Huỷ', ['index'], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
