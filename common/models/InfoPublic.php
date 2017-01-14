@@ -15,6 +15,8 @@ use yii\helpers\Url;
  * @property string $email
  * @property string $phone
  * @property string $link_face
+ * @property string $youtube
+ * @property string $twitter
  * @property string $address
  * @property integer $status
  * @property integer $created_at
@@ -64,7 +66,7 @@ class InfoPublic extends \yii\db\ActiveRecord
     {
         return [
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['image_header', 'image_footer', 'email', 'phone', 'link_face', 'address'], 'string', 'max' => 255],
+            [['image_header', 'image_footer', 'email', 'phone', 'link_face', 'address','youtube','twitter'], 'string', 'max' => 500],
             ['image_header','required','message'=>Yii::t('app','{attribute} không được để trống'),'on'=>'create'],
             ['image_footer','required','message'=>Yii::t('app','{attribute} không được để trống'),'on'=>'create'],
             ['email', 'filter', 'filter' => 'trim'],
@@ -84,6 +86,8 @@ class InfoPublic extends \yii\db\ActiveRecord
             'email' => Yii::t('app','Email'),
             'phone' => Yii::t('app','Điện thoại'),
             'link_face' => Yii::t('app','Link facebook'),
+            'youtube' => Yii::t('app','Link youtube'),
+            'twitter' => Yii::t('app','Link twitter'),
             'address' =>Yii::t('app', 'Địa chỉ'),
             'status' => Yii::t('app','trạng thái'),
             'created_at' => Yii::t('app','Ngày tạo'),

@@ -77,6 +77,10 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'link_face')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'youtube')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'twitter')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList(InfoPublic::getListStatus()) ?>

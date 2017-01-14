@@ -88,10 +88,10 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t5.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-5.png" alt="#">
             </a>
-            <a id="main_about"  href="#">Tài liệu dự án</a>
+            <a href="#">Tài liệu dự án</a>
         </li>
     </ul>
-    <div class="main-invest ovfh">
+    <div id="main_about" class="main-invest ovfh">
         <div class="container">
             <?php if (isset($gioithieu) && !empty($gioithieu)) {
                 /** @var $gioithieu \common\models\News */

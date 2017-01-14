@@ -24,12 +24,12 @@
             </div>
             <ul class="network-social">
                 <li>
-                    <a href="">
+                    <a href="<?= $footer->twitter?$footer->twitter:'' ?>">
                         <img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/sc1.png" alt="<?= Yii::t('app','twitter')?>">
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="<?= $footer->youtube?$footer->youtube:'' ?>">
                         <img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/sc2.png" alt="<?= Yii::t('app','Kênh youtube') ?>">
                     </a>
                 </li>
