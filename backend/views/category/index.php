@@ -8,7 +8,7 @@ use yii\helpers\Html;
 /* @var $searchModel common\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Danh mục tin tức';
+$this->title = Yii::t('app','Danh mục');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
