@@ -179,7 +179,14 @@
                         ?>
                             </ul>
                                 <a href="">
+                                <?php
+                                if(isset($header)){
+                                    /** @var $header \common\models\InfoPublic*/
+                                    ?>
+                                    <img src="<?= $header->image_menu?\common\models\InfoPublic::getImage($header->image_menu):''?>" alt="">
+                                <?php } else { ?>
                                     <img src="images/icons/logo.png" alt="#">
+                                <?php } ?>
                                 </a>
                             <ul class="header-menu-right header-menu">
                         <?php
