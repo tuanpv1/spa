@@ -47,6 +47,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             'email:email',
                             'phone',
                             'link_face',
+                            'youtube',
+                            'twitter',
                             'address',
                             [
                                 'attribute' => 'status',
