@@ -151,16 +151,9 @@ class SiteController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
         }
-
-        $pass1 = $model->pass1;
-        $pass2 = $model->pass2;
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 //            $model->password_reset_token = $model->setting_new_password;
             $model->setPassword($model->setting_new_password);
-
-            $model->pass1=$model->password_hash;
-            $model->pass2 = $pass1;
-            $model->pass3 = $pass2;
             if ($model->save(false)) {
                 Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Đổi mật khẩu thành công'));
                 return $this->redirect(['index']);
