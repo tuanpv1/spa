@@ -27,7 +27,7 @@ use yii\helpers\Url;
             'showRemove' => false,
             'showUpload' => false
         ]
-    ]); ?>
+    ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 143*80 để hiển thị tốt nhất ')); ?>
     <?php } else { ?>
         <?= $form->field($model, 'image_header')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
@@ -42,7 +42,7 @@ use yii\helpers\Url;
                 'showRemove' => false,
                 'showUpload' => false
             ]
-        ]); ?>
+        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 143*80 để hiển thị tốt nhất ')); ?>
     <?php } ?>
     <?php if ($model->isNewRecord) { ?>
     <?= $form->field($model, 'image_footer')->widget(FileInput::classname(), [
@@ -53,7 +53,7 @@ use yii\helpers\Url;
             'showRemove' => false,
             'showUpload' => false
         ]
-    ]); ?>
+    ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 230*150 để hiển thị tốt nhất ')); ?>
     <?php } else { ?>
         <?= $form->field($model, 'image_footer')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
@@ -68,7 +68,7 @@ use yii\helpers\Url;
                 'showRemove' => false,
                 'showUpload' => false
             ]
-        ]); ?>
+        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 230*150 để hiển thị tốt nhất ')); ?>
     <?php } ?>
 
     <?php if ($model->isNewRecord) { ?>
@@ -80,7 +80,7 @@ use yii\helpers\Url;
             'showRemove' => false,
             'showUpload' => false
         ]
-    ]); ?>
+    ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 120*80 để hiển thị tốt nhất ')); ?>
     <?php } else { ?>
         <?= $form->field($model, 'image_menu')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
@@ -95,7 +95,7 @@ use yii\helpers\Url;
                 'showRemove' => false,
                 'showUpload' => false
             ]
-        ]); ?>
+        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 120*80 để hiển thị tốt nhất ')); ?>
     <?php } ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
