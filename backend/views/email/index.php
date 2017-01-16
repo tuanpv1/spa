@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
                         'email:email',
+                        'phone',
                         [
                             'attribute' => 'created_at',
                             'value' => function ($model, $key, $index, $widget) {

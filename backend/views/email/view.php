@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attributes' => [
                             'id',
                             'email:email',
+                            'phone',
                             [
                                 'attribute' => 'created_at',
                                 'value' => date('d/m/Y H:i:s', $model->created_at),

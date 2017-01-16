@@ -11,6 +11,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $id
  * @property integer $status
  * @property string $email
+ * @property string $phone
  * @property integer $created_at
  * @property integer $updated_at
  */
@@ -33,7 +34,7 @@ class Email extends \yii\db\ActiveRecord
     {
         return [
             [['created_at', 'updated_at','status'], 'integer'],
-            [['email'], 'string', 'max' => 255],
+            [['email','phone'], 'string', 'max' => 255],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required', 'message' => Yii::t('app','{attribute} không được để trống')],
             ['email', 'email','message'=>Yii::t('app','{attribute} không hợp lệ!')],
@@ -48,6 +49,7 @@ class Email extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'email' => Yii::t('app','Địa chỉ Email'),
+            'phone' => Yii::t('app','Số điện thoại'),
             'status' => Yii::t('app','Trạng thái'),
             'created_at' => Yii::t('app','Ngày đăng kí'),
             'updated_at' => Yii::t('app','Ngày thay đổi thông tin'),

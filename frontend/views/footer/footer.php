@@ -47,6 +47,9 @@
                 <input id="email_re" type="text" name="subscribe_email" placeholder="Email *" required="required">
                 <span style="color: red" id="error_email"><?= Yii::t('app','Email không đúng định dạng') ?></span>
                 <span style="color: red" id="error_null"><?= Yii::t('app','Email không được để trống')?></span>
+                <input id="phone_re" type="text" name="subscribe_email" placeholder="<?= Yii::t('app','Số điện thoại') ?> *" required="required">
+                <span style="color: red" id="error_phone"><?= Yii::t('app','Số điện thoại không đúng định dạng') ?></span>
+                <span style="color: red" id="error_p_null"><?= Yii::t('app','Số điện thoại không được để trống')?></span>
             </form>
             <button id="subscribe_submit" class="curp view-more-page" type="submit" ><p><?= Yii::t('app','Đăng ký') ?><span></span></p></button>
         </div>

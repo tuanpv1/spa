@@ -242,14 +242,16 @@ class SiteController extends Controller
 
     public function actionRegisterEmail(){
         $email = $_POST['email'];
+        $phone = $_POST['phone'];
         $model = new Email();
         $model->email = $email;
+        $model->phone = $phone;
         $model->status = Email::STATUS_ACTIVE;
         if($model->save(false)){
-            $message = 'Đăng kí nhận tin thành công.';
+            $message = Yii::t('app','Đăng kí nhận tin thành công.');
             return Json::encode(['success' => true, 'message' => $message]);
         }else{
-            $message = 'Đăng kí nhận tin không thành công.';
+            $message = Yii::t('app','Đăng kí nhận tin không thành công.');
             return Json::encode(['success' => false, 'message' => $message]);
         }
     }
