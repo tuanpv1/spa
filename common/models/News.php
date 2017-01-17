@@ -109,7 +109,7 @@ class News extends \yii\db\ActiveRecord
                 'status', 'created_user_id', 'created_at', 'updated_at', 'user_id'
                 , 'category_id', 'published_at','type_video','position'], 'integer'],
             [['title', 'user_id'], 'required'],
-            [['video'], 'file', 'extensions' => ['mp4', 'avi'], 'maxSize' => 1024 * 1024 * 500, 'tooBig' => 'Video vượt quá dung lượng cho phép!'],
+            [['video'], 'file', 'extensions' => ['doc', 'docx','pdf'], 'maxSize' => 1024 * 1024 * 500, 'tooBig' => 'Video vượt quá dung lượng cho phép!'],
             [['thumbnail'], 'required', 'on' => 'create'],
             [['content', 'description'], 'string'],
             [['title', 'title_ascii', 'thumbnail'], 'string', 'max' => 512],
