@@ -54,7 +54,7 @@ class News extends \yii\db\ActiveRecord
 
     const LIST_EXTENSION = '.jpg,.png';
 
-    const TYPE_IDEA = 1;
+    const TYPE_NEWS = 1;
     const TYPE_TRADE = 2;
     const TYPE_DONOR = 3;
     const TYPE_PROJECT = 4;
@@ -233,6 +233,7 @@ class News extends \yii\db\ActiveRecord
     {
         $lst = [
             self::TYPE_COMMON => 'Lợi ích đầu tư',
+            self::TYPE_NEWS => 'Tin tức',
             self::TYPE_GIOITHIEU => 'Giới thiệu',
             self::TYPE_PROJECT => 'Dự án',
         ];
