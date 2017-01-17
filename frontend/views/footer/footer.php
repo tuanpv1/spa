@@ -43,21 +43,17 @@
 </div>
 <div id="main_contact" class="footer">
     <div class="container ovfh">
-        <?php
-        if(isset($footer) && !empty($footer)){
-            ?>
+        <?php if(isset($footer) && !empty($footer)){ ?>
             <div class="grid4 footer-logo">
                 <a href=""><img src="<?= \common\models\InfoPublic::getImage($footer->image_footer) ?>" alt=""></a>
             </div>
-            <?php
-        }else{
-            ?>
+        <?php }else{ ?>
             <div class="grid4 footer-logo">
                 <a href=""><img src="images/icons/logo-footer.png" alt=""></a>
             </div>
-            <?php
-        }
-        ?>
+        <?php } ?>
+
+        <?php if(isset($footer) && !empty($footer)){ ?>
 
         <div class="grid4 footer--text">
             <p class="utm-trajan"><?= Yii::t('app','Văn phòng') ?></p>
@@ -93,6 +89,7 @@
                 </li>
             </ul>
         </div>
+        <?php } ?>
         <div class="grid4 footer--text footer-register">
             <p class="utm-trajan"><?= Yii::t('app','Đăng ký nhận bản tin') ?></p>
             <p class="footer--text-register"><?= Yii::t('app','Xin vui lòng để lại địa chỉ email, chúng tôi sẽ cập nhật những tin tức quan trọng của Vinpearl Condotel tới Quý khách!') ?></p>
@@ -114,6 +111,7 @@
 </div>
 
 <div class="page-tool posf">
+    <?php if(isset($footer) && !empty($footer)){ ?>
     <ul>
         <li>
             <p class="tool_hotline">
@@ -127,5 +125,6 @@
             <a href="<?= $footer->link_face?$footer->link_face:'' ?>"><img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/to3.png" alt="#"></a>
         </li>
     </ul>
+    <?php } ?>
     <a class="back-to-top posf" href="javascript:;"><i class="fa fa-angle-up"></i></a>
 </div>
