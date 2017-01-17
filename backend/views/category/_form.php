@@ -22,6 +22,7 @@ use yii\helpers\Html;
     ]); ?>
 
     <?= $form->field($model, 'display_name')->textInput() ?>
+    <?= $form->field($model, 'ascii_name')->textInput()->label('Link liên kết') ?>
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'status')->dropDownList(Category::listStatus()) ?>
 
