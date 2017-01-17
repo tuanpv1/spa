@@ -278,8 +278,20 @@ class SiteController extends Controller
 
     public function actionInvestment(){ // loi ich dau tu
         $this->layout = 'main-page.php';
+        $listNews = News::find()
+            ->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type'=>News::TYPE_COMMON])
+            ->orderBy(['created_at' => SORT_DESC]);
+        $countQuery = clone $listNews;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $pageSize = 6;
+        $pages->setPageSize($pageSize);
+        $models = $listNews->offset($pages->offset)
+            ->limit(10)->all();
+        $this->layout = 'main-page.php';
         return $this->render('investment',[
-//            'model' => '',
+            'listNews' => $models,
+            'pages' => $pages,
         ]);
     }
 
