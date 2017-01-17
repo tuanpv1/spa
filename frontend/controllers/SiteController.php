@@ -279,7 +279,7 @@ class SiteController extends Controller
 
     public function actionDetailNews($id)
     {
-        $this->layout = 'main-page.php';
+        $this->layout = 'main-detail.php';
         return $this->render('detail-news',[
             'model' => News::findOne(['id'=>$id])
         ]);
