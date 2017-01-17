@@ -21,6 +21,24 @@
                 </div>
                 <div id="tab-1" class="tab-show tab-show-distributive">
                     <ul class="list-agency">
+                        <?php if(isset($model) && !empty($model)){
+                            $i = 0;
+                            foreach($model as $item){
+                                $i ++ ;
+                                /** @var $item \common\models\TableAgency */
+                                ?>
+                                <li class="grid3">
+                                    <div>
+                                        <span class="posa order"><?= $i < 10 ? '0'.$i : $i ?></span>
+                                        <a href="javascript:;"><?= $item->name ?><span></span></a>
+                                        <a class="posa" href="tel:<?= $item->phone_number ?>">
+                                            <i class="fa fa-phone"></i>
+                                            <span><?= $item->phone_number ?></span>
+                                        </a>
+                                    </div>
+                                </li>
+                            <?php }
+                        }else{ ?>
                         <li class="grid3">
                             <div>
                                 <span class="posa order">01</span>
@@ -41,86 +59,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li class="grid3">
-                            <div>
-                                <span class="posa order">03</span>
-                                <a href="javascript:;">Công ty Cổ Phần Kinh doanh DV Tổng Hợp Vietstarland<span></span></a>
-                                <a class="posa" href="tel:0964668888">
-                                    <i class="fa fa-phone"></i>
-                                    <span>0964 66 8888</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="grid3">
-                            <div>
-                                <span class="posa order">04</span>
-                                <a href="javascript:;">Công ty Cổ Phần Đầu Tư Và Phân Phối DTJ<span></span></a>
-                                <a class="posa" href="tel:0982902468">
-                                    <i class="fa fa-phone"></i>
-                                    <span>0982 902 468</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="grid3">
-                            <div>
-                                <span class="posa order">05</span>
-                                <a href="javascript:;">Công ty Cổ Phần BĐS Khải Hoàn Land<span></span></a>
-                                <a class="posa" href="tel:0977118888">
-                                    <i class="fa fa-phone"></i>
-                                    <span>0977 11 8888</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="grid3">
-                            <div>
-                                <span class="posa order">06</span>
-                                <a href="javascript:;">Công ty Cổ Phần Đầu Tư Minh Hưng<span></span></a>
-                                <a class="posa" href="tel:0934288988">
-                                    <i class="fa fa-phone"></i>
-                                    <span>0934 288 988</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="grid3">
-                            <div>
-                                <span class="posa order">07</span>
-                                <a href="javascript:;">Công ty Cổ Phần Đông Tây Land<span></span></a>
-                                <a class="posa" href="tel:0977487777">
-                                    <i class="fa fa-phone"></i>
-                                    <span>0977 48 7777</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="grid3">
-                            <div>
-                                <span class="posa order">08</span>
-                                <a href="javascript:;">Công ty Cổ Phần Phát Triển Địa Ốc Việt Đô (MLand)<span></span></a>
-                                <a class="posa" href="tel:0976119999">
-                                    <i class="fa fa-phone"></i>
-                                    <span>0976 11 9999</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="grid3">
-                            <div>
-                                <span class="posa order">09</span>
-                                <a href="javascript:;">Công ty Cổ Phần Nhà Phương Nam Việt Nam<span></span></a>
-                                <a class="posa" href="tel:19002089">
-                                    <i class="fa fa-phone"></i>
-                                    <span>1900 2089</span>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="grid3">
-                            <div>
-                                <span class="posa order">10</span>
-                                <a href="javascript:;">Công Ty CP Dịch Vụ Dịch Vụ Và Địa Ốc Đất Xanh Miền Bắc<span></span></a>
-                                <a class="posa" href="tel:0946809191">
-                                    <i class="fa fa-phone"></i>
-                                    <span>0946 80 9191</span>
-                                </a>
-                            </div>
-                        </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <div id="tab-2" class="tab-show tab-show-distributive">

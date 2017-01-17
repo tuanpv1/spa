@@ -123,11 +123,11 @@ AppAsset::register($this);
             'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
             'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
             'items' => [
-                [
-                    'encode' => false,
-                    'label' => Yii::t('app','Danh mục'),
-                    'url' => ['category/index'],
-                ],
+//                [
+//                    'encode' => false,
+//                    'label' => Yii::t('app','Danh mục'),
+//                    'url' => ['category/index'],
+//                ],
                 [
                     'encode' => false,
                     'label' => Yii::t('app','Dự án'),
@@ -145,6 +145,7 @@ AppAsset::register($this);
                 ],
             ]
         ],
+
         [
             'encode' => false,
             'label' => Yii::t('app','QL Banner'),
@@ -201,6 +202,11 @@ AppAsset::register($this);
                     'url' => ['rbac-backend/role'],
                 ],
             ]
+        ],
+        [
+            'encode' => false,
+            'label' => Yii::t('app','QL nhà phân phối'),
+            'url' => ['table-agency/index'],
         ],
     ];
     echo Nav::widget([
