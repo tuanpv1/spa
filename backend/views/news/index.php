@@ -21,7 +21,7 @@ $visible_village = false;
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-cogs font-green-sharp"></i>
-                    <span class="caption-subject font-green-sharp bold uppercase"><?= 'Thêm mới '.$this->title ?></span>
+                    <span class="caption-subject font-green-sharp bold uppercase"><?= $this->title ?></span>
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse">
@@ -29,7 +29,7 @@ $visible_village = false;
                 </div>
             </div>
             <div class="portlet-body">
-                <p><?= Html::a($this->title, ['create', 'type' => $type], ['class' => 'btn btn-success']) ?> </p>
+                <p><?= Html::a('Thêm mới '.$this->title, ['create', 'type' => $type], ['class' => 'btn btn-success']) ?> </p>
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
