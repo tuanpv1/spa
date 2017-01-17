@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\Email;
+use common\models\TableAgency;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\data\Pagination;
@@ -297,8 +298,11 @@ class SiteController extends Controller
 
     public function actionDistribution(){ // he thong phan phoi
         $this->layout = 'main-page.php';
+        $listDistribution = TableAgency::find()
+            ->andWhere(['status' => TableAgency::STATUS_ACTIVE])
+            ->orderBy(['updated_at' => SORT_DESC ])->all();
         return $this->render('distribution',[
-//            'model' => '',
+            'model' => $listDistribution,
         ]);
     }
 }
