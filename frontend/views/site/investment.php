@@ -26,7 +26,7 @@ use common\models\News;
                             <div><img width="96" height="96" src="<?= $item->getImage() ?>" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="CHÍNH SÁCH VAY 65%" srcset="http://vinpearl-condotel.vn/wp-content/uploads/2016/01/CHÍNH-SÁCH-VAY-65-70x70.png 70w, http://vinpearl-condotel.vn/wp-content/uploads/2016/01/CHÍNH-SÁCH-VAY-65.png 96w" sizes="(max-width: 96px) 100vw, 96px" /></div>
                             <div class="benef--box--text">
                                 <h3><?= $item->title ?> <span></span></h3>
-                                <div><p><?= $item->short_description ?></p>
+                                <div><p><?= $item->description ?></p>
                                 </div>
                             </div>
                         </div>
