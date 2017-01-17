@@ -5,6 +5,7 @@
  * Date: 1/17/2017
  * Time: 9:07 AM
  */
+use common\models\News;
 use yii\helpers\Url;
 
 ?>
@@ -12,7 +13,7 @@ use yii\helpers\Url;
     <div class="news-main main-section">
         <div class="main-title tac ttu">
             <span class="segoeui">Vinpearl Condotel</span>
-            <h2 class="utm-trajan">Tin tức sự kiện</h2>
+            <h2 class="utm-trajan"><?= $type == News::TYPE_NEWS ? 'Tin tức sự kiện':'Tiến độ dự án' ?></h2>
         </div>
         <div class="container">
             <div class="grid8">
