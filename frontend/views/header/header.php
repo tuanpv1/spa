@@ -177,7 +177,7 @@
         ?>
         <ul class="header-menu-left header-menu tar">
             <?php } ?>
-            <li><a href=""><?= $item->display_name ?></a></li>
+            <li><a href="<?= $item->ascii_name ?>"><?= $item->display_name ?></a></li>
             <?php
             if ($i == 2){
             ?>
