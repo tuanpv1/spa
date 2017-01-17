@@ -65,13 +65,12 @@ use yii\helpers\Url;
 
 
                 <div class="view-more-page tac">
-                    <span class='page-numbers current'>1<span></span></span>
-                    <a class='page-numbers' href='http://vinpearl-condotel.vn/tin-tuc/page/2/'>2<span></span></a>
-                    <span class="page-numbers dots">&hellip;</span>
-                    <a class='page-numbers' href='http://vinpearl-condotel.vn/tin-tuc/page/5/'>5<span></span></a>
-                    <a class="next page-numbers" href="http://vinpearl-condotel.vn/tin-tuc/page/2/">Xem
-                        tiếp<span></span></a>
-                    <!-- <a class="tuu segoeui" href="">Xem tiếp<span></span></a> -->
+                    <?php
+                    $pagination = new \yii\data\Pagination(['totalCount' => $pages->totalCount,'pageSize' =>1]);
+                    echo \yii\widgets\LinkPager::widget([
+                        'pagination' => $pagination,
+                    ]);
+                    ?>
                 </div>
 
             </div>

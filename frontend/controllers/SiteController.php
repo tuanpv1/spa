@@ -267,10 +267,9 @@ class SiteController extends Controller
             ->orderBy(['created_at' => SORT_DESC]);
         $countQuery = clone $listNews;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
-        $pageSize = 6;
+        $pageSize = 1;
         $pages->setPageSize($pageSize);
-        $models = $listNews->offset($pages->offset)
-            ->limit(10)->all();
+        $models = $listNews->offset($pages->offset)->all();
         return $this->render('index-news',[
             'listNews' => $models,
             'pages' => $pages,
