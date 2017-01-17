@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Url;
+
 $this->title = 'Vinpearl Condotel';
 ?>
 <div class="main ovfh">
@@ -44,10 +46,10 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t1.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-1.png" alt="#">
             </a>
-            <a href="">Tiện ích</a>
+            <a href="#"><?= Yii::t('app','Tiện ích') ?></a>
         </li>
         <li>
-            <a href="">
+            <a href="<?= Url::to(['site/distribution']) ?>">
                 <svg width="80" height="80" style="display: block;">
                     <circle class="circle" cy="40" cx="39" r="38" stroke="#fff" stroke-width="1"
                             fill="transparent"></circle>
@@ -55,10 +57,10 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t2.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-2.png" alt="#">
             </a>
-            <a href="">Hệ thống phân phối</a>
+            <a href="<?= Url::to(['site/distribution']) ?>"><?= Yii::t('app','Hệ thống phân phối') ?></a>
         </li>
         <li>
-            <a href="">
+            <a href="<?= Url::to(['site/investment']) ?>">
                 <svg width="80" height="80" style="display: block;">
                     <circle class="circle" cy="40" cx="39" r="38" stroke="#fff" stroke-width="1"
                             fill="transparent"></circle>
@@ -66,10 +68,10 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t3.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-3.png" alt="#">
             </a>
-            <a href="">Lợi ích đầu tư</a>
+            <a href="<?= Url::to(['site/investment']) ?>"><?= Yii::t('app','Lợi ích đầu tư') ?></a>
         </li>
         <li>
-            <a href="">
+            <a href="<?= Yii::t('app','Tin tức') ?>">
                 <svg width="80" height="80" style="display: block;">
                     <circle class="circle" cy="40" cx="39" r="38" stroke="#fff" stroke-width="1"
                             fill="transparent"></circle>
@@ -77,7 +79,7 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t4.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-4.png" alt="#">
             </a>
-            <a href="">Tin tức</a>
+            <a href="<?= Url::to(['site/news']) ?>"><?= Yii::t('app','Tin tức') ?></a>
         </li>
         <li>
             <a href="#">

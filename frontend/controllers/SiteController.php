@@ -263,4 +263,16 @@ class SiteController extends Controller
 //            'model' => '',
         ]);
     }
+
+    public function actionInvestment(){ // loi ich dau tu
+        return $this->render('investment',[
+//            'model' => '',
+        ]);
+    }
+
+    public function actionDistribution(){ // he thong phan phoi
+        return $this->render('distribution',[
+//            'model' => '',
+        ]);
+    }
 }
