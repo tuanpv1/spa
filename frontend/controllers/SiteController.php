@@ -330,6 +330,22 @@ class SiteController extends Controller
 
     }
 
+    public function actionGetNews(){
+
+        $page = $this->getParameter('page');
+
+        $listNews = News::find()
+            ->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type'=>News::TYPE_NEWS])
+            ->orderBy(['created_at' => SORT_DESC]);
+        $models = $listNews->offset($page)
+            ->limit(6)->all();
+        return $this->renderPartial('_news',[
+            'listNews' => $models,
+        ]);
+
+    }
+
     public function getParameter($param_name, $default = null) {
         return \Yii::$app->request->get($param_name, $default);
     }

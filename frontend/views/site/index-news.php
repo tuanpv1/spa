@@ -62,17 +62,18 @@ use yii\helpers\Url;
                     </li>
                     <?php }?>
                 </ul>
-
-
-<!--                <div class="view-more-page tac">-->
-                    <?php
-                    $pagination = new \yii\data\Pagination(['totalCount' => $pages->totalCount,'pageSize' =>6]);
-                    echo \yii\widgets\LinkPager::widget([
-                        'pagination' => $pagination,
-                    ]);
-                    ?>
-<!--                </div>-->
-
+                <div id="last-comment">
+                </div>
+                <input type="hidden" name="page" id="page"
+                       value="<?= sizeof($listNews) - 1 ?>">
+                <input type="hidden" name="numberCount" id="numberCount" value="<?= sizeof($listNews) ?>">
+                <input type="hidden" name="total" id="total" value="<?= $pages->totalCount ?>">
+                <?php if (count($listNews) >= 6) { ?>
+                <div class="view-more-page tac">
+                    <a class="next page-numbers" id="more" onclick="loadMore();" >Xem
+                        thêm<span></span></a>
+                </div>
+                <?php } ?>
             </div>
             <!--            <div class="grid4 main-news-sidebar-left">-->
             <!--                <p class="segoeui">Bài viết nổi bật</p>-->
@@ -89,3 +90,42 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function loadMore() {
+        var url = '<?= Url::toRoute(['site/get-news'])?>';
+        var page = parseInt($('#page').val()) + 1;
+        var total = parseInt(($('#total').val()));
+        var numberCount = parseInt($('#numberCount').val()) + 6;
+        $.ajax({
+            url: url,
+            data: {
+                'page': page
+            },
+            type: "GET",
+            crossDomain: true,
+            dataType: "text",
+            success: function (result) {
+                if (null != result && '' != result) {
+                    $(result).insertBefore('#last-comment');
+                    document.getElementById("page").value = page + 5;
+                    document.getElementById("numberCount").value = numberCount;
+                    if (numberCount > total) {
+                        $('#more').css('display', 'none');
+                    }
+
+                    $('#last-comment').html('');
+                } else {
+                    $('#last-comment').html('');
+                }
+
+                return;
+            },
+            error: function (result) {
+                alert('Không thành công. Quý khách vui lòng thử lại sau ít phút.');
+                $('#last-comment').html('');
+                return;
+            }
+        });//end jQuery.ajax
+    }
+</script>
