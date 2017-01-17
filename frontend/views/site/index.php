@@ -71,7 +71,7 @@ $this->title = 'Vinpearl Condotel';
             <a href="<?= Url::to(['site/investment']) ?>"><?= Yii::t('app','Lợi ích đầu tư') ?></a>
         </li>
         <li>
-            <a href="<?= Yii::t('app','Tin tức') ?>">
+            <a href="<?= Url::to(['site/news']) ?>">
                 <svg width="80" height="80" style="display: block;">
                     <circle class="circle" cy="40" cx="39" r="38" stroke="#fff" stroke-width="1"
                             fill="transparent"></circle>
