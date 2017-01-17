@@ -94,13 +94,15 @@ use yii\helpers\Url;
 <script type="text/javascript">
     function loadMore() {
         var url = '<?= Url::toRoute(['site/get-news'])?>';
+        var type = '<?= $type ?>';
         var page = parseInt($('#page').val()) + 1;
         var total = parseInt(($('#total').val()));
         var numberCount = parseInt($('#numberCount').val()) + 6;
         $.ajax({
             url: url,
             data: {
-                'page': page
+                'page': page,
+                'type':type
             },
             type: "GET",
             crossDomain: true,

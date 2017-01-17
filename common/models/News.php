@@ -55,7 +55,7 @@ class News extends \yii\db\ActiveRecord
     const LIST_EXTENSION = '.jpg,.png';
 
     const TYPE_NEWS = 1;
-    const TYPE_TRADE = 2;
+    const TYPE_TIENDO = 2;
     const TYPE_DONOR = 3;
     const TYPE_PROJECT = 4;
     const TYPE_COMMON = 5;
