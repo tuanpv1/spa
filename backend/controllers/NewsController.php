@@ -107,11 +107,9 @@ class NewsController extends Controller
                     $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $video->extension;
                     if ($video->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
                         $model->video = $file_name;
-                        $model->video_url = News::TYPE_VIDEO;
+                    } else {
+                        Yii::$app->getSession()->setFlash('error', 'Lỗi hệ thống, vui lòng thử lại');
                     }
-                }
-                else{
-                    $model->type_video = News::TYPE_NOT_VIDEO;
                 }
 
 //                echo "<pre>"; print_r($model);die();
@@ -152,6 +150,7 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
         $thumbnail = $model->thumbnail;
+        $old_video = $model->video;
 
         if ($model->load(Yii::$app->request->post())) {
             $db_transaction = Yii::$app->db->beginTransaction();
@@ -173,11 +172,12 @@ class NewsController extends Controller
                     $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $video->extension;
                     if ($video->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
                         $model->video = $file_name;
-                        $model->video_url = News::TYPE_VIDEO;
+                    }else {
+                        Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống, vui lòng thử lại'));
                     }
                 }
                 else{
-                    $model->type_video = News::TYPE_NOT_VIDEO;
+                    $model->video = $old_video;
                 }
 
                 if ($model->save()) {
