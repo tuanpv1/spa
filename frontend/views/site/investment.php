@@ -27,7 +27,7 @@ use common\models\News;
                                       alt="<?= $item->title ?>" /></div>
                             <div class="benef--box--text">
                                 <h3><?= $item->title ?> <span></span></h3>
-                                <div><p><?= $item->description ?></p>
+                                <div><p><?= $item->content ?></p>
                                 </div>
                             </div>
                         </div>
