@@ -313,4 +313,24 @@ class SiteController extends Controller
             'model' => $listDistribution,
         ]);
     }
+
+    public function actionGetInvestment(){
+
+        $page = $this->getParameter('page');
+
+        $listNews = News::find()
+            ->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type'=>News::TYPE_COMMON])
+            ->orderBy(['created_at' => SORT_DESC]);
+        $models = $listNews->offset($page)
+            ->limit(6)->all();
+        return $this->renderPartial('_investment',[
+            'listNews' => $models,
+        ]);
+
+    }
+
+    public function getParameter($param_name, $default = null) {
+        return \Yii::$app->request->get($param_name, $default);
+    }
 }
