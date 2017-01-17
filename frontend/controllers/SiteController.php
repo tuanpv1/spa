@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use common\models\Email;
 use Yii;
 use yii\base\InvalidParamException;
+use yii\data\Pagination;
 use yii\helpers\Json;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -258,19 +259,32 @@ class SiteController extends Controller
 
     public function actionNews()
     {
-
+        $this->layout = 'main-page.php';
+        $listNews = News::find()
+            ->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type'=>News::TYPE_COMMON])
+            ->orderBy(['created_at' => SORT_DESC]);
+        $countQuery = clone $listNews;
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $pageSize = 6;
+        $pages->setPageSize($pageSize);
+        $models = $listNews->offset($pages->offset)
+            ->limit(10)->all();
         return $this->render('index-news',[
-//            'model' => '',
+            'listNews' => $models,
+            'pages' => $pages,
         ]);
     }
 
     public function actionInvestment(){ // loi ich dau tu
+        $this->layout = 'main-page.php';
         return $this->render('investment',[
 //            'model' => '',
         ]);
     }
 
     public function actionDistribution(){ // he thong phan phoi
+        $this->layout = 'main-page.php';
         return $this->render('distribution',[
 //            'model' => '',
         ]);

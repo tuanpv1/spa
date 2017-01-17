@@ -6,7 +6,6 @@
  * Time: 9:07 AM
  */
 ?>
-<br><br><br><br
 <div class="main ovfh">
     <div class="news-main main-section">
         <div class="main-title tac ttu">
@@ -113,4 +112,3 @@
         </div>
     </div>
 </div>
-<br><br><br>
