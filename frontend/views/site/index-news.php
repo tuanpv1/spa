@@ -34,7 +34,7 @@ use yii\helpers\Url;
                                     <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
                                     <time><img
                                             src="http://vinpearl-condotel.vn/wp-content/themes/vinpearlcondotel/img/news-icon-time.gif"
-                                            alt="#"><span><?= date('dd/mm/yyyy',$item->created_at) ?></span></time>
+                                            alt="#"><span><?= date('d/m/Y', $item->created_at) ?></span></time>
                                     <p><?= $item->short_description ?></p>
                                 </div>
                             </li>
