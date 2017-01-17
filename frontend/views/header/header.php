@@ -3,12 +3,13 @@
         <div id="vingroup_logo">
             <a class="item" href="" target="_blank">
                 <?php
-                use yii\helpers\Url;
 
-                if(isset($header)){
-                    /** @var $header \common\models\InfoPublic*/
-                ?>
-                 <img src="<?= $header->image_header?\common\models\InfoPublic::getImage($header->image_header):''?>" alt="">
+                if (isset($header)) {
+                    /** @var $header \common\models\InfoPublic */
+                    ?>
+                    <img
+                        src="<?= $header->image_header ? \common\models\InfoPublic::getImage($header->image_header) : '' ?>"
+                        alt="">
                 <?php } else { ?>
                     <img src="images/icons/vingroup.png" alt="">
                 <?php } ?>
@@ -16,14 +17,15 @@
         </div>
         <div id="PnL_logos_1_container" class="slide-container">
             <div id="PnL_logos_1" class="slide">
-                <?php if(isset($listUnitLink) && !empty($listUnitLink)){
-                    foreach($listUnitLink as $item){
+                <?php if (isset($listUnitLink) && !empty($listUnitLink)) {
+                    foreach ($listUnitLink as $item) {
                         /** @var $item \common\models\AffiliateCompany */
-                    ?>
-                    <a class="item" href="<?= $item->url ?>" target="_blank" data-id="vinhomes">
-                        <img src="<?= $item->getImage()  ?>" alt="">
-                    </a>
-                <?php } }else{ ?>
+                        ?>
+                        <a class="item" href="<?= $item->url ?>" target="_blank" data-id="vinhomes">
+                            <img src="<?= $item->getImage() ?>" alt="">
+                        </a>
+                    <?php }
+                } else { ?>
                     <a class="item" href="" target="_blank" data-id="vinhomes">
                         <img src="images/icons/vinhomes.png" alt="">
                     </a>
@@ -159,13 +161,45 @@
             ]
         }
 
-        setInterval(function(){
+        setInterval(function () {
             jQuery('#PnL_logos_2 .slick-next').click();
         }, 10000);
     </script>
 </div>
 <div class="header posf">
     <div class="tac posr">
-
+        <div class="menu-rps-992"><a href="#"><i class="fa fa-bars"></i></a></div>
+        <?php if (isset($cate)){
+        /** @var \common\models\Category $item */
+        $i = 0;
+        foreach ($cate as $item){
+        if ($i == 0){
+        ?>
+        <ul class="header-menu-left header-menu tar">
+            <?php } ?>
+            <li><a href=""><?= $item->display_name ?></a></li>
+            <?php
+            if ($i == 2){
+            ?>
+        </ul>
+        <a href="">
+            <?php
+            if (isset($header)) {
+                /** @var $header \common\models\InfoPublic */
+                ?>
+                <img src="<?= $header->image_menu ? \common\models\InfoPublic::getImage($header->image_menu) : '' ?>"
+                     alt="">
+            <?php } else { ?>
+                <img src="images/icons/logo.png" alt="#">
+            <?php } ?>
+        </a>
+        <ul class="header-menu-right header-menu">
+            <?php
+            }
+            $i++;
+            }
+            }
+            ?>
+        </ul>
     </div>
 </div>
