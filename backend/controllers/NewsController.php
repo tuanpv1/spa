@@ -197,6 +197,7 @@ class NewsController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'type'=>$model->type,
             ]);
         }
     }

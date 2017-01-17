@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = 'Cập nhật';
             <div class="portlet-body form">
                 <?= $this->render('_form', [
                     'model' => $model,
+                    'type'=>$type
                 ]) ?>
             </div>
         </div>
