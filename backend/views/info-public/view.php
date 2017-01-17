@@ -54,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'link_face',
                             'youtube',
                             'twitter',
+                            'url',
                             'address',
                             [
                                 'attribute' => 'created_at',

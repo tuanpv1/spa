@@ -91,7 +91,7 @@ class InfoPublic extends \yii\db\ActiveRecord
             'link_face' => Yii::t('app','Link facebook'),
             'youtube' => Yii::t('app','Link youtube'),
             'twitter' => Yii::t('app','Link twitter'),
-            'url' => Yii::t('app','Link trang'),
+            'url' => Yii::t('app','Link trang footer'),
             'address' =>Yii::t('app', 'Địa chỉ'),
             'status' => Yii::t('app','trạng thái'),
             'created_at' => Yii::t('app','Ngày tạo'),
