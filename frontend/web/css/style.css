@@ -2584,3 +2584,11 @@ a img.aligncenter {
   background-size: 100% 100%;
   cursor: pointer;
 }
+.tp_download a {
+  background: #1d1a5f none repeat scroll 0 0;
+  color: #fff;
+  display: inline-block;
+  font-weight: bold;
+  padding: 10px;
+  text-transform: uppercase;
+}
