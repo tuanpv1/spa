@@ -64,14 +64,14 @@ use yii\helpers\Url;
                 </ul>
 
 
-                <div class="view-more-page tac">
+<!--                <div class="view-more-page tac">-->
                     <?php
-                    $pagination = new \yii\data\Pagination(['totalCount' => $pages->totalCount,'pageSize' =>1]);
+                    $pagination = new \yii\data\Pagination(['totalCount' => $pages->totalCount,'pageSize' =>6]);
                     echo \yii\widgets\LinkPager::widget([
                         'pagination' => $pagination,
                     ]);
                     ?>
-                </div>
+<!--                </div>-->
 
             </div>
             <!--            <div class="grid4 main-news-sidebar-left">-->
