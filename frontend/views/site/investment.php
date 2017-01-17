@@ -65,7 +65,7 @@ use yii\helpers\Url;
                value="<?= sizeof($listNews) - 1 ?>">
         <input type="hidden" name="numberCount" id="numberCount" value="<?= sizeof($listNews) ?>">
         <input type="hidden" name="total" id="total" value="<?= $pages->totalCount ?>">
-        <?php if (count($listNews) >= 10) { ?>
+        <?php if (count($listNews) >= 6) { ?>
         <div class="view-more-page tac"><a id="more" class="tuu segoeui" onclick="loadMore();">Xem thêm<span></span></a></div>
         <?php } ?>
     </div>
