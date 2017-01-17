@@ -9,6 +9,7 @@
 namespace frontend\widgets;
 
 
+use common\models\AffiliateCompany;
 use common\models\InfoPublic;
 use yii\base\Widget;
 
@@ -21,7 +22,8 @@ class Footer extends  Widget
 
     public function run()
     {
+        $listDoiTac = AffiliateCompany::findAll(['type' => AffiliateCompany::TYPE_DOITAC, 'status' => AffiliateCompany::STATUS_ACTIVE]);
         $footer = InfoPublic::findOne(['id'=>1]);
-        return $this->render('//footer/footer',['footer'=>$footer]);
+        return $this->render('//footer/footer',['footer'=>$footer,'listDoiTac'=>$listDoiTac]);
     }
 }
