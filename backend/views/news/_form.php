@@ -64,7 +64,17 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
                 'showRemove' => false,
                 'showUpload' => false
             ]
-        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 96*96 để hiển thị tốt nhất')); ?>
+        ]) ?>
+        <?php if($type == News::TYPE_PROJECT){ ?>
+            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 370*400 để hiển thị tốt nhất') ?></p>
+        <?php }elseif($type == News::TYPE_COMMON){ ?>
+            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 96*96 để hiển thị tốt nhất') ?></p>
+        <?php }elseif($type == News::TYPE_GIOITHIEU){ ?>
+            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 422*426 để hiển thị tốt nhất') ?></p>
+        <?php }elseif($type == News::TYPE_NEWS){ ?>
+            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 300*210 để hiển thị tốt nhất') ?></p>
+        <?php } ?>
+
     <?php } else { ?>
         <?= $form->field($model, 'thumbnail')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
@@ -79,7 +89,16 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
                 'showRemove' => false,
                 'showUpload' => false
             ]
-        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 96*96 để hiển thị tốt nhất')); ?>
+        ]) ?>
+        <?php if($type == News::TYPE_PROJECT){ ?>
+            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 370*400 để hiển thị tốt nhất') ?></p>
+        <?php }elseif($type == News::TYPE_COMMON){ ?>
+            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 96*96 để hiển thị tốt nhất') ?></p>
+        <?php }elseif($type == News::TYPE_GIOITHIEU){ ?>
+            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 422*426 để hiển thị tốt nhất') ?></p>
+        <?php }elseif($type == News::TYPE_NEWS){ ?>
+            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 300*210 để hiển thị tốt nhất') ?></p>
+        <?php } ?>
     <?php } ?>
 
     <?= $form->field($model, 'short_description')->textarea(['rows' => 4]) ?>

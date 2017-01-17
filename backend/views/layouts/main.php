@@ -130,6 +130,11 @@ AppAsset::register($this);
 //                ],
                 [
                     'encode' => false,
+                    'label' => Yii::t('app','Tin tức'),
+                    'url' => ['news/index', 'type' => \common\models\News::TYPE_NEWS],
+                ],
+                [
+                    'encode' => false,
                     'label' => Yii::t('app','Dự án'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_PROJECT],
                 ],

@@ -263,7 +263,7 @@ class SiteController extends Controller
         $this->layout = 'main-page.php';
         $listNews = News::find()
             ->andWhere(['status' => News::STATUS_ACTIVE])
-            ->andWhere(['type'=>News::TYPE_COMMON])
+            ->andWhere(['type'=>News::TYPE_NEWS])
             ->orderBy(['created_at' => SORT_DESC]);
         $countQuery = clone $listNews;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
