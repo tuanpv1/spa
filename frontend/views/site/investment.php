@@ -59,10 +59,10 @@ use common\models\News;
             <?php } ?>
         </ul>
         <!--        <div class="view-more-page tac"><a class="tuu segoeui" href="#">Xem thêm<span></span></a></div>-->
-        <?php
-        $pagination = new \yii\data\Pagination(['totalCount' => $pages->totalCount, 'pageSize' => 6]);
-        echo \yii\widgets\LinkPager::widget([
-            'pagination' => $pagination,
-        ]);
-        ?>
     </div>
+    <?php
+    $pagination = new \yii\data\Pagination(['totalCount' => $pages->totalCount, 'pageSize' => 6]);
+    echo \yii\widgets\LinkPager::widget([
+        'pagination' => $pagination,
+    ]);
+    ?>
