@@ -43,9 +43,22 @@
 </div>
 <div id="main_contact" class="footer">
     <div class="container ovfh">
-        <div class="grid4 footer-logo">
-            <a href=""><img src="<?= \common\models\InfoPublic::getImage($footer->image_footer) ?>" alt=""></a>
-        </div>
+        <?php
+        if(isset($footer) && !empty($footer)){
+            ?>
+            <div class="grid4 footer-logo">
+                <a href=""><img src="<?= \common\models\InfoPublic::getImage($footer->image_footer) ?>" alt=""></a>
+            </div>
+            <?php
+        }else{
+            ?>
+            <div class="grid4 footer-logo">
+                <a href=""><img src="images/icons/logo-footer.png" alt=""></a>
+            </div>
+            <?php
+        }
+        ?>
+
         <div class="grid4 footer--text">
             <p class="utm-trajan"><?= Yii::t('app','Văn phòng') ?></p>
             <div class="footer-text-contact">
