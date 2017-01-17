@@ -255,4 +255,12 @@ class SiteController extends Controller
             return Json::encode(['success' => false, 'message' => $message]);
         }
     }
+
+    public function actionNews()
+    {
+
+        return $this->render('index-news',[
+//            'model' => '',
+        ]);
+    }
 }
