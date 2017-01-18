@@ -1,7 +1,7 @@
 <div id="vingroup_logos_container" style="opacity: 0;">
     <div id="vingroup_logos">
         <div id="vingroup_logo">
-            <a class="item" href="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>" target="_blank">
+            <a class="item" href="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>">
                 <?php
 
                 if (isset($header)) {
