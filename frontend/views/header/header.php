@@ -1,7 +1,7 @@
 <div id="vingroup_logos_container" style="opacity: 0;">
     <div id="vingroup_logos">
         <div id="vingroup_logo">
-            <a class="item" href="" target="_blank">
+            <a class="item" href="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>" target="_blank">
                 <?php
 
                 if (isset($header)) {
@@ -182,7 +182,7 @@
             if ($i == 2){
             ?>
         </ul>
-        <a href="">
+        <a href="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>">
             <?php
             if (isset($header)) {
                 /** @var $header \common\models\InfoPublic */
