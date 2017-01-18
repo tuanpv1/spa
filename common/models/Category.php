@@ -10,6 +10,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property string $display_name
+ * @property string $ascii_name
  * @property string $description
  * @property integer $status
  * @property integer $order_number
@@ -55,7 +56,7 @@ class Category extends \yii\db\ActiveRecord
 //            [['display_name'], 'unique', 'message' => 'Tên danh mục đã tồn tại. Vui lòng chọn tên khác!'],
             [['id', 'status', 'order_number', 'parent_id', 'level',
                 'child_count', 'created_at', 'updated_at'], 'integer'],
-            [['description'], 'string'],
+            [['description','ascii_name'], 'string'],
             [['display_name', 'path'], 'string', 'max' => 200],
             [['images'], 'string', 'max' => 500]
         ];
