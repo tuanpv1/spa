@@ -73,6 +73,14 @@ class InfoPublic extends \yii\db\ActiveRecord
             ['image_footer','required','message'=>Yii::t('app','{attribute} không được để trống'),'on'=>'create'],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'email','message'=>Yii::t('app','{attribute} không hợp lệ!')],
+            [['image_footer','image_header','image_menu'],
+                'file',
+                'tooBig'         => Yii::t('app','{attribute} vượt quá dung lượng cho phép. Vui lòng thử lại'),
+                'wrongExtension' => Yii::t('app','{attribute} không đúng định dạng'),
+                'uploadRequired' => Yii::t('app','{attribute} không được để trống'),
+                'extensions'     => 'png, jpg, jpeg, gif',
+                'maxSize'        => 1024 * 1024 * 10
+            ],
         ];
     }
 

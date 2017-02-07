@@ -55,6 +55,14 @@ class Banner extends \yii\db\ActiveRecord
             [['des'], 'string'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['image', 'name'], 'string', 'max' => 255],
+            [['image'],
+                'file',
+                'tooBig'         => Yii::t('app','{attribute} vượt quá dung lượng cho phép. Vui lòng thử lại'),
+                'wrongExtension' => Yii::t('app','{attribute} không đúng định dạng'),
+                'uploadRequired' => Yii::t('app','{attribute} không được để trống'),
+                'extensions'     => 'png, jpg, jpeg, gif',
+                'maxSize'        => 1024 * 1024 * 10
+            ],
         ];
     }
     public function behaviors()

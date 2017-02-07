@@ -58,7 +58,15 @@ class Category extends \yii\db\ActiveRecord
                 'child_count', 'created_at', 'updated_at'], 'integer'],
             [['description','ascii_name'], 'string'],
             [['display_name', 'path'], 'string', 'max' => 200],
-            [['images'], 'string', 'max' => 500]
+            [['images'], 'string', 'max' => 500],
+            [['image'],
+                'file',
+                'tooBig'         => Yii::t('app','{attribute} vượt quá dung lượng cho phép. Vui lòng thử lại'),
+                'wrongExtension' => Yii::t('app','{attribute} không đúng định dạng'),
+                'uploadRequired' => Yii::t('app','{attribute} không được để trống'),
+                'extensions'     => 'png, jpg, jpeg, gif',
+                'maxSize'        => 1024 * 1024 * 10
+            ],
         ];
     }
 
