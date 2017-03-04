@@ -171,9 +171,9 @@ use yii\helpers\Url;
         }, 10000);
     </script>
 </div>
-<!--<div class="header posf">-->
-<!--    <div class="tac posr">-->
-<!--        <div class="menu-rps-992"><a href="#"><i class="fa fa-bars"></i></a></div>-->
+<div class="header posf">
+    <div class="tac posr">
+        <div class="menu-rps-992"><a href="#"><i class="fa fa-bars"></i></a></div>
 <!--        --><?php //if (isset($cate)){
 //        /** @var \common\models\Category $item */
 //        $i = 0;
@@ -206,5 +206,5 @@ use yii\helpers\Url;
 //            }
 //            ?>
 <!--        </ul>-->
-<!--    </div>-->
-<!--</div>-->
+    </div>
+</div>
