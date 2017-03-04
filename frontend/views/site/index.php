@@ -46,7 +46,7 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t1.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-1.png" alt="#">
             </a>
-            <a href="#"><?= Yii::t('app','Giới thiệu') ?></a>
+            <a href="<?= Url::to(['site/detail-news','id'=>$gioithieu->id]) ?>"><?= Yii::t('app','Giới thiệu') ?></a>
         </li>
         <li>
             <a href="<?= Url::to(['site/distribution']) ?>">
