@@ -46,7 +46,7 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t1.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-1.png" alt="#">
             </a>
-            <a href="#"><?= Yii::t('app','Tiện ích') ?></a>
+            <a href="#"><?= Yii::t('app','Giới thiệu') ?></a>
         </li>
         <li>
             <a href="<?= Url::to(['site/distribution']) ?>">
@@ -57,7 +57,7 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t2.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-2.png" alt="#">
             </a>
-            <a href="<?= Url::to(['site/distribution']) ?>"><?= Yii::t('app','Hệ thống phân phối') ?></a>
+            <a href="<?= Url::to(['site/distribution']) ?>"><?= Yii::t('app','Đội ngũ nhân viên') ?></a>
         </li>
         <li>
             <a href="<?= Url::to(['site/investment']) ?>">
@@ -68,7 +68,7 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t3.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-3.png" alt="#">
             </a>
-            <a href="<?= Url::to(['site/investment']) ?>"><?= Yii::t('app','Lợi ích đầu tư') ?></a>
+            <a href="<?= Url::to(['site/investment']) ?>"><?= Yii::t('app','Dịch vụ cung cấp') ?></a>
         </li>
         <li>
             <a href="<?= Url::to(['site/news','type'=> \common\models\News::TYPE_NEWS]) ?>">

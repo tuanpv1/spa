@@ -12,7 +12,7 @@ use yii\helpers\Url;
                 if (isset($header)) {
                     /** @var $header \common\models\InfoPublic */
                     ?>
-                    <img
+                    <img style="width: 100px"
                         src="<?= $header->image_header ? \common\models\InfoPublic::getImage($header->image_header) : '' ?>"
                         alt="">
                 <?php } else { ?>
