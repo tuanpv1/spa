@@ -92,7 +92,7 @@ use yii\helpers\Url;
     <div id="vingroup_line_container">
         <div id="vingroup_line">
             <div id="vingroup_line__left">
-                Trang thông tin tham tử 3s
+                Trang thông tin Thám Tử 3s
             </div>
 <!--            <div id="vingroup_line__right">-->
 <!--                <div id="vingroup_line__right__dropdown">-->
