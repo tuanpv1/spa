@@ -12,7 +12,7 @@
         ?>
         <div class="news-main main-section">
             <div class="main-title tac ttu">
-                <span class="segoeui">Vinpearl Condotel</span>
+                <span class="segoeui">Thám Tử 3s </span>
                 <h2 class="utm-trajan">Tin tức sự kiện</h2>
             </div>
             <div class="container main-news-details">
