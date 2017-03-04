@@ -116,6 +116,7 @@ class AffiliateCompanyController extends Controller
                     mkdir($tmp, 0777, true);
                 }
                 if ($image->saveAs($tmp . $file_name)) {
+                    unlink($tmp.$old_image);
                     $model->image = $file_name;
                 }
             }else{

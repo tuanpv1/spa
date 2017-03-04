@@ -159,6 +159,7 @@ class NewsController extends Controller
                 if ($file) {
                     $file_name = uniqid() . time() . '.' . $file->extension;
                     if ($file->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
+                        unlink(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $thumbnail);
                         $model->thumbnail = $file_name;
                     } else {
                         Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống, vui lòng thử lại'));
@@ -171,6 +172,7 @@ class NewsController extends Controller
                 if ($video) {
                     $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $video->extension;
                     if ($video->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
+                        unlink(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $old_video);
                         $model->video = $file_name;
                     }else {
                         Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống, vui lòng thử lại'));

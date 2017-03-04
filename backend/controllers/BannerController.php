@@ -75,7 +75,8 @@ class BannerController extends Controller
             $image = UploadedFile::getInstance($model, 'image');
             if ($image) {
                 $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
-                if ($image->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_banner') . "/" . $file_name)) {
+                $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_affiliate_company') . '/';
+                if ($image->saveAs($tmp . $file_name)) {
                     $model->image = $file_name;
                 }
             }
@@ -115,7 +116,9 @@ class BannerController extends Controller
             $image = UploadedFile::getInstance($model, 'image');
             if ($image) {
                 $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
-                if ($image->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_banner') . "/" . $file_name)) {
+                $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_affiliate_company') . '/';
+                if ($image->saveAs($tmp . $file_name)) {
+                    unlink($tmp.$image_old);
                     $model->image = $file_name;
                 } else {
                     $model->image = $image_old;
@@ -124,7 +127,7 @@ class BannerController extends Controller
                 $model->image = $image_old;
             }
             if ($model->save()) {
-                Yii::$app->getSession()->setFlash('success', 'Cập nhật nhóm thành công');
+                Yii::$app->getSession()->setFlash('success', 'Cập nhật banner thành công');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -142,8 +145,11 @@ class BannerController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_affiliate_company') . '/';
+        unlink($tmp.$model->image);
+        $model->delete();
+        Yii::$app->getSession()->setFlash('success', 'Xóa banner thành công');
         return $this->redirect(['index']);
     }
 

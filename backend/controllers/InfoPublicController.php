@@ -132,6 +132,7 @@ class InfoPublicController extends Controller
                     mkdir($tmp, 0777, true);
                 }
                 if ($image_header->saveAs($tmp . $file_name)) {
+                    unlink($tmp.$old_image_header);
                     $model->image_header = $file_name;
                 }
             }else{
@@ -145,6 +146,7 @@ class InfoPublicController extends Controller
                     mkdir($tmp, 0777, true);
                 }
                 if ($image_footer->saveAs($tmp . $file_name)) {
+                    unlink($tmp.$old_image_footer);
                     $model->image_footer = $file_name;
                 }
             }else{
@@ -158,6 +160,7 @@ class InfoPublicController extends Controller
                     mkdir($tmp, 0777, true);
                 }
                 if ($image_menu->saveAs($tmp . $file_name)) {
+                    unlink($tmp.$old_image_menu);
                     $model->image_menu = $file_name;
                 }
             }else{
