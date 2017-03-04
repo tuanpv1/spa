@@ -45,7 +45,7 @@
     <div class="container ovfh">
         <?php if(isset($footer) && !empty($footer)){ ?>
             <div class="grid4 footer-logo">
-                <a target="_blank" href="<?= $footer->url ?>"><img src="<?= \common\models\InfoPublic::getImage($footer->image_footer) ?>" alt=""></a>
+                <a target="_blank" href="<?= $footer->url ?>"><img style="width: 180px" src="<?= \common\models\InfoPublic::getImage($footer->image_footer) ?>" alt=""></a>
             </div>
         <?php }else{ ?>
             <div class="grid4 footer-logo">
