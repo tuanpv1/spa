@@ -40,7 +40,7 @@ class AffiliateCompany extends \yii\db\ActiveRecord
 
     public static function getTypeName($type =  AffiliateCompany::TYPE_UNITLINK){
         if($type == AffiliateCompany::TYPE_UNITLINK){
-            return 'Quản lý công ty liên kết';
+            return 'Quản lý hình ảnh dịch vụ';
         }else{
             return 'Quản lý đối tác';
         }
@@ -92,12 +92,12 @@ class AffiliateCompany extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'image' => Yii::t('app','Ảnh đại diện'),
-            'name' => Yii::t('app','Tên công ty'),
+            'name' => Yii::t('app','Tên dịch vụ'),
             'about' => Yii::t('app','Giới thiệu'),
             'status' => Yii::t('app','Trạng thái'),
             'created_at' => Yii::t('app','Ngày tạo'),
             'updated_at' => Yii::t('app','Ngày thay đổi thông tin'),
-            'url' => Yii::t('app','Địa chỉ website'),
+            'url' => Yii::t('app','Địa chỉ bài viết'),
         ];
     }
 
