@@ -123,6 +123,16 @@ AppAsset::register($this);
             'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
             'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
             'items' => [
+//                [
+//                    'encode' => false,
+//                    'label' => Yii::t('app','Danh mục'),
+//                    'url' => ['category/index'],
+//                ],
+//                [
+//                    'encode' => false,
+//                    'label' => Yii::t('app','Tiến độ'),
+//                    'url' => ['news/index', 'type' => \common\models\News::TYPE_TIENDO],
+//                ],
                 [
                     'encode' => false,
                     'label' => Yii::t('app','Tin tức thám tử'),
@@ -130,7 +140,7 @@ AppAsset::register($this);
                 ],
                 [
                     'encode' => false,
-                    'label' => Yii::t('app','Tuyển Dụng'),
+                    'label' => Yii::t('app','Tuyển dụng'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_PROJECT],
                 ],
                 [
@@ -169,6 +179,16 @@ AppAsset::register($this);
                 ],
             ]
         ],
+//        [
+//            'encode' => false,
+//            'label' => Yii::t('app','QL Công ty liên kết'),
+//            'url' => ['affiliate-company/index','type' => \common\models\AffiliateCompany::TYPE_UNITLINK ],
+//        ],
+//        [
+//            'encode' => false,
+//            'label' => Yii::t('app','Quản lý đối tác'),
+//            'url' => ['affiliate-company/index','type' => \common\models\AffiliateCompany::TYPE_DOITAC ],
+//        ],
         [
             'encode' => false,
             'label' => Yii::t('app','Cấu hình'),
@@ -193,6 +213,11 @@ AppAsset::register($this);
                 ],
             ]
         ],
+//        [
+//            'encode' => false,
+//            'label' => Yii::t('app','QL nhà phân phối'),
+//            'url' => ['table-agency/index'],
+//        ],
     ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
