@@ -50,9 +50,9 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
 
     <?= $form->field($model, 'status')->dropDownList(\common\models\News::listStatus()) ?>
     <?php
-    if($model->type == \common\models\News::TYPE_PROJECT){ ?>
+    if($model->type == \common\models\News::TYPE_NEWS){ ?>
         <?= $form->field($model,'position')->dropDownList(News::listPosition()) ?>
-        <?= $form->field($model, 'source_url')->textInput(['maxlength' => true]) ?>
+<!--        --><?//= $form->field($model, 'source_url')->textInput(['maxlength' => true]) ?>
     <?php }
     ?>
     <?php if ($model->isNewRecord) { ?>
