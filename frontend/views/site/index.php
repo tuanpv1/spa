@@ -90,7 +90,7 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t5.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-5.png" alt="#">
             </a>
-            <a href="#">Tài liệu dự án</a>
+            <a href="#">Thông tin Tuyển dụng</a>
         </li>
     </ul>
     <div id="main_about" class="main-invest ovfh">
@@ -101,7 +101,6 @@ $this->title = 'Vinpearl Condotel';
                 <div class="grid4">
                     <div class="posr">
                         <img class="animation-flower" src="<?= $gioithieu->getImage() ?>" alt="#">
-                        <img class="posa" src="images/icons/home-logo-color-2.png" alt="#">
                     </div>
                 </div>
                 <div class="grid8">
@@ -139,8 +138,8 @@ $this->title = 'Vinpearl Condotel';
     <div id="main_da"></div>
     <div  class="main-project main-section">
         <div class="main-title tac ttu">
-            <span class="segoeui">Vinpearl Condotel</span>
-            <h2 class="utm-trajan">Các dự án Condotel</h2>
+            <span class="segoeui">Thám Tử 3s</span>
+            <h2 class="utm-trajan">Các dịch vụ cung cấp</h2>
         </div>
         <?php if (isset($duantop) && !empty($duantop)) {
             /** @var $duantop \common\models\News */
