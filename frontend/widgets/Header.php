@@ -4,6 +4,7 @@ namespace frontend\widgets;
 use common\models\AffiliateCompany;
 use common\models\Category;
 use common\models\InfoPublic;
+use common\models\News;
 use yii\base\Widget;
 
 /**
@@ -24,9 +25,9 @@ class Header extends Widget
 
     public function run()
     {
-        $cate = Category::find()
-            ->andWhere(['status'=>Category::STATUS_ACTIVE])
-            ->limit(6)
+        $cate = News::find()
+            ->andWhere(['status'=>News::STATUS_ACTIVE])
+            ->andWhere(['status'=>News::TYPE_COMMON])
             ->all();
         $header = InfoPublic::findOne(['id'=>1]);
         return $this->render('//header/header', [

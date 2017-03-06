@@ -232,11 +232,11 @@ class News extends \yii\db\ActiveRecord
     public static function listStatusType()
     {
         $lst = [
-            self::TYPE_COMMON => 'Lợi ích đầu tư',
-            self::TYPE_NEWS => 'Tin tức',
+            self::TYPE_COMMON => 'Dịch vụ cung cấp',
+            self::TYPE_NEWS => 'Tin tức thám tử',
             self::TYPE_GIOITHIEU => 'Giới thiệu',
-            self::TYPE_PROJECT => 'Dự án',
-            self::TYPE_TIENDO => 'Tiến độ'
+            self::TYPE_PROJECT => 'Tuyển dụng',
+            self::TYPE_GIOITHIEU => 'Giới thiệu'
         ];
         return $lst;
     }
