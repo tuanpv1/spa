@@ -125,27 +125,17 @@ AppAsset::register($this);
             'items' => [
                 [
                     'encode' => false,
-                    'label' => Yii::t('app','Danh mục'),
-                    'url' => ['category/index'],
-                ],
-                [
-                    'encode' => false,
-                    'label' => Yii::t('app','Tiến độ'),
-                    'url' => ['news/index', 'type' => \common\models\News::TYPE_TIENDO],
-                ],
-                [
-                    'encode' => false,
-                    'label' => Yii::t('app','Tin tức'),
+                    'label' => Yii::t('app','Tin tức thám tử'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_NEWS],
                 ],
                 [
                     'encode' => false,
-                    'label' => Yii::t('app','Dự án'),
+                    'label' => Yii::t('app','Tuyển Dụng'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_PROJECT],
                 ],
                 [
                     'encode' => false,
-                    'label' => Yii::t('app','Lợi ích đầu tư'),
+                    'label' => Yii::t('app','Dịch vụ cung cấp'),
                     'url' => ['news/index', 'type' => \common\models\News::TYPE_COMMON],
                 ],
                 [
@@ -181,16 +171,6 @@ AppAsset::register($this);
         ],
         [
             'encode' => false,
-            'label' => Yii::t('app','QL Công ty liên kết'),
-            'url' => ['affiliate-company/index','type' => \common\models\AffiliateCompany::TYPE_UNITLINK ],
-        ],
-        [
-            'encode' => false,
-            'label' => Yii::t('app','Quản lý đối tác'),
-            'url' => ['affiliate-company/index','type' => \common\models\AffiliateCompany::TYPE_DOITAC ],
-        ],
-        [
-            'encode' => false,
             'label' => Yii::t('app','Cấu hình'),
             'url' => ['info-public/index'],
         ],
@@ -212,11 +192,6 @@ AppAsset::register($this);
                     'url' => ['rbac-backend/role'],
                 ],
             ]
-        ],
-        [
-            'encode' => false,
-            'label' => Yii::t('app','QL nhà phân phối'),
-            'url' => ['table-agency/index'],
         ],
     ];
     echo Nav::widget([
