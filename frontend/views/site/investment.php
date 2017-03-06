@@ -13,8 +13,8 @@ use yii\helpers\Url;
 <div class="main ovfh">
     <div class="main-section container">
         <div class="main-title tac ttu">
-            <span class="segoeui">Vinpearl Condotel</span>
-            <h2 class="utm-trajan">Lợi ích đầu tư</h2>
+            <span class="segoeui">Thám Tử 3s</span>
+            <h2 class="utm-trajan">Các dịnh vụ hiện đang cung cấp</h2>
         </div>
         <ul class="benef-main-list">
             <?php

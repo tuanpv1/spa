@@ -179,11 +179,11 @@ AppAsset::register($this);
                 ],
             ]
         ],
-//        [
-//            'encode' => false,
-//            'label' => Yii::t('app','QL Công ty liên kết'),
-//            'url' => ['affiliate-company/index','type' => \common\models\AffiliateCompany::TYPE_UNITLINK ],
-//        ],
+        [
+            'encode' => false,
+            'label' => Yii::t('app','QL Banner chạy các dịch vụ'),
+            'url' => ['affiliate-company/index','type' => \common\models\AffiliateCompany::TYPE_UNITLINK ],
+        ],
 //        [
 //            'encode' => false,
 //            'label' => Yii::t('app','Quản lý đối tác'),
