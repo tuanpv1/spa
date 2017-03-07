@@ -57,7 +57,7 @@ $this->title = 'Vinpearl Condotel';
                 <img class="posa" src="images/icons/t2.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-2.png" alt="#">
             </a>
-            <a href="<?= Url::to(['site/distribution']) ?>"><?= Yii::t('app','Đội ngũ nhân viên') ?></a>
+            <a href="<?= Url::to(['site/detail-news','id'=>86]) ?>"><?= Yii::t('app','Đội ngũ nhân viên') ?></a>
         </li>
         <li>
             <a href="<?= Url::to(['site/investment']) ?>">
