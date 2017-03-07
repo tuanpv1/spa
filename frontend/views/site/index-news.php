@@ -12,7 +12,7 @@ use yii\helpers\Url;
 <div class="main ovfh">
     <div class="news-main main-section">
         <div class="main-title tac ttu">
-            <span class="segoeui">Thám Tử 3S</span>
+            <span class="segoeui">Thám Tử VIP</span>
             <h2 class="utm-trajan"><?= $type == News::TYPE_NEWS ? 'Tin tức thám tử':'Dịch vụ cung cấp' ?></h2>
         </div>
         <div class="container">

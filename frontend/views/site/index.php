@@ -138,7 +138,7 @@ $this->title = 'Vinpearl Condotel';
     <div id="main_da"></div>
     <div  class="main-project main-section">
         <div class="main-title tac ttu">
-            <span class="segoeui">Thám Tử 3s</span>
+            <span class="segoeui">Thám Tử VIP</span>
             <h2 class="utm-trajan">Tin tức thám tử</h2>
         </div>
         <?php if (isset($duantop) && !empty($duantop)) {
@@ -201,7 +201,7 @@ $this->title = 'Vinpearl Condotel';
     </div>
     <div class="main-benef main-section">
         <div id="main_lidt"  class="main-title tac ttu">
-            <span class="segoeui">Thám Tử 3s</span>
+            <span class="segoeui">Thám Tử VIP</span>
             <h2 class="utm-trajan">Dịch vụ cung cấp</h2>
         </div>
         <div class="container">
