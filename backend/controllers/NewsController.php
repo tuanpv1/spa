@@ -185,7 +185,7 @@ class NewsController extends Controller
                 if ($model->save()) {
                     $db_transaction->commit();
                     Yii::$app->getSession()->setFlash('success', Yii::t('app','Cập nhật bài viết thành công'));
-                    return $this->redirect(['index', 'type' => $model->type]);
+                    return $this->redirect(['view', 'id' => $model->id]);
                 } else {
                     Yii::error($model->getErrors());
                     Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống vui lòng thử lại'));
