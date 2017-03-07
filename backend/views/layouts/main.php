@@ -151,7 +151,12 @@ AppAsset::register($this);
                 [
                     'encode' => false,
                     'label' => Yii::t('app','Giới thiệu'),
-                    'url' => ['news/index', 'type' => \common\models\News::TYPE_GIOITHIEU],
+                    'url' => ['news/view', 'id' => 75],
+                ],
+                [
+                    'encode' => false,
+                    'label' => Yii::t('app','Đội ngũ nhân viên'),
+                    'url' => ['news/view', 'id' => 74],
                 ],
             ]
         ],
