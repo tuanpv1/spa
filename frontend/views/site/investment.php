@@ -24,11 +24,19 @@ use yii\helpers\Url;
                     ?>
                     <li>
                         <div class="benef--box">
-                            <div><img width="96" height="96" src="<?= $item->getImage() ?>"
+                            <div>
+                                <a href="<?=\yii\helpers\Url::to(['site/detail-news','id'=>$item->id])?>">
+                                    <img width="96" height="96" src="<?= $item->getImage() ?>"
                                       class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-                                      alt="<?= $item->title ?>"/></div>
+                                      alt="<?= $item->title ?>"/>
+                                </a>
+                            </div>
                             <div class="benef--box--text">
-                                <h3><?= $item->title ?> <span></span></h3>
+                                <h3>
+                                    <a href="<?=\yii\helpers\Url::to(['site/detail-news','id'=>$item->id])?>">
+                                        <?= $item->title ?>
+                                    </a>
+                                        <span></span></h3>
                                 <div><p><?= $item->description ?></p>
                                 </div>
                             </div>
