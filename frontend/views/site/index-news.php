@@ -13,7 +13,13 @@ use yii\helpers\Url;
     <div class="news-main main-section">
         <div class="main-title tac ttu">
             <span class="segoeui">Thám Tử VIP</span>
-            <h2 class="utm-trajan"><?= $type == News::TYPE_NEWS ? 'Tin tức thám tử':'Dịch vụ cung cấp' ?></h2>
+            <h2 class="utm-trajan">
+                <?php
+                if($type == News::TYPE_NEWS){echo "Tin tức thám tử";}
+                if($type == News::TYPE_PROJECT){echo "Thông tin tuyển dụng";}
+                if($type == News::TYPE_COMMON){echo "Dịch vụ cung cấp";}
+                ?>
+            </h2>
         </div>
         <div class="container">
             <div class="grid8">

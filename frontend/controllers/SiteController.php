@@ -265,8 +265,10 @@ class SiteController extends Controller
             ->andWhere(['status' => News::STATUS_ACTIVE]);
         if($type == News::TYPE_NEWS){
             $listNews->andWhere(['type'=>News::TYPE_NEWS]);
-        }else{
-            $listNews->andWhere(['type'=>News::TYPE_TIENDO]);
+        }elseif($type == News::TYPE_COMMON){
+            $listNews->andWhere(['type'=>News::TYPE_COMMON]);
+        }elseif($type == News::TYPE_PROJECT){
+            $listNews->andWhere(['type'=>News::TYPE_PROJECT]);
         }
 
         $listNews->orderBy(['created_at' => SORT_DESC]);

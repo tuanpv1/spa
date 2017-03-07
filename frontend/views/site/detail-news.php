@@ -12,8 +12,8 @@
         ?>
         <div class="news-main main-section">
             <div class="main-title tac ttu">
-                <span class="segoeui">Thám Tử 3s </span>
-                <h2 class="utm-trajan">Tin tức sự kiện</h2>
+                <span class="segoeui">Thám Tử VIP </span>
+                <h2 class="utm-trajan">Tin tức</h2>
             </div>
             <div class="container main-news-details">
                 <div class="grid8">
