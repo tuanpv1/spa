@@ -156,7 +156,7 @@ AppAsset::register($this);
                 [
                     'encode' => false,
                     'label' => Yii::t('app','Đội ngũ nhân viên'),
-                    'url' => ['news/view', 'id' => 74],
+                    'url' => ['news/view', 'id' => 86],
                 ],
             ]
         ],
