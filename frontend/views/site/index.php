@@ -220,7 +220,7 @@ $this->title = 'Vinpearl Condotel';
                                     </a>
                                 </div>
                                 <div class="benef--box-title">
-                                    <?= $item->title ?>
+                                    <a href="<?= Url::to(['site/detail-news','id'=>$item->id])?>"><?= $item->title ?></a>
                                 </div>
                                 <div class="benef-box-content">
                                     <?= \common\helpers\CUtils::subString(trim($item->short_description), 300) ?>
