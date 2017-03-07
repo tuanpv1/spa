@@ -20,7 +20,7 @@ use common\models\News;
                               class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
                               alt="<?= $item->title ?>"/></div>
                     <div class="benef--box--text">
-                        <h3><?= $item->title ?> <span></span></h3>
+                        <h3><a href="<?=\yii\helpers\Url::to(['site/detail-news','id'=>$item->id])?>"><?= $item->title ?></a> <span></span></h3>
                         <div><p><?= $item->description ?></p>
                         </div>
                     </div>
