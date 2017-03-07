@@ -7,7 +7,9 @@ use yii\helpers\Html;
 /* @var $model common\models\News */
 
 $this->title = 'Cập nhật: ' . ' ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => News::getTypeName($model->type), 'url' => ['index', 'type' => $model->type]];
+if($model->type == News::TYPE_COMMON || $model->type == News::TYPE_NEWS || $model->type == News::TYPE_PROJECT) {
+    $this->params['breadcrumbs'][] = ['label' => News::getTypeName($model->type), 'url' => ['index', 'type' => $model->type]];
+}
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Cập nhật';
 ?>
