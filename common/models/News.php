@@ -236,6 +236,7 @@ class News extends \yii\db\ActiveRecord
             self::TYPE_NEWS => 'Tin tức thám tử',
             self::TYPE_GIOITHIEU => 'Giới thiệu',
             self::TYPE_PROJECT => 'Tuyển dụng',
+            self::TYPE_TIENDO => 'Đội ngũ nhân viên',
         ];
         return $lst;
     }
