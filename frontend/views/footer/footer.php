@@ -69,7 +69,7 @@
         </div>
     </div>
     <div class="footer-last tac ttu segoeui ovfh">
-        COPYRIGHT 2016 VINPEARL CONDOTEL. ALL RIGHTS RESERVED.
+        COPYRIGHT 2016 CTY THÁM TỬ VIP.
         <p style="margin:10px 0 0;font-size:11px;"><?= Yii::t('app','Hình ảnh chỉ mang tính minh hoạ cho sản phẩm. Chúng tôi có quyền thay đổi thông tin mà không cần báo trước.') ?></p>
     </div>
 </div>
