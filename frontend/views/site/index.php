@@ -4,7 +4,7 @@
 
 use yii\helpers\Url;
 
-$this->title = 'Vinpearl Condotel';
+$this->title = 'Thám tử VIP';
 ?>
 <div class="main ovfh">
     <div class="main-banner posr ovfh">
