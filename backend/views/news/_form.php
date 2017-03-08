@@ -72,7 +72,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
         <?php }elseif($type == News::TYPE_GIOITHIEU){ ?>
             <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 422*426 để hiển thị tốt nhất') ?></p>
         <?php }elseif($type == News::TYPE_NEWS || $type == News::TYPE_TIENDO){ ?>
-            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 300*210 để hiển thị tốt nhất') ?></p>
+            <p style="color:red;"><?= Yii::t('app','Vui lòng tải hình ảnh có kích thước 1180*430 đối với ảnh hiện ở vị trí top và 370*400 đối với bài viết thông thường để hiển thị tốt nhất') ?></p>
         <?php } ?>
 
     <?php } else { ?>

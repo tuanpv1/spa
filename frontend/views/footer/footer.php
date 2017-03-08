@@ -2,43 +2,7 @@
  /** @var $footer \common\models\InfoPublic*/
 ?>
 <div class="main-partner main-section ovfh">
-    <div class="main-title tac ttu">
-        <span class="segoeui">Vinpearl Condotel</span>
-        <h2 class="utm-trajan">Các đối tác hàng đầu</h2>
-    </div>
-    <div class="container">
-        <div id="owl-demo-2" class="owl-carousel owl-theme">
-            <?php if (isset($listDoiTac) && !empty($listDoiTac)) {
-                foreach ($listDoiTac as $item) {
-                    /** @var $item \common\models\AffiliateCompany */
-                    ?>
-                    <div class="item"><a href="<?= $item->url ?>" target="blank" rel="nofollow">
-                            <img src="<?= $item->getImage() ?>" alt="#"></a>
-                    </div>
-                <?php }
-            } else { ?>
-                <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p3.png"
-                                                                                alt="#"></a>
-                </div>
-                <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p6.png"
-                                                                                alt="#"></a>
-                </div>
-                <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p5.png"
-                                                                                alt="#"></a>
-                </div>
-                <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p1.png"
-                                                                                alt="#"></a>
-                </div>
-                <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p4.png"
-                                                                                alt="#"></a>
-                </div>
-                <div class="item"><a href="" target="blank" rel="nofollow"><img src="images/icons/p2.png"
-                                                                                alt="#"></a>
-                </div>
-            <?php } ?>
 
-        </div>
-    </div>
 </div>
 </div>
 <div id="main_contact" class="footer">
