@@ -82,18 +82,18 @@ use yii\helpers\Url;
                 </div>
                 <?php } ?>
             </div>
-            <!--            <div class="grid4 main-news-sidebar-left">-->
-            <!--                <p class="segoeui">Bài viết nổi bật</p>-->
-            <!--                <ul>				<li>-->
-            <!--                        <a href="http://vinpearl-condotel.vn/2012/12/09/su-kien-gioi-thieu-va-tu-van-san-pham-biet-thu-bien/">-->
-            <!--                            <img width="150" height="150" src="http://vinpearl-condotel.vn/wp-content/uploads/2016/01/khanh-hoa-tren-15-trieu-luot-du-khach-den-tham-quan-nghi-duong-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="su-kien-gioi-thieu-va-tu-van-san-pham-biet-thu-bien" title="Khánh Hòa: Trên 1,5 triệu lượt du khách đến tham quan nghỉ dưỡng" />					</a>-->
-            <!--                        <div class="main-news-thumb">-->
-            <!--                            <a href="http://vinpearl-condotel.vn/2012/12/09/su-kien-gioi-thieu-va-tu-van-san-pham-biet-thu-bien/">Khánh Hòa: Trên 1,5 triệu lượt du khách đến tham quan nghỉ dưỡng</a>-->
-            <!--                            <time><img src="http://vinpearl-condotel.vn/wp-content/themes/vinpearlcondotel/img/news-icon-time.gif" alt="#"><span>09-12-2012</span></time>-->
-            <!--                        </div>-->
-            <!--                    </li>-->
-            <!--                </ul>-->
-            <!--            </div>-->
+                        <div class="grid4 main-news-sidebar-left">
+                            <p class="segoeui">Bài viết nổi bật</p>
+                            <ul>				<li>
+                                    <a href="http://vinpearl-condotel.vn/2012/12/09/su-kien-gioi-thieu-va-tu-van-san-pham-biet-thu-bien/">
+                                        <img width="150" height="150" src="http://vinpearl-condotel.vn/wp-content/uploads/2016/01/khanh-hoa-tren-15-trieu-luot-du-khach-den-tham-quan-nghi-duong-150x150.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="su-kien-gioi-thieu-va-tu-van-san-pham-biet-thu-bien" title="Khánh Hòa: Trên 1,5 triệu lượt du khách đến tham quan nghỉ dưỡng" />					</a>
+                                    <div class="main-news-thumb">
+                                        <a href="http://vinpearl-condotel.vn/2012/12/09/su-kien-gioi-thieu-va-tu-van-san-pham-biet-thu-bien/">Khánh Hòa: Trên 1,5 triệu lượt du khách đến tham quan nghỉ dưỡng</a>
+                                        <time><img src="http://vinpearl-condotel.vn/wp-content/themes/vinpearlcondotel/img/news-icon-time.gif" alt="#"><span>09-12-2012</span></time>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
         </div>
     </div>
 </div>
