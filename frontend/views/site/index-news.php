@@ -30,7 +30,7 @@ use yii\helpers\Url;
                             ?>
                             <li>
                                 <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>">
-                                    <img width="300" height="210"
+                                    <img style="height: 210px"
                                          src="<?= $item->getImage() ?>"
                                          class="attachment-medium size-medium wp-post-image"
                                          alt="cac-du-bds-nghi-duong-cua-vingroup-dang-thi-cong-theo-dung-tien-do"
