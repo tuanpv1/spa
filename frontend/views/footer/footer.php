@@ -56,7 +56,7 @@
         <?php } ?>
         <div class="grid4 footer--text footer-register">
             <p class="utm-trajan"><?= Yii::t('app','Đăng ký nhận bản tin') ?></p>
-            <p class="footer--text-register"><?= Yii::t('app','Xin vui lòng để lại địa chỉ email, chúng tôi sẽ cập nhật những tin tức quan trọng của Vinpearl Condotel tới Quý khách!') ?></p>
+            <p class="footer--text-register"><?= Yii::t('app','Xin vui lòng để lại số điện thoại và địa chỉ email, Thám Tử VIP sẽ liên hệ tư vấn tới Quý khách!') ?></p>
             <form id="subscribe_form">
                 <input id="email_re" type="text" name="subscribe_email" placeholder="Email *" required="required">
                 <span style="color: red" id="error_email"><?= Yii::t('app','Email không đúng định dạng') ?></span>
