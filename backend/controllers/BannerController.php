@@ -118,9 +118,9 @@ class BannerController extends Controller
                 $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
                 $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_banner') . '/';
                 if ($image->saveAs($tmp . $file_name)) {
-                    if(isset($image_old)){
-                        unlink($tmp.$image_old);
-                    }
+//                    if(isset($tmp.$image_old)){
+//                        unlink($tmp.$image_old);
+//                    }
                     $model->image = $file_name;
                 } else {
                     $model->image = $image_old;
