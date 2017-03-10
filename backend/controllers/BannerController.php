@@ -75,7 +75,7 @@ class BannerController extends Controller
             $image = UploadedFile::getInstance($model, 'image');
             if ($image) {
                 $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
-                $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_affiliate_company') . '/';
+                $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_banner') . '/';
                 if ($image->saveAs($tmp . $file_name)) {
                     $model->image = $file_name;
                 }
@@ -118,7 +118,9 @@ class BannerController extends Controller
                 $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
                 $tmp = Yii::getAlias('@backend') . '/web/' . Yii::getAlias('@image_banner') . '/';
                 if ($image->saveAs($tmp . $file_name)) {
-                    unlink($tmp.$image_old);
+                    if(isset($image_old)){
+                        unlink($tmp.$image_old);
+                    }
                     $model->image = $file_name;
                 } else {
                     $model->image = $image_old;
