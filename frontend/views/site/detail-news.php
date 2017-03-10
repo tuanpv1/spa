@@ -48,6 +48,7 @@
                         <?php } ?>
                     </div>
                 </div>
+                <?= \frontend\widgets\RightContent::getRightContent($model->id) ?>
             </div>
         </div>
     <?php } else {

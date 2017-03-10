@@ -26,14 +26,23 @@ class RightContent extends  Widget
 
     }
 
-    public static function getRightContent($id){
-        $listNewsMoi = News::find()
-            ->andWhere(['type' => News::TYPE_NEWS])
-            ->andWhere(['status' => AffiliateCompany::STATUS_ACTIVE])
-            ->andWhere('id <> :id_new',['id_news'=>$id])
-            ->orderBy(['updated_at' => SORT_DESC])
-            ->limit(6)
-            ->all();
+    public static function getRightContent($id = null){
+        if(empty($id)){
+            $listNewsMoi = News::find()
+                ->andWhere(['type' => News::TYPE_NEWS])
+                ->andWhere(['status' => AffiliateCompany::STATUS_ACTIVE])
+                ->orderBy(['updated_at' => SORT_DESC])
+                ->limit(6)
+                ->all();
+        }else{
+            $listNewsMoi = News::find()
+                ->andWhere(['type' => News::TYPE_NEWS])
+                ->andWhere(['status' => AffiliateCompany::STATUS_ACTIVE])
+                ->andWhere('id <> :id_new',['id_news'=>$id])
+                ->orderBy(['updated_at' => SORT_DESC])
+                ->limit(6)
+                ->all();
+        }
         $dt =  new RightContent();
         return $dt->render('//right-menu/right-content',['listNewsMoi'=>$listNewsMoi]);
     }
