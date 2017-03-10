@@ -113,20 +113,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
             'preset' => 'basic'
         ]) ?>
     <?php } ?>
-
-    <?php if($type == News::TYPE_NEWS){ ?>
-        <?= $form->field($model, 'video')->widget(FileInput::classname(), [
-            'options' => [
-                'multiple' => false,
-                'accept' => '.doc,.docx,.pdf'
-            ],
-            'pluginOptions' => [
-                'showPreview' => false,
-                'showUpload' => false,
-            ]
-        ])->label(Yii::t('app','Hồ sơ dự án'));
-        ?>
-    <?php } ?>
+    
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app','Tạo mới') : Yii::t('app','Cập nhật'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
