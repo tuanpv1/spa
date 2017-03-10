@@ -55,7 +55,7 @@
         </div>
         <?php } ?>
         <div class="grid4 footer--text footer-register">
-            <p class="utm-trajan"><?= Yii::t('app','Đăng ký nhận bản tin') ?></p>
+            <p class="utm-trajan"><?= Yii::t('app','Đăng ký tư vấn') ?></p>
             <p class="footer--text-register"><?= Yii::t('app','Xin vui lòng để lại số điện thoại và địa chỉ email, Thám Tử VIP sẽ liên hệ tư vấn tới Quý khách!') ?></p>
             <form id="subscribe_form">
                 <input id="email_re" type="text" name="subscribe_email" placeholder="Email *" required="required">
@@ -70,7 +70,7 @@
     </div>
     <div class="footer-last tac ttu segoeui ovfh">
         COPYRIGHT 2016 CTY THÁM TỬ VIP.
-        <p style="margin:10px 0 0;font-size:11px;"><?= Yii::t('app','Hình ảnh chỉ mang tính minh hoạ cho sản phẩm. Chúng tôi có quyền thay đổi thông tin mà không cần báo trước.') ?></p>
+        <p style="margin:10px 0 0;font-size:11px;"><?= Yii::t('app','Hình ảnh chỉ mang tính minh hoạ cho sản phẩm và dịch vụ. Chúng tôi có quyền thay đổi thông tin mà không cần báo trước.') ?></p>
     </div>
 </div>
 
