@@ -38,7 +38,7 @@ class RightContent extends  Widget
             $listNewsMoi = News::find()
                 ->andWhere(['type' => News::TYPE_NEWS])
                 ->andWhere(['status' => AffiliateCompany::STATUS_ACTIVE])
-                ->andWhere('id <> :id_new',[':id_news'=>$id])
+                ->andWhere('id <> :id_news',[':id_news'=>$id])
                 ->orderBy(['updated_at' => SORT_DESC])
                 ->limit(6)
                 ->all();
