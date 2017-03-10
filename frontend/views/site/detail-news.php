@@ -28,9 +28,9 @@ use common\models\News;
                     <h3><?= $model->title ?></h3>
                     <div class="time-share fluid">
                         <time class="fl"><img
-                                src="http://vinpearl-condotel.vn/wp-content/themes/vinpearlcondotel/img/news-icon-time.gif"
+                                src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif"
                                 alt="#">
-                            <span><?= date('d/m/Y',$model->created_at) ?></span>
+                            <span><?= date('d-m-Y',$model->created_at) ?></span>
                         </time>
                         <ul class="post-share fri">
                             <li>
