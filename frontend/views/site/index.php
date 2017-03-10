@@ -49,7 +49,7 @@ $this->title = 'Thám tử VIP';
             <a href="<?= $gioithieu?Url::to(['site/detail-news','id'=>$gioithieu->id]):'' ?>"><?= Yii::t('app','Giới thiệu') ?></a>
         </li>
         <li>
-            <a href="<?= Url::to(['site/detail-news','id'=>86]) ?>">
+            <a href="<?= $doiNNV?Url::to(['site/detail-news','id'=>$doiNNV->id]):'' ?>">
                 <svg width="80" height="80" style="display: block;">
                     <circle class="circle" cy="40" cx="39" r="38" stroke="#fff" stroke-width="1"
                             fill="transparent"></circle>
@@ -57,7 +57,7 @@ $this->title = 'Thám tử VIP';
                 <img class="posa" src="images/icons/t2.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-2.png" alt="#">
             </a>
-            <a href="<?= Url::to(['site/detail-news','id'=>86]) ?>"><?= Yii::t('app','Đội ngũ nhân viên') ?></a>
+            <a href="<?= Url::to(['site/detail-news','id'=>$doiNNV->id]) ?>"><?= Yii::t('app','Đội ngũ nhân viên') ?></a>
         </li>
         <li>
             <a href="<?= Url::to(['site/investment']) ?>">

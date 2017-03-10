@@ -92,6 +92,10 @@ class SiteController extends Controller
             ->andWhere(['type' => News::TYPE_GIOITHIEU])
             ->orderBy(['updated_at' => SORT_DESC])->one();
 
+        $doiNNV = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
+        ->andWhere(['type' => News::TYPE_TIENDO])
+        ->orderBy(['updated_at' => SORT_DESC])->one();
+
         $duantop = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
             ->andWhere(['type' => News::TYPE_NEWS])
             ->andWhere(['position'=>News::POSITION_TOP])
@@ -103,7 +107,7 @@ class SiteController extends Controller
             ->orderBy(['updated_at' => SORT_DESC])->limit(3)->all();
 
         return $this->render('index', ['listBanner' => $listBanner, 'listNews' => $listNews, 'listDoiTac' => $listDoiTac
-        ,'gioithieu' => $gioithieu,'duantop'=>$duantop , 'duankhac'=>$duankhac ]);
+        ,'gioithieu' => $gioithieu,'duantop'=>$duantop , 'duankhac'=>$duankhac,'doiNNV'=>$doiNNV]);
     }
 
     /**
