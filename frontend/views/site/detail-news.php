@@ -5,15 +5,23 @@
  * Date: 1/17/2017
  * Time: 5:24 PM
  */
+use common\models\News;
+
 ?>
 <div class="main ovfh">
     <?php if (isset($model) && !empty($model)) {
-        /** @var $model \common\models\News */
+        /** @var $model News */
         ?>
         <div class="news-main main-section">
             <div class="main-title tac ttu">
                 <span class="segoeui">Thám Tử VIP </span>
-                <h2 class="utm-trajan">Tin tức</h2>
+                <h2 class="utm-trajan">
+                    <?php
+                    if($model->type == News::TYPE_NEWS){echo "Tin tức thám tử";}
+                    if($model->type == News::TYPE_PROJECT){echo "Thông tin tuyển dụng";}
+                    if($model->type == News::TYPE_COMMON){echo "Dịch vụ cung cấp";}
+                    ?>
+                </h2>
             </div>
             <div class="container main-news-details">
                 <div class="grid8">
