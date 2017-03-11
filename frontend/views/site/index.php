@@ -198,7 +198,6 @@ $this->title = 'Thám tử VIP';
                 <?php } ?>
             </ul>
         </div>
-        <div id="main_td"></div>
         <div class="container ovfh">
             <ul class="main-project-list fluid">
                 <?php if(isset($duankhac) && !empty($duankhac)){
