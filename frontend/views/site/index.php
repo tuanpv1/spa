@@ -151,7 +151,7 @@ $this->title = 'Thám tử VIP';
                     <p class="segoeui"><?= $duantop->short_description ?></p>
                     <img src="images/icons/project-box-bg.png" alt="#" class="posa">
                 </div>
-                <img src="<?= $duantop->getImage() ?>" alt="#" class="posr wow fadeIn" data-wow-duration="1s">
+                <img style="height: 430px" src="<?= $duantop->getImage() ?>" alt="#" class="posr wow fadeIn" data-wow-duration="1s">
             </div>
 
         <?php } else { ?>
@@ -179,7 +179,7 @@ $this->title = 'Thám tử VIP';
                         /** @var $item \common\models\News */
                         ?>
                         <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
-                            <img src="<?= $item->getImage() ?>" alt="#">
+                            <img style="height: 400px" src="<?= $item->getImage() ?>" alt="#">
                             <?php if(!empty($item->title)){ ?>
                                 <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= \common\helpers\CUtils::subString1($item->title,1) ?><br><?= \common\helpers\CUtils::subString1($item->title,strlen(\common\helpers\CUtils::subString1($item->title,1)) + 1) ?></a>
                             <?php } ?>
