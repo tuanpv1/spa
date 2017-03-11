@@ -1,5 +1,6 @@
 <?php
 
+use common\models\AffiliateCompany;
 use common\models\News;
 use common\widgets\Player;
 use kartik\file\FileInput;
@@ -52,7 +53,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
     <?php
     if($model->type == \common\models\News::TYPE_NEWS){ ?>
         <?= $form->field($model,'position')->dropDownList(News::listPosition()) ?>
-<!--        --><?//= $form->field($model, 'source_url')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model,'id_cat')->dropDownList( ArrayHelper::map(AffiliateCompany::findAll(['status'=>AffiliateCompany::STATUS_ACTIVE]),'id','name')) ?>
     <?php }
     ?>
     <?php if ($model->isNewRecord) { ?>

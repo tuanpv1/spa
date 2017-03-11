@@ -18,6 +18,7 @@ use yii\helpers\Url;
  * @property string $content
  * @property string $thumbnail
  * @property integer $type
+ * @property integer $id_cat
  * @property string $tags
  * @property string $short_description
  * @property string $description
@@ -107,7 +108,7 @@ class News extends \yii\db\ActiveRecord
         return [
             [['type', 'view_count', 'like_count', 'comment_count', 'favorite_count', 'honor',
                 'status', 'created_user_id', 'created_at', 'updated_at', 'user_id'
-                , 'category_id', 'published_at','type_video','position'], 'integer'],
+                , 'category_id', 'published_at','type_video','position','id_cat'], 'integer'],
             [['title', 'user_id'], 'required'],
             [['video'], 'file', 'extensions' => ['doc', 'docx','pdf'], 'maxSize' => 1024 * 1024 * 500, 'tooBig' => 'Video vượt quá dung lượng cho phép!'],
             [['thumbnail'], 'required', 'on' => 'create'],
@@ -152,8 +153,8 @@ class News extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
             'user_id' => Yii::t('app', 'User ID'),
             'price' => Yii::t('app', 'Giá'),
-            'category_id' => Yii::t('app', 'Danh mục'),
-            'position' => Yii::t('app','Vị trí')
+            'position' => Yii::t('app','Vị trí'),
+            'id_cat' => Yii::t('app','Danh mục')
         ];
     }
 
@@ -215,6 +216,11 @@ class News extends \yii\db\ActiveRecord
             self::POSITION_TOP => 'Vị trí top',
         ];
         return $list;
+    }
+
+    public static function getCat(){
+        $cat = AffiliateCompany::findAll(['status'=>AffiliateCompany::STATUS_ACTIVE]);
+        return $cat;
     }
 
     /**
