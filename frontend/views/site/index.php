@@ -181,7 +181,7 @@ $this->title = 'Thám tử VIP';
                         <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
                             <img style="height: 400px" src="<?= $item->getImage() ?>" alt="#">
                             <?php if(!empty($item->title)){ ?>
-                                <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= \common\helpers\CUtils::subString1($item->title,1) ?><br><?= \common\helpers\CUtils::subString1($item->title,strlen(\common\helpers\CUtils::subString1($item->title,1)) + 1) ?></a>
+                                <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
                             <?php } ?>
                         </li>
                     <?php }
