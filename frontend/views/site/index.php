@@ -179,49 +179,13 @@ $this->title = 'Thám tử VIP';
                         /** @var $item \common\models\News */
                         ?>
                         <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
-                            <img style="height: 400px" src="<?= $item->getImage() ?>" alt="#">
+                            <img style="height: 200px" src="<?= $item->getImage() ?>" alt="#">
                             <?php if(!empty($item->title)){ ?>
                                 <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
                             <?php } ?>
                         </li>
                     <?php }
-                }else{ ?>
-                <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
-                    <img src="images/p2.jpg" alt="#"><a href="">Vinpearl<br> Empire Condotel</a>
-                </li>
-                <li class="grid4 wow fadeInUp" data-wow-delay=".6s">
-                    <img src="images/p1.jpg" alt="#"><a href="">Vinpearl<br> Riverfront Condotel</a>
-                </li>
-                <li class="grid4 wow fadeInUp" data-wow-delay=".7s">
-                    <img src="images/p3.jpg" alt="#"><!-- <a href="#">vinpearl<br> condotel --></a>
-                </li>
-                <?php } ?>
-            </ul>
-        </div>
-        <div class="container ovfh">
-            <ul class="main-project-list fluid">
-                <?php if(isset($duankhac) && !empty($duankhac)){
-                    foreach($duankhac as $item){
-                        /** @var $item \common\models\News */
-                        ?>
-                        <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
-                            <img style="height: 400px" src="<?= $item->getImage() ?>" alt="#">
-                            <?php if(!empty($item->title)){ ?>
-                                <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
-                            <?php } ?>
-                        </li>
-                    <?php }
-                }else{ ?>
-                    <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
-                        <img src="images/p2.jpg" alt="#"><a href="">Vinpearl<br> Empire Condotel</a>
-                    </li>
-                    <li class="grid4 wow fadeInUp" data-wow-delay=".6s">
-                        <img src="images/p1.jpg" alt="#"><a href="">Vinpearl<br> Riverfront Condotel</a>
-                    </li>
-                    <li class="grid4 wow fadeInUp" data-wow-delay=".7s">
-                        <img src="images/p3.jpg" alt="#"><!-- <a href="#">vinpearl<br> condotel --></a>
-                    </li>
-                <?php } ?>
+                }?>
             </ul>
         </div>
     </div>
