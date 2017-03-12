@@ -45,6 +45,9 @@ use common\models\News;
                                         class="fa fa-google-plus"></i></a></li>
                         </ul>
                     </div>
+                    <div class="the-content">
+                        <?= preg_replace('/(\<img[^>]+)(style\=\"[^\"]+\")([^>]+)(>)/', '${1}${3}${4}', $model->content) ?>
+                    </div>
                 </div>
                 <?= \frontend\widgets\RightContent::getRightContent($model->id) ?>
             </div>
