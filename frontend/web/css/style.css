@@ -22,6 +22,7 @@ html,
 body {
   font-family: 14px Roboto, Arial, sans-serif;
   font-weight: 400;
+  background-color: #EDE7F6;
 }
 table {
   border-collapse: collapse;
