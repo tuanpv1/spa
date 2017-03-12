@@ -16,7 +16,7 @@ use yii\helpers\Url;
             <h2 class="utm-trajan">
                 <?php
                 if($type == News::TYPE_NEWS){
-                    if(isset($cat)){
+                    if(isset($cat) && $cat != null){
                         echo "Tin tức ". strtolower($cat->title);
                     }else{echo " Tin tức thám tử";}}
                 if($type == News::TYPE_PROJECT){echo "Thông tin tuyển dụng";}

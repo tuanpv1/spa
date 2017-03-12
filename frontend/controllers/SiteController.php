@@ -268,6 +268,7 @@ class SiteController extends Controller
 
     public function actionNews($type = News::TYPE_NEWS,$id = null)
     {
+        $cat = null;
         $this->layout = 'main-page.php';
         $listNews = News::find()
             ->andWhere(['status' => News::STATUS_ACTIVE]);
