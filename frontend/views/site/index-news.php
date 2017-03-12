@@ -46,28 +46,7 @@ use yii\helpers\Url;
                                 </div>
                             </li>
                        <?php  }
-                    }else{ ?>
-                    <li>
-                        <a href="http://vinpearl-condotel.vn/2016/06/16/cac-du-bds-nghi-duong-cua-vingroup-dang-thi-cong-theo-dung-tien-do/">
-                            <img width="300" height="210"
-                                 src="http://vinpearl-condotel.vn/wp-content/uploads/2016/06/cac-du-an-bat-dong-san-nghi-duong-cua-vingroup-dang-thi-cong-theo-dung-tien-do-ava-condotel-300x210.jpg"
-                                 class="attachment-medium size-medium wp-post-image"
-                                 alt="cac-du-bds-nghi-duong-cua-vingroup-dang-thi-cong-theo-dung-tien-do"
-                                 title="Các dự án bất động sản nghỉ dưỡng của Vingroup đang thi công theo đúng  tiến độ"
-                                 srcset="http://vinpearl-condotel.vn/wp-content/uploads/2016/06/cac-du-an-bat-dong-san-nghi-duong-cua-vingroup-dang-thi-cong-theo-dung-tien-do-ava-condotel.jpg 300w, http://vinpearl-condotel.vn/wp-content/uploads/2016/06/cac-du-an-bat-dong-san-nghi-duong-cua-vingroup-dang-thi-cong-theo-dung-tien-do-ava-condotel-70x49.jpg 70w"
-                                 sizes="(max-width: 300px) 100vw, 300px"/> </a>
-                        <div class="main-news-thumb">
-                            <a href="http://vinpearl-condotel.vn/2016/06/16/cac-du-bds-nghi-duong-cua-vingroup-dang-thi-cong-theo-dung-tien-do/">Các
-                                dự án bất động sản nghỉ dưỡng của Vingroup đang thi công theo đúng tiến độ</a>
-                            <time><img
-                                    src="http://vinpearl-condotel.vn/wp-content/themes/vinpearlcondotel/img/news-icon-time.gif"
-                                    alt="#"><span>16-06-2016</span></time>
-                            <p>1. VINPEARL PHÚ QUỐC VILLAS (Phú Quốc 3) Dự án tọa lạc tại Khu Bãi Dài &#8211; xã Gành
-                                Dầu &#8211; huyện Phú Quốc &#8211; tỉnh Kiên Giang, bao gồm 340 căn biệt thự
-                                biển.&hellip;</p>
-                        </div>
-                    </li>
-                    <?php }?>
+                    } ?>
                 </ul>
                 <div id="last-comment">
                 </div>

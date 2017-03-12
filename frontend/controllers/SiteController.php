@@ -289,7 +289,7 @@ class SiteController extends Controller
         return $this->render('index-news',[
             'listNews' => $models,
             'pages' => $pages,
-            'type' => $type
+            'type' => $type,
         ]);
     }
 
