@@ -32,6 +32,6 @@ class RenderListNew extends Widget
             ->all();
         $model = AffiliateCompany::findOne($id);
         $st = new RenderListNew();
-        return $st->render('//footer/footer',['listNews'=>$listNews,'model'=>$model]);
+        return $st->render('//footer/render-list-new',['listNews'=>$listNews,'model'=>$model]);
     }
 }
