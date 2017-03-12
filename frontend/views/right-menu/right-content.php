@@ -11,12 +11,7 @@
     <ul>
         <?php if(isset($listArray) && !empty($listArray)){ foreach($listArray as $item){ /** @var \common\models\AffiliateCompany $item */?>
         <li>
-            <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">
-                <img src="<?= $item->getImage() ?>" class="attachment-thumbnail size-thumbnail wp-post-image" alt="<?= $item->name ?>" />
-            </a>
-            <div class="main-news-thumb">
-                <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">Tin tức <?= $item->name ?></a>
-            </div>
+            <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">Tin tức <?= strtolower($item->name) ?></a>
         </li>
         <?php }}else{?>
         <li>Đang cập nhật</li>
