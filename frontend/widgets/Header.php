@@ -29,7 +29,9 @@ class Header extends Widget
             ->andWhere(['status'=>Category::STATUS_ACTIVE])
             ->limit(6)
             ->all();
+
         $header = InfoPublic::findOne(['id'=>1]);
+
         return $this->render('//header/header', [
             'listUnitLink' => self::$listUnitLink,
             'header'=>$header,
@@ -45,7 +47,9 @@ class Header extends Widget
         $doiNNV = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
             ->andWhere(['type' => News::TYPE_TIENDO])
             ->orderBy(['updated_at' => SORT_DESC])->one();
+
         $st = new Header();
+
         return $st->render('//header/menu-header', [
             'doiNNV'=>$doiNNV,
             'gioithieu'=>$gioithieu,
