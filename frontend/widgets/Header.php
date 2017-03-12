@@ -4,6 +4,7 @@ namespace frontend\widgets;
 use common\models\AffiliateCompany;
 use common\models\Category;
 use common\models\InfoPublic;
+use common\models\News;
 use yii\base\Widget;
 
 /**
@@ -33,6 +34,21 @@ class Header extends Widget
             'listUnitLink' => self::$listUnitLink,
             'header'=>$header,
             'cate'=>$cate,
+        ]);
+    }
+
+    public static function getMenuHeader(){
+        $gioithieu = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type' => News::TYPE_GIOITHIEU])
+            ->orderBy(['updated_at' => SORT_DESC])->one();
+
+        $doiNNV = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type' => News::TYPE_TIENDO])
+            ->orderBy(['updated_at' => SORT_DESC])->one();
+        $st = new Header();
+        return $st->render('//header/header', [
+            'doiNNV'=>$doiNNV,
+            'gioithieu'=>$gioithieu,
         ]);
     }
 }
