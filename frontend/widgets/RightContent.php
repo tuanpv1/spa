@@ -43,7 +43,7 @@ class RightContent extends  Widget
                 ->limit(6)
                 ->all();
         }
-        $listArray = AffiliateCompany::findAll(['status'=>AffiliateCompany::STATUS_ACTIVE,'type'=>AffiliateCompany::TYPE_UNITLINK]);
+        $listArray = News::findAll(['status'=>News::STATUS_ACTIVE,'type'=>News::TYPE_COMMON]);
         $dt =  new RightContent();
         return $dt->render('//right-menu/right-content',['listNewsMoi'=>$listNewsMoi,'listArray'=>$listArray]);
     }

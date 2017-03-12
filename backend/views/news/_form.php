@@ -53,7 +53,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
     <?php
     if($model->type == \common\models\News::TYPE_NEWS){ ?>
         <?= $form->field($model,'position')->dropDownList(News::listPosition()) ?>
-        <?= $form->field($model,'id_cat')->dropDownList( ArrayHelper::map(AffiliateCompany::findAll(['status'=>AffiliateCompany::STATUS_ACTIVE,'type'=>AffiliateCompany::TYPE_UNITLINK]),'id','name')) ?>
+        <?= $form->field($model,'id_cat')->dropDownList( ArrayHelper::map(News::findAll(['status'=>News::STATUS_ACTIVE,'type'=>News::TYPE_COMMON]),'id','name')) ?>
     <?php }
     ?>
     <?php if ($model->isNewRecord) { ?>

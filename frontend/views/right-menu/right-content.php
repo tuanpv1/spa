@@ -9,10 +9,13 @@
 <div class="grid4 main-news-sidebar-left">
     <p class="segoeui">Danh mục tin tức</p>
     <ul>
-        <?php if(isset($listArray) && !empty($listArray)){ foreach($listArray as $item){ /** @var \common\models\AffiliateCompany $item */?>
+        <?php if(isset($listArray) && !empty($listArray)){ foreach($listArray as $item){ /** @var \common\models\News $item */?>
         <li>
+            <a href="<?= \yii\helpers\Url::to(['site/index-news','id'=>$item->id]) ?>">
+                <img width="150" height="150" src="<?= $item->getImage() ?>" class="attachment-thumbnail size-thumbnail wp-post-image" alt="<?= $item->title ?>" />
+            </a>
             <div class="main-news-thumb">
-                <a class="tp_100"  href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">Tin tức <?= strtolower($item->name) ?></a>
+                <a href="<?= \yii\helpers\Url::to(['site/index-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
             </div>
         </li>
         <?php }}else{?>

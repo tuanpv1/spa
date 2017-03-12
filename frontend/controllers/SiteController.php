@@ -105,9 +105,9 @@ class SiteController extends Controller
             ->andWhere(['type' => News::TYPE_NEWS])
             ->andWhere(['position'=>News::POSITION_NOTTOP])
             ->orderBy(['updated_at' => SORT_DESC])->limit(3)->all();
-        $listArray = AffiliateCompany::find()
-            ->select('id')->andWhere(['status'=>AffiliateCompany::STATUS_ACTIVE])
-            ->andWhere(['type'=>AffiliateCompany::TYPE_UNITLINK])
+        $listArray = News::find()
+            ->select('id')->andWhere(['status'=>News::STATUS_ACTIVE])
+            ->andWhere(['type'=>News::TYPE_COMMON])
             ->all();
 
         return $this->render('index', ['listBanner' => $listBanner, 'listNews' => $listNews, 'listDoiTac' => $listDoiTac
