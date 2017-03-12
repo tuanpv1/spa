@@ -266,7 +266,7 @@ class SiteController extends Controller
         }
     }
 
-    public function actionNews($type = News::TYPE_NEWS)
+    public function actionNews($type = News::TYPE_NEWS,$id = null)
     {
         $this->layout = 'main-page.php';
         $listNews = News::find()
@@ -277,6 +277,10 @@ class SiteController extends Controller
             $listNews->andWhere(['type'=>News::TYPE_COMMON]);
         }elseif($type == News::TYPE_PROJECT){
             $listNews->andWhere(['type'=>News::TYPE_PROJECT]);
+        }
+        if(isset($id)){
+            $listNews->andWhere(['id_cat'=>$id]);
+            $cat = News::findOne($id);
         }
 
         $listNews->orderBy(['created_at' => SORT_DESC]);
@@ -290,7 +294,9 @@ class SiteController extends Controller
             'listNews' => $models,
             'pages' => $pages,
             'type' => $type,
+            'cat'=>$cat
         ]);
+
     }
 
     public function actionDetailNews($id)

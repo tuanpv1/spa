@@ -15,9 +15,13 @@ use yii\helpers\Url;
             <span class="segoeui">Thám Tử VIP</span>
             <h2 class="utm-trajan">
                 <?php
-                if($type == News::TYPE_NEWS){echo "Tin tức thám tử";}
+                if($type == News::TYPE_NEWS){
+                    if(isset($cat)){
+                        echo "Tin tức ". strtolower($cat->title);
+                    }else{echo " Tin tức thám tử";}}
                 if($type == News::TYPE_PROJECT){echo "Thông tin tuyển dụng";}
                 if($type == News::TYPE_COMMON){echo "Dịch vụ cung cấp";}
+
                 ?>
             </h2>
         </div>
