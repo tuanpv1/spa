@@ -12,11 +12,10 @@
         <?php if(isset($listArray) && !empty($listArray)){ foreach($listArray as $item){ /** @var \common\models\AffiliateCompany $item */?>
         <li>
             <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">
-                <img width="150" height="150" src="<?= $item->getImage() ?>" class="attachment-thumbnail size-thumbnail wp-post-image" alt="<?= $item->title ?>" />
+                <img width="150" height="150" src="<?= $item->getImage() ?>" class="attachment-thumbnail size-thumbnail wp-post-image" alt="<?= $item->name ?>" />
             </a>
             <div class="main-news-thumb">
                 <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">Tin tức <?= $item->name ?></a>
-                <time><img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif" alt="#"><span><?= date('d-m-Y',$item->created_at) ?></span></time>
             </div>
         </li>
         <?php }}else{?>
