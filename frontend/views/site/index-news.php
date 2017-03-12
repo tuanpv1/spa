@@ -10,6 +10,7 @@ use yii\helpers\Url;
 
 ?>
 <div class="main ovfh">
+    <?= \frontend\widgets\Header::getMenuHeader() ?>
     <div class="news-main main-section">
         <div class="main-title tac ttu">
             <span class="segoeui">Thám Tử VIP</span>

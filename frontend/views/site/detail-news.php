@@ -9,6 +9,7 @@ use common\models\News;
 
 ?>
 <div class="main ovfh">
+    <?= \frontend\widgets\Header::getMenuHeader() ?>
     <?php if (isset($model) && !empty($model)) {
         /** @var $model News */
         ?>
@@ -43,17 +44,6 @@ use common\models\News;
                                 <a href="https://plus.google.com/share?url=<?= $_SERVER['REQUEST_URI'] ?>"><i
                                         class="fa fa-google-plus"></i></a></li>
                         </ul>
-                    </div>
-                    <div class="the-content">
-                        <?= preg_replace('/(\<img[^>]+)(style\=\"[^\"]+\")([^>]+)(>)/', '${1}${3}${4}', $model->content) ?>
-                        <?php if($model->video){ ?>
-                            <p class="tp_download">
-                                <a href="<?= Yii::getAlias('@web') . DIRECTORY_SEPARATOR .Yii::getAlias('@image_new').DIRECTORY_SEPARATOR.$model->video ?>">
-                                    Tải về hồ sơ dự án
-                                    <i class="fa fa-download" aria-hidden="true"></i>
-                                </a>
-                            </p>
-                        <?php } ?>
                     </div>
                 </div>
                 <?= \frontend\widgets\RightContent::getRightContent($model->id) ?>

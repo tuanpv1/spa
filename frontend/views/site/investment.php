@@ -11,6 +11,7 @@ use yii\helpers\Url;
 ?>
 <!--<div class="main ovfh">-->
 <div class="main ovfh">
+    <?= \frontend\widgets\Header::getMenuHeader() ?>
     <div class="main-section container">
         <div class="main-title tac ttu">
             <span class="segoeui">Thám Tử 3s</span>
