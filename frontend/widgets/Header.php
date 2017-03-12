@@ -46,7 +46,7 @@ class Header extends Widget
             ->andWhere(['type' => News::TYPE_TIENDO])
             ->orderBy(['updated_at' => SORT_DESC])->one();
         $st = new Header();
-        return $st->render('//header/header', [
+        return $st->render('//header/menu-header', [
             'doiNNV'=>$doiNNV,
             'gioithieu'=>$gioithieu,
         ]);
