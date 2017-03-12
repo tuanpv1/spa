@@ -11,9 +11,9 @@
     <ul>
         <?php if(isset($listArray) && !empty($listArray)){ foreach($listArray as $item){ /** @var \common\models\AffiliateCompany $item */?>
         <li>
-            <div class="main-news-thumb">
-            <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">Tin tức <?= strtolower($item->name) ?></a>
-            </div>
+            <span>
+                <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">Tin tức <?= strtolower($item->name) ?></a>
+            </span>
         </li>
         <?php }}else{?>
         <li>Đang cập nhật</li>
