@@ -11,11 +11,11 @@
     <ul>
         <?php if(isset($listArray) && !empty($listArray)){ foreach($listArray as $item){ /** @var \common\models\News $item */?>
         <li>
-            <a href="<?= \yii\helpers\Url::to(['site/index-news','id'=>$item->id]) ?>">
+            <a href="<?= \yii\helpers\Url::to(['site/news','id'=>$item->id]) ?>">
                 <img width="150" height="150" src="<?= $item->getImage() ?>" class="attachment-thumbnail size-thumbnail wp-post-image" alt="<?= $item->title ?>" />
             </a>
             <div class="main-news-thumb">
-                <a href="<?= \yii\helpers\Url::to(['site/index-news','id'=>$item->id]) ?>">Tin tức <?= strtolower($item->title) ?></a>
+                <a href="<?= \yii\helpers\Url::to(['site/news','id'=>$item->id]) ?>">Tin tức <?= strtolower($item->title) ?></a>
                 <time><img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif" alt="#"><span>Cập nhật liên tục</span></time>
             </div>
         </li>
