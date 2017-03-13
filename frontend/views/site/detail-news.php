@@ -8,6 +8,10 @@
 use common\models\News;
 
 ?>
+<style>
+    .fb_iframe_widget,.fb_iframe_widget span, .fb_iframe_widget span iframe[style] { min-width: 100% !important; width: 100% !important;
+    }
+</style>
 <div class="main ovfh">
     <?= \frontend\widgets\Header::getMenuHeader() ?>
     <?php if (isset($model) && !empty($model)) {
@@ -48,6 +52,8 @@ use common\models\News;
                     <div class="the-content">
                         <?= preg_replace('/(\<img[^>]+)(style\=\"[^\"]+\")([^>]+)(>)/', '${1}${3}${4}', $model->content) ?>
                     </div>
+                    <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+                    <div class="fb-comments" xid="<?php echo $model->id; ?> data-numposts="20" data-colorscheme="light" data-version="v2.3"></div>
                 </div>
                 <?= \frontend\widgets\RightContent::getRightContent($model->id) ?>
             </div>
