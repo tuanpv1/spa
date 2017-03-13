@@ -16,7 +16,7 @@
             </a>
             <div class="main-news-thumb">
                 <a href="<?= \yii\helpers\Url::to(['site/news','id'=>$item->id]) ?>">Tin tức <?= strtolower($item->title) ?></a>
-                <time><img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif" alt="#"><span>Cập nhật liên tục</span></time>
+                <time><img style="width: 18px" src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif" alt="#"><span>Cập nhật liên tục</span></time>
             </div>
         </li>
         <?php }}else{?>
@@ -32,7 +32,7 @@
             </a>
             <div class="main-news-thumb">
                 <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
-                <time><img src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif" alt="#"><span><?= date('d-m-Y',$item->created_at) ?></span></time>
+                <time><img style="width: 18px" src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif" alt="#"><span><?= date('d-m-Y',$item->created_at) ?></span></time>
             </div>
         </li>
         <?php }}else{?>
