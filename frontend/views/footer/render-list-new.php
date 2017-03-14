@@ -41,7 +41,9 @@ use yii\helpers\Url;
             } ?>
         </ul>
     </div>
-    <div class="tac view-more-page grid12">
-        <a href="<?= Url::toRoute(['site/news','id'=>$model->id]) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem thêm<span></span></a>
+    <div class="grid12">
+        <div class="tac view-more-page">
+            <a href="<?= Url::toRoute(['site/news','id'=>$model->id]) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem thêm<span></span></a>
+        </div>
     </div>
 </div>
