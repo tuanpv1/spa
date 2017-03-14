@@ -9,9 +9,9 @@ use yii\helpers\Url;
 /** @var \common\models\News $model */
 ?>
 
-<div style="margin-top: 20px" class="main-benef main-section">
+<div class="main-benef main-section">
     <div  class="main-title tac ttu">
-        <span class="segoeui">Thám Tử VIP</span>
+        <span style="top: 20px" class="segoeui">Thám Tử VIP</span>
         <h2 class="utm-trajan">Tin tức <?= $model?$model->title:'' ?></h2>
     </div>
     <div class="grid12">
