@@ -9,12 +9,12 @@ use yii\helpers\Url;
 /** @var \common\models\News $model */
 ?>
 <div class="main-benef main-section">
-    <div class="main-title tac ttu">
+    <div  class="main-title tac ttu">
         <span class="segoeui">Thám Tử VIP</span>
         <h2 class="utm-trajan">Tin tức <?= $model?$model->title:'' ?></h2>
     </div>
     <div class="container">
-        <div>
+        <div class="owl-carousel">
             <?php if (isset($listNews) && !empty($listNews)) {
                 foreach ($listNews as $item) {
                     /** @var $item \common\models\News */
