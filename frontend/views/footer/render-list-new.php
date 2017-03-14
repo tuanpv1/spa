@@ -14,30 +14,30 @@ use yii\helpers\Url;
         <span style="top: 20px" class="segoeui">Thám Tử VIP</span>
         <h2 class="utm-trajan">Tin tức <?= $model?$model->title:'' ?></h2>
     </div>
-    <div class="grid12">
-            <?php if (isset($listNews) && !empty($listNews)) {
-                foreach ($listNews as $item) {
-                    /** @var $item \common\models\News */
-                    ?>
-                    <div class="grid3">
-                        <div class="main-benef--box">
-                            <div class="benef--box-img">
-                                <a href="javascript:;" rel="nofollow">
-                                    <img width="96" height="96" src="<?= $item->getImage() ?>"
-                                         class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-                                         alt="<?= $item->title ?>" srcset="" sizes="(max-width: 96px) 100vw, 96px"/>
-                                </a>
-                            </div>
-                            <div class="benef--box-title">
-                                <a href="<?= Url::to(['site/detail-news','id'=>$item->id])?>"><?= $item->title ?></a>
-                            </div>
-                            <div class="benef-box-content">
-                                <?= \common\helpers\CUtils::subString(trim($item->short_description), 300) ?>
-                            </div>
+    <div>
+        <?php if (isset($listNews) && !empty($listNews)) {
+            foreach ($listNews as $item) {
+                /** @var $item \common\models\News */
+                ?>
+                <div class="grid3">
+                    <div class="main-benef--box">
+                        <div class="benef--box-img">
+                            <a href="javascript:;" rel="nofollow">
+                                <img width="96" height="96" src="<?= $item->getImage() ?>"
+                                     class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+                                     alt="<?= $item->title ?>" srcset="" sizes="(max-width: 96px) 100vw, 96px"/>
+                            </a>
+                        </div>
+                        <div class="benef--box-title">
+                            <a href="<?= Url::to(['site/detail-news','id'=>$item->id])?>"><?= $item->title ?></a>
+                        </div>
+                        <div class="benef-box-content">
+                            <?= \common\helpers\CUtils::subString(trim($item->short_description), 300) ?>
                         </div>
                     </div>
-                <?php }
-            } ?>
+                </div>
+            <?php }
+        } ?>
     </div>
     <div class="grid12">
         <div class="tac view-more-page">
