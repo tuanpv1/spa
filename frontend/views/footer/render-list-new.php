@@ -24,10 +24,8 @@ use yii\helpers\Url;
                         <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>">
                             <?= $item->title ?>
                         </a>
-                    </li>
-                    <div class="benef-box-content">
                         <?= \common\helpers\CUtils::subString(trim($item->short_description), 200) ?>
-                    </div>
+                    </li>
                 <?php }
             } ?>
         </ul>
