@@ -20,7 +20,7 @@ use yii\helpers\Url;
                 ?>
                 <div class="grid3">
                     <a class="text-center" href="javascript:;" rel="nofollow">
-                        <img style="width: 100%" src="<?= $item->getImage() ?>"
+                        <img style="width: 90%;height: 100px" src="<?= $item->getImage() ?>"
                              alt="<?= $item->title ?>"/>
                     </a>
                     <div class="benef--box-title">
