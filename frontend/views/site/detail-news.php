@@ -32,7 +32,7 @@ use common\models\News;
                 <div class="grid8">
                     <h3><?= $model->title ?></h3>
                     <div class="time-share fluid">
-                        <time class="fl"><img
+                        <time class="fl"><img style="width: 18px"
                                 src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif"
                                 alt="#">
                             <span><?= date('d-m-Y',$model->created_at) ?></span>
