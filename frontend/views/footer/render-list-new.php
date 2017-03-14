@@ -8,7 +8,6 @@
 use yii\helpers\Url;
 /** @var \common\models\News $model */
 ?>
-<div id="main_da"></div>
 <div  class="main-project main-section">
     <div class="main-title tac ttu">
         <span class="segoeui">Thám Tử VIP</span>
