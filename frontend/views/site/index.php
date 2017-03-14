@@ -106,3 +106,4 @@ $this->title = 'Thám tử VIP';
         }
     }
     ?>
+</div>
