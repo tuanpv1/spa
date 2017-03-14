@@ -16,7 +16,7 @@ $this->title = 'Thám tử VIP';
                         ?>
                         <li>
                             <img class="img-large" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
-                            <img class="img-medium" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
+                            <img height="785px" class="img-medium" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
                         </li>
                     <?php }
                 } else { ?>
