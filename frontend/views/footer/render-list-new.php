@@ -20,7 +20,7 @@ use yii\helpers\Url;
                 ?>
                 <div class="grid3">
                     <a class="text-center" href="javascript:;" rel="nofollow">
-                        <img style="width: 90%;height: 100px" src="<?= $item->getImage() ?>"
+                        <img style="width: 90%;height: 250px" src="<?= $item->getImage() ?>"
                              alt="<?= $item->title ?>"/>
                     </a>
                     <div class="benef--box-title">
@@ -33,7 +33,7 @@ use yii\helpers\Url;
             <?php }
         } ?>
     </div>
-    <div class="tac view-more-page">
+    <div class="grid12 tac view-more-page">
         <a href="<?= Url::toRoute(['site/news','id'=>$model->id]) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem thêm<span></span></a>
     </div>
 </div>
