@@ -30,58 +30,7 @@ use yii\helpers\Url;
                             <img src="<?= $item->getImage() ?>" alt="">
                         </a>
                     <?php }
-                } else { ?>
-                    <a class="item" href="" target="_blank" data-id="vinhomes">
-                        <img src="images/icons/vinhomes.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vinpearl">
-                        <img src="images/icons/vinpearl.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vinpearlland">
-                        <img src="images/icons/vinpearlland.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vinmec">
-                        <img src="images/icons/vinmec.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vinschool">
-                        <img src="images/icons/vinschool.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vincom">
-                        <img src="images/icons/vincom.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vincommerce">
-                        <img src="images/icons/vincommerce.png" alt=""/>
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="adayroi">
-                        <img src="images/icons/adayroi.png" alt=""/>
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vinmart">
-                        <img src="images/icons/vinmart.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vinds">
-                        <img src="images/icons/vinds.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vinpro">
-                        <img src="images/icons/vinpro.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vineco">
-                        <img src="images/icons/vineco.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="almaz">
-                        <img src="images/icons/almaz.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vinlinks">
-                        <img src="images/icons/vinlinks.png" alt="">
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="quythientam">
-                        <img src="images/icons/quythientam.png" alt=""/>
-                    </a>
-                    <a class="item" href="" target="_blank" data-id="vingroupcard">
-                        <img src="images/icons/vingroupcard.png" alt="">
-                    </a>
-                <?php } ?>
-
-
+                } ?>
             </div>
         </div>
         <div id="PnL_logos_2_container" class="slide-container">
@@ -161,6 +110,6 @@ use yii\helpers\Url;
 </div>
 <div class="header posf">
     <div class="tac posr">
-        <div class="menu-rps-992"></div>
+        <div class="menu-rps-992"><a href="#"><i class="fa fa-bars"></i></a></div>
     </div>
 </div>
