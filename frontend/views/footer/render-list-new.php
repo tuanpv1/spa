@@ -23,9 +23,7 @@ use yii\helpers\Url;
                         <p>
                             <?= \common\helpers\CUtils::subString(trim($item->short_description), 300) ?>
                         </p>
-                        <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>">
-                            <img style="height: 200px" src="<?= $item->getImage() ?>" alt="<?= $item->title ?>">
-                        </a>
+                        <img style="height: 200px" src="<?= $item->getImage() ?>" alt="<?= $item->title ?>">
                         <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>">
                             <?= $item->title ?>
                         </a>
