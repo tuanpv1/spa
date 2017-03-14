@@ -1,10 +1,6 @@
 <?php
  /** @var $footer \common\models\InfoPublic*/
 ?>
-<div class="main-partner main-section ovfh">
-
-</div>
-</div>
 <div id="main_contact" class="footer">
     <div class="container ovfh">
         <?php if(isset($footer) && !empty($footer)){ ?>
