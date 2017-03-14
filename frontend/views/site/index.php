@@ -90,9 +90,7 @@ $this->title = 'Thám tử VIP';
                             </div>
                         </div>
                     <?php }
-                } else { ?>
-                    <?= $this->render('news') ?>
-                <?php } ?>
+                } ?>
             </div>
         </div>
         <div class="tac view-more-page">
