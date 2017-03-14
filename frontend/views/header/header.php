@@ -94,18 +94,6 @@ use yii\helpers\Url;
             <div id="vingroup_line__left">
                 Trang thông tin điện tử Thám Tử VIP
             </div>
-<!--            <div id="vingroup_line__right">-->
-<!--                <div id="vingroup_line__right__dropdown">-->
-<!--                    <div id="vingroup_line__right__dropdown__text">-->
-<!--                        <a href="" target="_blank" id="vingroup_line__right__dropdown__text__link">&nbsp;</a>-->
-<!--                        Ngôn ngữ-->
-<!--                        <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></div>-->
-<!--                    <div id="vingroup_line__right__dropdown__menu">-->
-<!--                        <a class="item" target="_blank" href="">Tiếng việt</a>-->
-<!--                        <a class="item" target="_blank" href="">English</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
     </div>
 
