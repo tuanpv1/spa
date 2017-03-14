@@ -29,6 +29,7 @@ class RenderListNew extends Widget
             ->andWhere(['status'=>News::STATUS_ACTIVE])
             ->andWhere(['type'=>News::TYPE_NEWS])
             ->andWhere(['id_cat'=>$id])
+            ->limit(4)
             ->all();
         $model = News::findOne($id);
         $st = new RenderListNew();
