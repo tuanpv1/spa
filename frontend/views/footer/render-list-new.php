@@ -19,12 +19,11 @@ use yii\helpers\Url;
                 /** @var $item \common\models\News */
                 ?>
                 <div class="grid3">
-                    <div class="benef--box-img">
-                        <a href="javascript:;" rel="nofollow">
-                            <img width="96" height="96" src="<?= $item->getImage() ?>"
-                                 class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-                                 alt="<?= $item->title ?>" srcset="" sizes="(max-width: 96px) 100vw, 96px"/>
-                        </a>
+                    <a href="javascript:;" rel="nofollow">
+                        <img width="96" height="96" src="<?= $item->getImage() ?>"
+                             class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+                             alt="<?= $item->title ?>" srcset="" sizes="(max-width: 96px) 100vw, 96px"/>
+                    </a>
                     </div>
                     <div class="benef--box-title">
                         <a href="<?= Url::to(['site/detail-news','id'=>$item->id])?>"><?= $item->title ?></a>
