@@ -10,7 +10,7 @@ use yii\helpers\Url;
 ?>
 <div>
     <div class="main-title tac ttu">
-        <h2 class="utm-trajan"><a href="<?= Url::toRoute(['site/index','id'=>$model->id]) ?>">Tin tức <?= $model?$model->title:'' ?></a></h2>
+        <h2 class="utm-trajan"><a href="<?= Url::toRoute(['site/news','id'=>$model->id]) ?>">Tin tức <?= $model?$model->title:'' ?></a></h2>
     </div>
     <div class="container ovfh">
         <ul class="main-project-list fluid">
