@@ -9,7 +9,7 @@ use yii\helpers\Url;
 /** @var \common\models\News $model */
 ?>
 
-<div class="main-benef main-section">
+<div style="padding-top: 10px" class="main-benef main-section">
     <div  class="main-title tac ttu">
         <span class="segoeui">Thám Tử VIP</span>
         <h2 class="utm-trajan">Tin tức <?= $model?$model->title:'' ?></h2>
