@@ -50,7 +50,7 @@ use common\models\News;
                         </ul>
                     </div>
                     <div class="the-content">
-                        <?= preg_replace('/(\<img[^>]+)(style\=\"[^\"]+\")([^>]+)(>)/', '${1}${3}${4}', $model->content) ?>
+                        <?= $model->content ?>
                     </div>
                     <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
                     <div class="fb-comments" xid="<?php echo $model->id; ?> data-numposts="20" data-colorscheme="light" data-version="v2.3"></div>
