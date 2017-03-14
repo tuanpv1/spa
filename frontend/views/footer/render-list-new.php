@@ -11,7 +11,7 @@ use yii\helpers\Url;
 <div>
     <div class="main-title tac ttu">
         <span class="segoeui">Thám Tử VIP</span>
-        <h2 class="utm-trajan">Tin tức <?= $model?$model->title:'' ?></h2>
+        <h2 class="utm-trajan"><a href="<?= Url::toRoute(['site/index','id'=>$model->id]) ?>">Tin tức <?= $model?$model->title:'' ?></a></h2>
     </div>
     <div class="container ovfh">
         <ul class="main-project-list fluid">
@@ -29,5 +29,8 @@ use yii\helpers\Url;
                 <?php }
             } ?>
         </ul>
+    </div>
+    <div class="tac view-more-page">
+        <a href="<?= Url::toRoute(['site/index','id'=>$model->id]) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem thêm<span></span></a>
     </div>
 </div>
