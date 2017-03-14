@@ -15,12 +15,11 @@ use yii\helpers\Url;
         <h2 class="utm-trajan">Tin tức <?= $model?$model->title:'' ?></h2>
     </div>
     <div class="grid12">
-        <ul class="list-agency">
             <?php if (isset($listNews) && !empty($listNews)) {
                 foreach ($listNews as $item) {
                     /** @var $item \common\models\News */
                     ?>
-                    <li class="grid3">
+                    <div class="grid3">
                         <div class="main-benef--box">
                             <div class="benef--box-img">
                                 <a href="javascript:;" rel="nofollow">
@@ -36,10 +35,9 @@ use yii\helpers\Url;
                                 <?= \common\helpers\CUtils::subString(trim($item->short_description), 300) ?>
                             </div>
                         </div>
-                    </li>
+                    </div>
                 <?php }
             } ?>
-        </ul>
     </div>
     <div class="grid12">
         <div class="tac view-more-page">
