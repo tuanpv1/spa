@@ -23,10 +23,10 @@ use yii\helpers\Url;
                         <img style="height: 300px" src="<?= $item->getImage() ?>" alt="#">
                         <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>">
                             <?= $item->title ?>
-                            <div class="benef-box-content" style="color: white">
-                                <?= \common\helpers\CUtils::subString(trim($item->short_description), 200) ?>
-                            </div>
                         </a>
+                        <div class="benef-box-content" style="color: white">
+                            <?= \common\helpers\CUtils::subString(trim($item->short_description), 200) ?>
+                        </div>
                     </li>
                 <?php }
             } ?>
