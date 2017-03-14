@@ -8,7 +8,7 @@
 use yii\helpers\Url;
 /** @var \common\models\News $model */
 ?>
-<div class="main-benef main-section">
+<div id="main_about" class="main-invest ovfh">
     <div id="main_lidt_<?= $model->id ?>"  class="main-title tac ttu">
         <span class="segoeui">Thám Tử VIP</span>
         <h2 class="utm-trajan">Tin tức <?= $model?$model->title:'' ?></h2>
@@ -40,7 +40,7 @@ use yii\helpers\Url;
             <?php }
         } ?>
     </div>
-    <div class="tac view-more-page">
+    <div class="tac view-more-page container">
         <a href="<?= Url::toRoute(['site/news','id'=>$model->id]) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem thêm<span></span></a>
     </div>
 </div>
