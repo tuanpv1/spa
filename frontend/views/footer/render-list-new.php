@@ -19,7 +19,7 @@ use yii\helpers\Url;
                 foreach ($listNews as $item) {
                     /** @var $item \common\models\News */
                     ?>
-                    <div class="item">
+                    <div class="col-md-4">
                         <div class="main-benef--box">
                             <div class="benef--box-img">
                                 <a href="javascript:;" rel="nofollow">
