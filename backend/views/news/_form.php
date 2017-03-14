@@ -105,8 +105,12 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
     <?= $form->field($model, 'short_description')->textarea(['rows' => 4]) ?>
 
 
-    <?= $form->field($model, 'description')->textarea(['rows'=>6]) ?>
-
+    <?= $form->field($model, 'content')->widget(\common\widgets\CKEditor::className(), [
+        'options' => [
+            'rows' => 8,
+        ],
+        'preset' => 'basic'
+    ]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app','Tạo mới') : Yii::t('app','Cập nhật'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
