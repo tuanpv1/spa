@@ -20,7 +20,7 @@ use yii\helpers\Url;
                     /** @var $item \common\models\News */
                     ?>
                     <li class="grid3 wow fadeInUp" data-wow-delay=".5s">
-                        <?= \common\helpers\CUtils::subString(trim($item->short_description), 300) ?><br>
+                        <?= \common\helpers\CUtils::subString(trim($item->short_description), 200) ?><br>
                         <img style="height: 200px" src="<?= $item->getImage() ?>" alt="<?= $item->title ?>">
                         <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>">
                             <?= $item->title ?>
