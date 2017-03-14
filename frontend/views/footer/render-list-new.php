@@ -14,7 +14,7 @@ use yii\helpers\Url;
         <span class="segoeui">Thám Tử VIP</span>
         <h2 class="utm-trajan">Tin tức <?= $model?$model->title:'' ?></h2>
     </div>
-    <div class="row">
+    <div>
         <div class="container">
             <ul class="list-agency">
                 <?php if (isset($listNews) && !empty($listNews)) {
@@ -43,11 +43,9 @@ use yii\helpers\Url;
             </ul>
         </div>
     </div>
-    <div class="row">
-        <div class="container">
-            <div class="tac view-more-page">
-                <a href="<?= Url::toRoute(['site/news','id'=>$model->id]) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem thêm<span></span></a>
-            </div>
+    <div>
+        <div class="tac view-more-page">
+            <a href="<?= Url::toRoute(['site/news','id'=>$model->id]) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem thêm<span></span></a>
         </div>
     </div>
 </div>
