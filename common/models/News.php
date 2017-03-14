@@ -154,7 +154,7 @@ class News extends \yii\db\ActiveRecord
             'user_id' => Yii::t('app', 'User ID'),
             'price' => Yii::t('app', 'Giá'),
             'position' => Yii::t('app','Vị trí'),
-            'id_cat' => Yii::t('app','Danh mục')
+            'id_cat' => Yii::t('app','Thuộc danh mục')
         ];
     }
 
