@@ -14,7 +14,7 @@ $this->title = 'Thám tử VIP';
                     foreach ($listBanner as $item) {
                         /** @var $item \common\models\Banner */
                         ?>
-                        <li style="height: 560px">
+                        <li>
                             <img class="img-large" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
                             <img class="img-medium" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
                         </li>

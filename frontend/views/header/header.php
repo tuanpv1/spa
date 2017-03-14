@@ -110,6 +110,6 @@ use yii\helpers\Url;
 </div>
 <div class="header posf">
     <div class="tac posr">
-        <div class="menu-rps-992"><a href="#"><i class="fa fa-bars"></i></a></div>
+        <div class="menu-rps-992"></div>
     </div>
 </div>
