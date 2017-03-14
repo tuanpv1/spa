@@ -44,7 +44,7 @@ $this->title = 'Thám tử VIP';
                 ?>
                 <div class="grid4">
                     <div class="posr">
-                        <img class="animation-flower" src="<?= $gioithieu->getImage() ?>" alt="#">
+                        <img src="<?= $gioithieu->getImage() ?>" alt="#">
                     </div>
                 </div>
                 <div class="grid8">
