@@ -14,7 +14,7 @@ use yii\helpers\Url;
         <h2 class="utm-trajan">Tin tức <?= $model?$model->title:'' ?></h2>
     </div>
     <div class="container">
-        <div id="owl-example-<?= $model->id ?>" class="owl-carousel">
+        <div id="owl-example-<?= $model->id ?>" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
             <?php if (isset($listNews) && !empty($listNews)) {
                 foreach ($listNews as $item) {
                     /** @var $item \common\models\News */
