@@ -61,15 +61,6 @@ $visible_village = false;
                         ],
                         [
                             'class' => '\kartik\grid\DataColumn',
-                            'attribute' => 'id_cat',
-                            'format' => 'html',
-                            'value' => function ($model, $key, $index, $widget) {
-                                /** @var $model \common\models\News */
-                                return News::findOne($model->id_cat)->title;
-                            },
-                        ],
-                        [
-                            'class' => '\kartik\grid\DataColumn',
                             'attribute' => 'status',
                             'format' => 'html',
                             'value' => function ($model, $key, $index, $widget) {
