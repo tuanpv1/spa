@@ -36,7 +36,7 @@ AppAsset::register($this);
         <?php
 
         NavBar::begin([
-            'brandLabel' => '<img width="40px" src="' . Url::to("@web/img/logo-big.png") . '" alt="logo" class="logo-default"/>',
+            'brandLabel' => '<img width="80px" src="' . Url::to("@web/img/logo-big.png") . '" alt="logo" class="logo-default"/>',
             'brandUrl' => Yii::$app->homeUrl,
             'brandOptions' => [
                 'class' => 'page-logo'
