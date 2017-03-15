@@ -19,20 +19,7 @@ $this->title = 'Thám tử VIP';
                             <img class="img-medium" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
                         </li>
                     <?php }
-                } else { ?>
-                    <li>
-                        <img class="img-large" src="images/banners/bn3.jpg" alt="#">
-                        <img class="img-medium" src="images/banners/bn3.jpg" alt="#">
-                    </li>
-                    <li>
-                        <img class="img-large" src="images/banners/bn2.jpg" alt="#">
-                        <img class="img-medium" src="images/banners/bn2.jpg" alt="#">
-                    </li>
-                    <li>
-                        <img class="img-large" src="images/banners/Banner1.jpg" alt="#">
-                        <img class="img-medium" src="images/banners/Banner1.jpg" alt="#">
-                    </li>
-                <?php } ?>
+                } ?>
             </ul>
         </div>
     </div>
@@ -57,7 +44,6 @@ $this->title = 'Thám tử VIP';
                     <p class="segoeuil wow fadeIn segoeui taj" data-wow-duratioon="1s"
                        data-wow-delay="1s"><?= $gioithieu->short_description ?></p>
                 </div>
-
             <?php } ?>
         </div>
     </div>

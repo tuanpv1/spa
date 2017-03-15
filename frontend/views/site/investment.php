@@ -37,8 +37,10 @@ use yii\helpers\Url;
                                     <a href="<?=\yii\helpers\Url::to(['site/detail-news','id'=>$item->id])?>">
                                         <?= $item->title ?>
                                     </a>
-                                        <span></span></h3>
-                                <div><p><?= $item->description ?></p>
+                                    <span></span>
+                                </h3>
+                                <div>
+                                    <p><?= $item->content ?></p>
                                 </div>
                             </div>
                         </div>
