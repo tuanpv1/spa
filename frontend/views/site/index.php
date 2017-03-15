@@ -35,7 +35,7 @@ $this->title = 'Thám tử VIP';
                     </div>
                 </div>
                 <div class="grid8">
-                    <p><span style="font-size: medium" class="wow fadeInLeft" data-wow-duration="2s"><?= $gioithieu->title ?><span></p>
+                    <p><span style="font-size: 30px" class="wow fadeInLeft" data-wow-duration="2s"><?= $gioithieu->title ?><span></p>
                     <p class="segoeuil wow fadeIn segoeui taj" data-wow-duratioon="1s"
                        data-wow-delay="1s"><?= $gioithieu->short_description ?></p>
                 </div>
