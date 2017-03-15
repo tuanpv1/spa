@@ -35,7 +35,7 @@ $this->title = 'Thám tử VIP';
                     </div>
                 </div>
                 <div class="grid8">
-                    <p class="UTMYenTu">
+                    <p>
                         <span class="wow fadeInLeft"
                               data-wow-duration="2s"><?= \common\helpers\CUtils::subString1($gioithieu->title, 50) ?></span>
                         <span class="tar wow fadeInLeft" data-wow-duration="2s"
