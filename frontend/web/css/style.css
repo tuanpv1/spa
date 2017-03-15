@@ -2605,12 +2605,14 @@ a img.aligncenter {
     top: 0;
     left: 0;
     bottom: 0;
+    width: auto;
     height: 110px;
     overflow: hidden;
   }
   .news-main .container .grid8 ul li {
     position: relative;
     margin-bottom: 64px;
+    padding-left: 0;
     padding-top: 120px;
   }
 }

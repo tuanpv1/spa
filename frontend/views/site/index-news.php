@@ -34,7 +34,7 @@ use yii\helpers\Url;
                             /** @var $item \common\models\News */
                             ?>
                             <li>
-                                <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>">
+                                <a class="text-center" href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>">
                                     <img
                                          src="<?= $item->getImage() ?>"
                                          class="attachment-medium size-medium wp-post-image"
