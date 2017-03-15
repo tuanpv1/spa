@@ -40,7 +40,7 @@ use yii\helpers\Url;
                                     <span></span>
                                 </h3>
                                 <div>
-                                    <p><?= $item->content ?></p>
+                                    <p><?= $item->short_description ?></p>
                                 </div>
                             </div>
                         </div>
