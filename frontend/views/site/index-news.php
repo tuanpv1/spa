@@ -35,16 +35,17 @@ use yii\helpers\Url;
                             ?>
                             <li>
                                 <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>">
-                                    <img style="height: 210px"
+                                    <img style="height: 50%"
                                          src="<?= $item->getImage() ?>"
                                          class="attachment-medium size-medium wp-post-image"
                                          alt="<?= $item->title ?>"
                                          title="<?= $item->title ?>"
                                          srcset="<?= $item->getImage() ?> 70w"
-                                         sizes="(max-width: 300px) 100vw, 300px"/> </a>
+                                         sizes="(max-width: 300px) 100vw, 300px"/>
+                                </a>
                                 <div class="main-news-thumb">
                                     <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
-                                    <time><img style="width: 18px"
+                                    <time><img style="height: 50%"
                                             src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif"
                                             alt="#"><span><?= date('d-m-Y', $item->created_at) ?></span></time>
                                     <p><?= $item->short_description ?></p>
