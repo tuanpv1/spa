@@ -43,7 +43,10 @@ class RightContent extends  Widget
                 ->limit(6)
                 ->all();
         }
-        $listArray = News::findAll(['status'=>News::STATUS_ACTIVE,'type'=>News::TYPE_COMMON]);
+        $listArray = News::find()
+            ->andWhere(['status'=>News::STATUS_ACTIVE,'type'=>News::TYPE_COMMON])
+            ->orderBy(['updated_at'=>SORT_DESC])
+            ->all();
         $dt =  new RightContent();
         return $dt->render('//right-menu/right-content',['listNewsMoi'=>$listNewsMoi,'listArray'=>$listArray]);
     }
