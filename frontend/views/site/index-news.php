@@ -37,7 +37,7 @@ use yii\helpers\Url;
                                 <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>">
                                     <img
                                          src="<?= $item->getImage() ?>"
-                                         class="attachment-medium size-medium wp-post-image tp_200"
+                                         class="attachment-medium size-medium wp-post-image"
                                          alt="<?= $item->title ?>"
                                          title="<?= $item->title ?>"
                                          srcset="<?= $item->getImage() ?> 70w"

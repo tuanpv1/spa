@@ -2602,9 +2602,7 @@ a img.aligncenter {
 @media screen and (max-width: 600px) {
   .news-main .container .grid8 ul li > a img {
     display: block;
-    height: 250px;
+    width: 100px;
+    height: auto !important;
   }
-}
-.tp_200{
-  height: 250px;
 }
