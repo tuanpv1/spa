@@ -34,19 +34,10 @@ use yii\helpers\Url;
                             /** @var $item \common\models\News */
                             ?>
                             <li>
-                                <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">
-                                    <img height="300px" src="<?= $item->getImage() ?>" class="attachment-thumbnail size-thumbnail wp-post-image" alt="<?= $item->title ?>" />
-                                </a>
-                                <div class="main-news-thumb">
-                                    <a href="<?= \yii\helpers\Url::to(['site/detail-news','id'=>$item->id]) ?>">Tin tức <?= strtolower($item->title) ?></a>
-                                    <time><img style="width: 18px" src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif" alt="#"><span>Cập nhật liên tục</span></time>
-                                </div>
-                            </li>
-                            <li>
                                 <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>">
                                     <img
                                          src="<?= $item->getImage() ?>"
-                                         class="attachment-medium size-medium wp-post-image"
+                                         class="attachment-medium size-medium wp-post-image tp_200"
                                          alt="<?= $item->title ?>"
                                          title="<?= $item->title ?>"
                                          srcset="<?= $item->getImage() ?> 70w"

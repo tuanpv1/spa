@@ -122,3 +122,11 @@ a.desc:after {
     width: 100%;
     bottom: 10px;
 }
+@media screen and (max-width: 600px) {
+    .tp_200{
+        height: 100px;
+    }
+}
+.tp_200{
+    height: 250px;
+}
