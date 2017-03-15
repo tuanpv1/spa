@@ -2600,8 +2600,9 @@ a img.aligncenter {
   bottom: 10px;
 }
 @media screen and (max-width: 600px) {
-  .tp_200{
-    height: 100px;
+  .news-main .container .grid8 ul li > a img {
+    display: block;
+    height: 250px;
   }
 }
 .tp_200{
