@@ -99,6 +99,7 @@ class SiteController extends Controller
         $listArray = News::find()
             ->select('id')->andWhere(['status'=>News::STATUS_ACTIVE])
             ->andWhere(['type'=>News::TYPE_COMMON])
+            ->orderBy(['updated_at'=>SORT_DESC])
             ->all();
 
         return $this->render('index', ['listBanner' => $listBanner, 'listNews' => $listNews, 'listDoiTac' => $listDoiTac
