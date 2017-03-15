@@ -2600,9 +2600,12 @@ a img.aligncenter {
   bottom: 10px;
 }
 @media screen and (max-width: 600px) {
-  .news-main .container .grid8 ul li > a img {
-    display: block;
-    width: 100px;
-    height: auto !important;
+  .news-main .container .grid8 ul li > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 150px;
+    overflow: hidden;
   }
 }
