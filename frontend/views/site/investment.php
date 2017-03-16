@@ -17,34 +17,36 @@ use yii\helpers\Url;
             <span class="segoeui">Thám Tử 3s</span>
             <h2 class="utm-trajan">Các dịnh vụ hiện đang cung cấp</h2>
         </div>
-        <ul class="benef-main-list">
-            <?php
-            if (isset($listNews) && !empty($listNews)) {
-                foreach ($listNews as $item) {
-                    /** @var  $item News */
-                    ?>
-                    <li>
-                        <a class="text-center" href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>">
-                            <img
-                                src="<?= $item->getImage() ?>"
-                                class="attachment-medium size-medium wp-post-image"
-                                alt="<?= $item->title ?>"
-                                title="<?= $item->title ?>"
-                                srcset="<?= $item->getImage() ?> 70w"
-                                sizes="(max-width: 300px) 100vw, 300px"/>
-                        </a>
-                        <div class="main-news-thumb">
-                            <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
+        <div class="grid8">
+            <ul>
+                <?php
+                if (isset($listNews) && !empty($listNews)) {
+                    foreach ($listNews as $item) {
+                        /** @var  $item News */
+                        ?>
+                        <li>
+                            <a class="text-center" href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>">
+                                <img
+                                    src="<?= $item->getImage() ?>"
+                                    class="attachment-medium size-medium wp-post-image"
+                                    alt="<?= $item->title ?>"
+                                    title="<?= $item->title ?>"
+                                    srcset="<?= $item->getImage() ?> 70w"
+                                    sizes="(max-width: 300px) 100vw, 300px"/>
+                            </a>
+                            <div class="main-news-thumb">
+                                <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
 
-                            <p><?= $item->short_description?$item->short_description:'Đang cập nhật ...' ?></p>
-                        </div>
-                    </li>
-                    <?php
-                }
-            } ?>
-            <div id="last-comment">
-            </div>
-        </ul>
+                                <p><?= $item->short_description?$item->short_description:'Đang cập nhật ...' ?></p>
+                            </div>
+                        </li>
+                        <?php
+                    }
+                } ?>
+                <div id="last-comment">
+                </div>
+            </ul>
+        </div>
         <input type="hidden" name="page" id="page"
                value="<?= sizeof($listNews) - 1 ?>">
         <input type="hidden" name="numberCount" id="numberCount" value="<?= sizeof($listNews) ?>">
