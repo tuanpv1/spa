@@ -24,25 +24,19 @@ use yii\helpers\Url;
                     /** @var  $item News */
                     ?>
                     <li>
-                        <div class="benef--box">
-                            <div>
-                                <a href="<?=\yii\helpers\Url::to(['site/detail-news','id'=>$item->id])?>">
-                                    <img width="96" height="96" src="<?= $item->getImage() ?>"
-                                      class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-                                      alt="<?= $item->title ?>"/>
-                                </a>
-                            </div>
-                            <div class="benef--box--text">
-                                <h3>
-                                    <a href="<?=\yii\helpers\Url::to(['site/detail-news','id'=>$item->id])?>">
-                                        <?= $item->title ?>
-                                    </a>
-                                    <span></span>
-                                </h3>
-                                <div>
-                                    <p><?= $item->short_description ?></p>
-                                </div>
-                            </div>
+                        <a class="text-center" href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>">
+                            <img
+                                src="<?= $item->getImage() ?>"
+                                class="attachment-medium size-medium wp-post-image"
+                                alt="<?= $item->title ?>"
+                                title="<?= $item->title ?>"
+                                srcset="<?= $item->getImage() ?> 70w"
+                                sizes="(max-width: 300px) 100vw, 300px"/>
+                        </a>
+                        <div class="main-news-thumb">
+                            <a href="<?= Url::toRoute(['detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
+
+                            <p><?= $item->short_description?$item->short_description:'Đang cập nhật ...' ?></p>
                         </div>
                     </li>
                     <?php
