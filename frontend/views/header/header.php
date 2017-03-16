@@ -4,7 +4,7 @@ use yii\helpers\Url;
 <div id="vingroup_logos_container" style="opacity: 0;">
     <div id="vingroup_logos">
         <div id="vingroup_logo">
-            <a class="item" href="congtythamtuvip.com">
+            <a class="item" href="http://congtythamtuvip.com/">
                 <?php if (isset($header)) { /** @var $header \common\models\InfoPublic */ ?>
                     <img style="width: 100px"
                         src="<?= $header->image_header ? \common\models\InfoPublic::getImage($header->image_header) : '' ?>"
