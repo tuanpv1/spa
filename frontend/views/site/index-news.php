@@ -48,7 +48,7 @@ use yii\helpers\Url;
                                     <time><img style="width: 18px"
                                             src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif"
                                             alt="#"><span><?= date('d-m-Y', $item->created_at) ?></span></time>
-                                    <p><?= $item->short_description ?></p>
+                                    <p><?= $item->short_description?$item->short_description:'Đang cập nhật ...' ?></p>
                                 </div>
                             </li>
                        <?php  }
