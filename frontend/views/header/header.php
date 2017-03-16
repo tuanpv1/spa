@@ -4,19 +4,11 @@ use yii\helpers\Url;
 <div id="vingroup_logos_container" style="opacity: 0;">
     <div id="vingroup_logos">
         <div id="vingroup_logo">
-            <a class="item" href="<?=
-
-            Yii::$app->getHomeUrl() ?>">
-                <?php
-
-                if (isset($header)) {
-                    /** @var $header \common\models\InfoPublic */
-                    ?>
+            <a class="item" href="<?= Url::to(['site/index']) ?>">
+                <?php if (isset($header)) { /** @var $header \common\models\InfoPublic */ ?>
                     <img style="width: 100px"
                         src="<?= $header->image_header ? \common\models\InfoPublic::getImage($header->image_header) : '' ?>"
                         alt="">
-                <?php } else { ?>
-                    <img src="images/icons/vingroup.png" alt="">
                 <?php } ?>
             </a>
         </div>
