@@ -2345,7 +2345,7 @@ button[type="submit"].view-more-page {
   ul.main-project-list li img {
     display: table-cell;
     vertical-align: middle;
-    min-width: 150px;
+    min-width: 100%;
   }
   ul.main-project-list li a {
     position: static;
