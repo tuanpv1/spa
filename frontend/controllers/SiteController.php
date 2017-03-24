@@ -82,11 +82,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $ip = Yii::$app->request->getUserIP();
-        $find_model_ip = IpAddressTable::findOne($ip); /** @var IpAddressTable $find_model_ip */
+        $find_model_ip = IpAddressTable::findOne(['ip'=>$ip]); /** @var IpAddressTable $find_model_ip */
         if(isset($find_model_ip) && !empty($find_model_ip)){
             $old_number = $find_model_ip->number;
 
-            $find_model_ip->number = $old_number++;
+            $find_model_ip->number = $old_number+1;
             $find_model_ip->update();
         }else{
             $ip_table = new IpAddressTable();
