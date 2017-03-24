@@ -82,10 +82,10 @@ class AffiliateCompanyController extends Controller
                 }
             }
             if ($model->save(false)) {
-                \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Thêm mới công ty liên kết thành công'));
+                \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Thêm mới banner dịch vụ thành công'));
                 return $this->redirect(['index', 'type' => $type]);
             } else {
-                \Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Thêm mới công ty liên kết không thành thành công'));
+                \Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Thêm mới banner dịch vụ không thành thành công'));
                 return $this->render('create', ['model' => $model, 'type' => $type]);
             }
         } else {

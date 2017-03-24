@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\Email;
+use common\models\IpAddressTable;
 use common\models\TableAgency;
 use Yii;
 use yii\base\InvalidParamException;
@@ -80,6 +81,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $ip = Yii::$app->request->getUserIP();
+        $find_model_ip = IpAddressTable::findOne($ip); /** @var IpAddressTable $find_model_ip */
+        if(isset($find_model_ip) && !empty($find_model_ip)){
+            $old_number = $find_model_ip->number;
+
+            $find_model_ip->number = $old_number++;
+            $find_model_ip->update();
+        }else{
+            $ip_table = new IpAddressTable();
+            $ip_table->ip = $ip;
+            $ip_table->number = 1;
+            $ip_table->save();
+        }
         $listBanner = Banner::findAll(['status' => Banner::STATUS_ACTIVE]);
 
         $listNews = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
