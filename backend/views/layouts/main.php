@@ -200,6 +200,11 @@ AppAsset::register($this);
             'url' => ['info-public/index'],
         ],
         [
+            'encode' => false,
+            'label' => Yii::t('app','Danh sách IP'),
+            'url' => ['ip-address-table/index'],
+        ],
+        [
             'label' => Yii::t('app','QL Phân quyền'),
             'url' => 'javascript:;',
             'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
