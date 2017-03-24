@@ -37,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return date('d/m/Y H:i:s', $model->updated_at);
                             },
                         ],
+                        ['class' => 'yii\grid\ActionColumn'],
                     ],
-                    ['class' => 'yii\grid\ActionColumn'],
                 ]); ?>
             </div>
         </div>
