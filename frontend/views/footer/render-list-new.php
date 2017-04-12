@@ -18,7 +18,7 @@ use yii\helpers\Url;
                 foreach($listNews as $item){
                     /** @var $item \common\models\News */
                     ?>
-                    <li class="grid3 wow fadeInUp" data-wow-delay=".5s">
+                    <li class="grid3 wow">
                         <?= \common\helpers\CUtils::subString(trim($item->short_description), 200) ?><br>
                         <img style="height: 200px" src="<?= $item->getImage() ?>" alt="<?= $item->title ?>">
                         <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>">
