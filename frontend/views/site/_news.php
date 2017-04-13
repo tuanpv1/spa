@@ -20,8 +20,8 @@ use yii\helpers\Url;
                     <img width="300" height="210"
                          src="<?= $item->getImage() ?>"
                          class="attachment-medium size-medium wp-post-image"
-                         alt="cac-du-bds-nghi-duong-cua-vingroup-dang-thi-cong-theo-dung-tien-do"
-                         title="Các dự án bất động sản nghỉ dưỡng của Vingroup đang thi công theo đúng  tiến độ"
+                         alt="<?= $item->title ?>"
+                         title="<?= $item->title ?>"
                          srcset="<?= $item->getImage() ?> 70w"
                          sizes="(max-width: 300px) 100vw, 300px"/> </a>
                 <div class="main-news-thumb">

@@ -54,6 +54,15 @@ use common\models\News;
                     </div>
                     <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
                     <div class="fb-comments" xid="<?php echo $model->id; ?> data-numposts="20" data-colorscheme="light" data-version="v2.3"></div>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Web thám tử -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:970px;height:90px"
+                     data-ad-client="ca-pub-1810353436941461"
+                     data-ad-slot="8907981031"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
                 </div>
                 <?= \frontend\widgets\RightContent::getRightContent($model->id) ?>
             </div>
