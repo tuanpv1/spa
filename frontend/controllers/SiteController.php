@@ -264,10 +264,14 @@ class SiteController extends Controller
         $model->phone = $phone;
         $model->status = Email::STATUS_ACTIVE;
         if($model->save(false)){
-            $message = Yii::t('app','Đăng kí nhận tin thành công.');
+            $content = "Khách hàng có địa chỉ email: ".$email.", số điện thoại: ".$phone." vừa đăng kí nhận tư vấn";
+            $to = Yii::$app->params['adminEmail'];
+            $subject = "Vừa có khách hàng đăng kí nhận tư vấn";
+            $this->sendMail($to,$subject,$content);
+            $message = Yii::t('app','Đăng kí nhận tư vấn thành công.');
             return Json::encode(['success' => true, 'message' => $message]);
         }else{
-            $message = Yii::t('app','Đăng kí nhận tin không thành công.');
+            $message = Yii::t('app','Đăng kí nhận tư vấn không thành công.');
             return Json::encode(['success' => false, 'message' => $message]);
         }
     }
@@ -378,5 +382,17 @@ class SiteController extends Controller
 
     public function getParameter($param_name, $default = null) {
         return \Yii::$app->request->get($param_name, $default);
+    }
+
+    protected function sendMail($to, $subject, $content)
+    {
+        $mailer = \Yii::$app->mailer;
+        $mail   = $mailer->compose($content)
+            ->setFrom(Yii::$app->params['adminEmail'])
+            ->setTo($to)
+            ->setSubject($subject)
+            ->setTextBody($content);
+
+        return $mail->send();
     }
 }
