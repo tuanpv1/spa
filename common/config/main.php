@@ -10,8 +10,8 @@ return [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
-                'username' => 'caovanminhhumg@gmail.com',
-                'password' => 'caovanminh',
+                'username' => 'phptest102@gmail.com',
+                'password' => '102phptest',
                 'port' => '587',
                 'encryption' => 'tls',
             ],

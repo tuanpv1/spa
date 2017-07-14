@@ -387,12 +387,11 @@ class SiteController extends Controller
     protected function sendMail($to, $subject, $content)
     {
         $mailer = \Yii::$app->mailer;
-        $mail   = $mailer->compose()
-            ->setFrom(Yii::$app->params['adminEmail'])
+        $mailer->compose()
+            ->setFrom("caovanminhhumg@gmail.com")
             ->setTo($to)
             ->setSubject($subject)
-            ->setTextBody($content);
-
-        return $mail->send();
+            ->setTextBody($content)
+            ->send();
     }
 }
