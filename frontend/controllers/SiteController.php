@@ -265,7 +265,7 @@ class SiteController extends Controller
         $model->status = Email::STATUS_ACTIVE;
         if($model->save(false)){
             $content = "Khách hàng có địa chỉ email: ".$email.", số điện thoại: ".$phone." vừa đăng kí nhận tư vấn";
-            $to = Yii::$app->params['adminEmail'];
+            $to = Yii::$app->params['emailSend'];
             $subject = "Vừa có khách hàng đăng kí nhận tư vấn";
             $this->sendMail($to,$subject,$content);
             $message = Yii::t('app','Đăng kí nhận tư vấn thành công.');
@@ -388,7 +388,7 @@ class SiteController extends Controller
     {
         $mailer = \Yii::$app->mailer;
         $mailer->compose()
-            ->setFrom("Tham tu")
+            ->setFrom(Yii::$app->params[''])
             ->setTo($to)
             ->setSubject($subject)
             ->setTextBody($content)
