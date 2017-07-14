@@ -388,7 +388,7 @@ class SiteController extends Controller
     {
         $mailer = \Yii::$app->mailer;
         $mailer->compose()
-            ->setFrom("caovanminhhumg@gmail.com")
+            ->setFrom("Tham tu")
             ->setTo($to)
             ->setSubject($subject)
             ->setTextBody($content)
