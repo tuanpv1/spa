@@ -267,9 +267,13 @@ class SiteController extends Controller
             $content = "Khách hàng có địa chỉ email: ".$email.", số điện thoại: ".$phone." vừa đăng kí nhận tư vấn";
             $to = Yii::$app->params['emailSend'];
             $subject = "Vừa có khách hàng đăng kí nhận tư vấn";
-            $this->sendMail($to,$subject,$content);
-            $message = Yii::t('app','Đăng kí nhận tư vấn thành công.');
-            return Json::encode(['success' => true, 'message' => $message]);
+            if($this->sendMail($to,$subject,$content)){
+                $message = Yii::t('app','Đăng kí nhận tư vấn thành công.');
+                return Json::encode(['success' => true, 'message' => $message]);
+            }else{
+                $message = Yii::t('app','khong gui dc mail.');
+                return Json::encode(['success' => true, 'message' => $message]);
+            }
         }else{
             $message = Yii::t('app','Đăng kí nhận tư vấn không thành công.');
             return Json::encode(['success' => false, 'message' => $message]);
@@ -386,8 +390,7 @@ class SiteController extends Controller
 
     protected function sendMail($to, $subject, $content)
     {
-        $mailer = \Yii::$app->mailer;
-        $mailer->compose()
+        return Yii::$app->mailer->compose()
             ->setFrom(Yii::$app->params['adminEmail'])
             ->setTo($to)
             ->setSubject($subject)
