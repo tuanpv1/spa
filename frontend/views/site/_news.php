@@ -9,30 +9,37 @@ use common\models\News;
 use yii\helpers\Url;
 
 ?>
-<!--<div class="main ovfh">-->
-<ul>
-    <?php if (isset($listNews) && !empty($listNews)) {
-        foreach ($listNews as $item) {
-            /** @var  $item News */
-            ?>
-            <li>
-                <a href="<?= Url::toRoute(['detail-news', 'id' => $item->id]) ?>">
-                    <img width="300" height="210"
-                         src="<?= $item->getImage() ?>"
-                         class="attachment-medium size-medium wp-post-image"
-                         alt="<?= $item->title ?>"
-                         title="<?= $item->title ?>"
-                         srcset="<?= $item->getImage() ?> 70w"
-                         sizes="(max-width: 300px) 100vw, 300px"/> </a>
-                <div class="main-news-thumb">
-                    <a href="<?= Url::toRoute(['detail-news', 'id' => $item->id]) ?>"><?= $item->title ?></a>
-                    <time><img style="width: 18px"
-                               src="<?= Yii::$app->getUrlManager()->getBaseUrl() ?>/images/icons/news-icon-time.gif"
-                               alt="#"><span><?= date('d-m-Y', $item->created_at) ?></span></time>
-                    <p><?= $item->short_description?$item->short_description:'Đang cập nhật ...' ?></p>
+<?php if ($listNews) {
+    foreach ($listNews as $item) {
+        /** @var News $item */
+        ?>
+        <div class="blog-post">
+            <h2>
+                <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
+                    <i class="fa fa-file-text"></i>
+                    <?= $item->title ?>
+                </a>
+            </h2><br>
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
+                        <img src="<?= News::getFirstImageLinkTP($item->images) ?>" alt="<?= $item->title ?>"
+                             title="<?= $item->title ?>"
+                             align="right" width="50%" class="blog-image">
+                    </a>
                 </div>
-            </li>
-            <?php
-        }
-    } ?>
-</ul>
+                <div class="col-md-7">
+                    <p><?= $item->short_description ?></p>
+                </div>
+            </div>
+            <div class="row text-right">
+                <i class="glyphicon glyphicon-eye-open"></i> Lượt xem: <?= $item->view_count ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="glyphicon glyphicon-time"></i> Ngày đăng: <?= date('d-m-Y', $item->created_at) ?>
+            </div>
+        </div>
+        <hr>
+        <?php
+    }
+} else {
+    echo "Đang cập nhật";
+} ?>

@@ -127,6 +127,9 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
         ],
 
     ]) ?>
+    <?php if($type == News::TYPE_DV){ ?>
+        </p>Vui lòng upload hình ảnh có kích thước 460*300 px Để hiển thị tốt nhất <p>
+    <?php } ?>
     <?php if ($type != News::TYPE_ABOUT && $type != News::TYPE_KH) { ?>
         <?=
         $form->field($model, 'image_des[]')->widget(\kartik\widgets\FileInput::classname(), [
