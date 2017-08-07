@@ -2,7 +2,7 @@
 /** @var $footer \common\models\InfoPublic */
 ?>
 <!-- Footer -->
-<footer>
+<footer id="contact_us">
     <div class="container">
         <div class="row">
             <div id="pad_tp" class="col-md-4 col-xs-12">
