@@ -2,87 +2,147 @@
 
 /* @var $this yii\web\View */
 
+use common\models\Banner;
+use common\models\News;
 use yii\helpers\Url;
 
-$this->title = 'Thám tử VIP';
+$this->title = 'Công ty Monalisa Spa';
 ?>
-<div class="main ovfh">
-    <div class="main-banner posr ovfh">
-        <div class="flexslider">
-            <ul class="slides">
-                <?php if (isset($listBanner) && !empty($listBanner)) {
-                    foreach ($listBanner as $item) {
-                        /** @var $item \common\models\Banner */
-                        ?>
-                        <li>
-                            <img class="img-large" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
-                            <img class="img-medium" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
-                        </li>
-                    <?php }
-                } ?>
-            </ul>
-        </div>
-    </div>
-    <?= \frontend\widgets\Header::getMenuHeader() ?>
-    <div id="main_about" class="main-invest ovfh">
-        <div class="container">
-            <?php if (isset($gioithieu) && !empty($gioithieu)) {
-                /** @var $gioithieu \common\models\News */
-                ?>
-                <div class="grid4">
-                    <div class="posr">
-                        <img src="<?= $gioithieu->getImage() ?>" alt="#">
-                    </div>
-                </div>
-                <div class="grid8">
-                    <p><span style="font-size: 30px" class="wow fadeInLeft" data-wow-duration="2s"><?= $gioithieu->title ?><span></p>
-                    <p class="segoeuil wow fadeIn segoeui taj" data-wow-duratioon="1s"
-                       data-wow-delay="1s"><?= $gioithieu->short_description ?></p>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
-    <div class="main-benef main-section">
-        <div id="main_lidt"  class="main-title tac ttu">
-            <span class="segoeui">Thám Tử VIP</span>
-            <h2 class="utm-trajan">Dịch vụ cung cấp</h2>
-        </div>
-        <div class="container">
-            <div id="owl-example" class="owl-carousel">
-                <?php if (isset($listNews) && !empty($listNews)) {
-                    foreach ($listNews as $item) {
-                        /** @var $item \common\models\News */
-                        ?>
-                        <div class="item">
-                            <div class="main-benef--box">
-                                <div class="benef--box-img">
-                                    <a href="javascript:;" rel="nofollow">
-                                        <img width="96" height="96" src="<?= $item->getImage() ?>"
-                                             class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-                                             alt="<?= $item->title ?>" srcset="" sizes="(max-width: 96px) 100vw, 96px"/>
-                                    </a>
-                                </div>
-                                <div class="benef--box-title">
-                                    <a href="<?= Url::to(['site/detail-news','id'=>$item->id])?>"><?= $item->title ?></a>
-                                </div>
-                                <div class="benef-box-content">
-                                    <?= \common\helpers\CUtils::subString(trim($item->short_description), 300) ?>
+<!-- Begin #carousel-section -->
+<section id="carousel-section" class="section-global-wrapper">
+    <div class="container-fluid-kamn">
+        <div class="row">
+            <div id="carousel-1" class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ol class="carousel-indicators visible-lg">
+                    <?php if ($listBanner) {
+                        $i = 0;
+                        foreach ($listBanner as $item) { ?>
+                            <li data-target="#carousel-1" data-slide-to="<?= $i ?>"
+                                class="<?= $i == 0 ? 'active' : '' ?>"></li>
+                            <?php
+                            $i++;
+                        }
+                    } ?>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <?php if ($listBanner) {
+                        $i = 0;
+                        foreach ($listBanner as $item) {
+                            /** @var Banner $item */ ?>
+                            <!-- Begin Slide -->
+                            <div class="item <?= $i == 0 ? 'active' : '' ?>">
+                                <img src="<?= $item->getImageLink() ?>" height="400" alt="<?= $item->name ?>">
+                                <div class="carousel-caption">
+                                    <h3 class="carousel-title hidden-xs"><?= $item->name ?></h3>
+                                    <p class="carousel-body"><?= $item->des ?></p>
                                 </div>
                             </div>
-                        </div>
-                    <?php }
-                } ?>
+                            <!-- End Slide -->
+                            <?php
+                            $i++;
+                        }
+                    } ?>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-1" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-1" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
         </div>
-        <div class="tac view-more-page">
-            <a href="<?= Url::toRoute(['site/investment']) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem thêm<span></span></a>
-        </div>
     </div>
-    <?php
-    if(isset($listArray)){
-        foreach($listArray as $item){
-            echo \frontend\widgets\RenderListNew::getNewsByIdCat($item->id);
-        }
-    }
-    ?>
+</section>
+<!-- End #carousel-section -->
+
+<?php if ($gioithieu) {
+    /** @var News $gioithieu */ ?>
+    <!-- Begin #services-section -->
+    <section class="services-section section-global-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="services-header">
+                    <h1 class="services-header-title"><?= $gioithieu->title ?></h1>
+                </div>
+            </div>
+
+            <!-- Begin Services Row 1 -->
+            <div class="row services-row services-row-head services-row-1">
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    <img width="300px" src="<?= News::getFirstImageLinkTP($gioithieu->images) ?>"
+                         alt="<?= $gioithieu->title ?>" title="<?= $gioithieu->title ?>">
+                </div>
+
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                    <p class="text-left">
+                        <?= $gioithieu->short_description ?>
+                    </p>
+                </div>
+            </div>
+            <!-- End Serivces Row 1 -->
+        </div>
+    </section>
+    <!-- End #services-section -->
+<?php } ?>
+
+<!--partner block-->
+<div class="container">
+    <ul class="bxslider3">
+        <?php if ($listDv) {
+            foreach ($listDv as $item) {
+                /** @var News $item */
+                ?>
+                <li>
+                    <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
+                        <img src="<?= News::getFirstImageLinkTP($item->images) ?>"
+                             alt="<?= $item->title ?>" >
+                    </a>
+                    <?= $item->title ?>
+                </li>
+                <?php
+            }
+        } ?>
+    </ul>
 </div>
+<!--end partner-->
+
+<!--Cong nghe-->
+<section id="services" class="services-section section-global-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="services-header">
+                <h2 class="services-header-title">CÔNG NGHỆ ĐI ĐẦU TRONG LĨNH VỰC LÀM ĐẸP</h2>
+            </div>
+        </div>
+
+        <!-- Begin Services Row 1 -->
+        <div class="row services-row services-row-head services-row-1">
+            <?php if ($listCn) {
+                foreach ($listCn as $item) {
+                    /** @var  News $item */
+                    ?>
+                    <div class="col-sm-4 col-md-3">
+                        <div class="thumbnail">
+                            <img style="height: 200px" src="<?= News::getFirstImageLinkTP($item->images) ?>" alt="<?= $item->title ?>" >
+                            <div class="caption">
+                                <h4><?= $item->title ?></h4>
+                                <p><?= $item->short_description ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            } ?>
+        </div>
+        <!-- End Serivces Row 1 -->
+    </div>
+</section>
+<!--End cong nghe-->
+
+<?= \frontend\widgets\Customers::widget() ?>

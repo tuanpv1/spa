@@ -2,7 +2,9 @@
 
 namespace common\models;
 
+use backend\models\Image;
 use Yii;
+use yii\base\InvalidParamException;
 use yii\behaviors\TimestampBehavior;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
@@ -16,7 +18,7 @@ use yii\helpers\Url;
  * @property string $url_video_new
  * @property string $title_ascii
  * @property string $content
- * @property string $thumbnail
+ * @property string $images
  * @property integer $type
  * @property integer $id_cat
  * @property string $tags
@@ -44,10 +46,14 @@ use yii\helpers\Url;
  * @property string $price
  * @property integer $category_id
  * @property User $user
- * @property NewsCategoryAsm $newsCategoryAsms
  */
 class News extends \yii\db\ActiveRecord
 {
+
+    const MAX_SIZE_UPLOAD = 5*1024*1024;
+    public $thumbnail;
+    public $image_des;
+
     const STATUS_NEW = 1;
     const STATUS_ACTIVE = 10;
     const STATUS_INACTIVE = 0;
@@ -56,27 +62,24 @@ class News extends \yii\db\ActiveRecord
     const LIST_EXTENSION = '.jpg,.png';
 
     const TYPE_NEWS = 1;
-    const TYPE_TIENDO = 2;
-    const TYPE_DONOR = 3;
-    const TYPE_PROJECT = 4;
-    const TYPE_COMMON = 5;
-    const TYPE_GIOITHIEU = 6;
-    const TYPE_EXPERIENCE = 7;
+    const TYPE_ABOUT = 2;
+    const TYPE_CN = 3;
+    const TYPE_DV = 4;
+    const TYPE_KH = 5;
 
 
-    const POSITION_TOP = 1;
-    const POSITION_NOTTOP = 2;
+    const IMAGE_TYPE_THUMBNAIL = 1; //anh dai dien
+    const IMAGE_TYPE_DES = 2; //anh mo ta
 
-    public $village_array;
-    public $category_id;
-    public $select;
 
     // add by TP in 13/12/2016 update type_video display in slide home
     const TYPE_VIDEO = 1;// CÓ VIDEO
     const TYPE_NOT_VIDEO = 2;// không cÓ VIDEO
+
     // phân biệt để làm ẩn hiện khung tải video hay url
     const TYPE_UPLOAD_VIDEO = 1 ;// TẢI LÊN VIDEO
-    const TYPE_URL = 2 ;// TẢI LÊN VIDEO
+    const TYPE_URL = 2 ;
+
     public static function getTypeTP(){
         return $ls = [
             self::TYPE_UPLOAD_VIDEO  => 'Tải video',
@@ -84,6 +87,14 @@ class News extends \yii\db\ActiveRecord
         ];
     }
     // end add
+
+    public static function getListImageType()
+    {
+        return [
+            self::IMAGE_TYPE_DES => 'Ảnh mô tả',
+            self::IMAGE_TYPE_THUMBNAIL => 'Ảnh đại diện',
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -115,10 +126,10 @@ class News extends \yii\db\ActiveRecord
             [['content', 'description'], 'string'],
             [['title', 'title_ascii', 'thumbnail'], 'string', 'max' => 512],
             [['tags', 'source_name', 'source_url', 'price'], 'string', 'max' => 200],
-            [['short_description','video','url_video_new'], 'string', 'max' => 500],
+            [['short_description','video','url_video_new'], 'string', 'max' => 1000],
             [['video_url','select'],'safe'],
-            [['thumbnail'], 'image', 'extensions' => 'png,jpg,jpeg,gif',
-                'maxSize' => 1024 * 1024 * 10, 'tooBig' => 'Ảnh upload vượt quá dung lượng cho phép!'
+            [['images','thumbnail','image_des'], 'image', 'extensions' => 'png,jpg,jpeg,gif',
+                'maxSize' => News::MAX_SIZE_UPLOAD, 'tooBig' => 'Ảnh upload vượt quá dung lượng cho phép!'
             ],
         ];
     }
@@ -134,6 +145,7 @@ class News extends \yii\db\ActiveRecord
             'title_ascii' => Yii::t('app', 'Title Ascii'),
             'content' => Yii::t('app', 'Nội dung'),
             'thumbnail' => Yii::t('app', 'Ảnh đại diện'),
+            'image_des' => Yii::t('app', 'Ảnh mô tả'),
             'type' => Yii::t('app', 'Loại bài viết'),
             'tags' => Yii::t('app', 'Tags'),
             'short_description' => Yii::t('app', 'Mô tả ngắn'),
@@ -162,10 +174,6 @@ class News extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNewsCategoryAsms()
-    {
-        return $this->hasMany(NewsCategoryAsm::className(), ['news_id' => 'id']);
-    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -177,7 +185,7 @@ class News extends \yii\db\ActiveRecord
 
     public function getThumbnailLink()
     {
-        $pathLink = Yii::getAlias('@web') . '/' . Yii::getAlias('@image_new') . '/';
+        $pathLink = Yii::getAlias('@web') . '/' . Yii::getAlias('@image_news') . '/';
         $filename = null;
 
         if ($this->thumbnail) {
@@ -210,19 +218,6 @@ class News extends \yii\db\ActiveRecord
      * @return array
      */
 
-    public static function listPosition(){
-        $list = [
-            self::POSITION_NOTTOP => 'Vị trí khác',
-            self::POSITION_TOP => 'Vị trí top',
-        ];
-        return $list;
-    }
-
-    public static function getCat(){
-        $cat = AffiliateCompany::findAll(['status'=>AffiliateCompany::STATUS_ACTIVE]);
-        return $cat;
-    }
-
     /**
      * @return int
      */
@@ -238,11 +233,11 @@ class News extends \yii\db\ActiveRecord
     public static function listStatusType()
     {
         $lst = [
-            self::TYPE_COMMON => 'Dịch vụ cung cấp',
-            self::TYPE_NEWS => 'Tin tức thám tử',
-            self::TYPE_GIOITHIEU => 'Giới thiệu',
-            self::TYPE_PROJECT => 'Tuyển dụng',
-            self::TYPE_TIENDO => 'Đội ngũ nhân viên',
+            self::TYPE_NEWS => 'Tin làm đẹp',
+            self::TYPE_ABOUT => 'Giới thiệu',
+            self::TYPE_CN => 'Công nghệ',
+            self::TYPE_DV => 'Dịch vụ',
+            self::TYPE_KH => 'Phản hồi của khách hàng',
         ];
         return $lst;
     }
@@ -256,12 +251,94 @@ class News extends \yii\db\ActiveRecord
         return $type;
     }
 
-    public function getImage()
+
+    public static function convertJsonToArray($input)
     {
-        $image = $this->thumbnail;
-        if ($image) {
-            return Url::to(Yii::getAlias('@web') . '/' . Yii::getAlias('@image_new') . '/' . $image, true);
+        $listImage = json_decode($input);
+
+        $result = [];
+        if (is_array($listImage)) {
+            foreach ($listImage as $item) {
+                $row['name'] = $item->name;
+                $row['type'] = $item->type;
+                $row['size'] = $item->size;
+                $result[] = $row;
+            }
         }
+        return $result;
+    }
+
+    public function getFirstImageLink()
+    {
+        $link = '';
+        if (!$this->images) {
+            return null;
+        }
+        $listImages = News::convertJsonToArrayTP($this->images);
+        foreach ($listImages as $key => $row) {
+            $link = Url::to(Yii::getAlias('@web/upload/image_news/') . $row['name'], true);
+        }
+        return $link;
+    }
+
+    public static function getImageFe($name){
+//        echo  "<pre>";print_r($row);die();
+        $link = Url::to(Yii::getAlias('@web/upload/image_news/') . $name, true);
+        return $link;
+    }
+
+    public static function getFirstImageLinkTP($image)
+    {
+        $link = '';
+        if (!$image) {
+            return null;
+        }
+        $listImages = News::convertJsonToArrayTP($image);
+        foreach ($listImages as $key => $row) {
+            $link = Url::to(Yii::getAlias('@web/upload/image_news/') . $row['name'], true);
+        }
+        return $link;
+    }
+
+    public static function convertJsonToArrayTp($input)
+    {
+        $listImage = json_decode($input);
+
+        $result = [];
+        if (is_array($listImage)) {
+            foreach ($listImage as $item) {
+                if ($item->type == 1) {
+                    $row['name'] = $item->name;
+                    $row['type'] = $item->type;
+                    $row['size'] = $item->size;
+                    $result[] = $row;
+                }
+            }
+        }
+        return $result;
+    }
+
+    public function getImagesNews()
+    {
+        try {
+            $res = [];
+            $images = $this->convertJsonToArray($this->images);
+            if ($images) {
+                for ($i = 0; $i < count($images); $i++) {
+                    $item = $images[$i];
+                    $image = new Image();
+                    $image->type = $item['type'];
+                    $image->name = $item['name'];
+                    $image->size = $item['size'];
+                    array_push($res, $image);
+                }
+                return $res;
+            }
+        } catch (InvalidParamException $ex) {
+            $images = null;
+        }
+
+        return $images;
     }
 
 

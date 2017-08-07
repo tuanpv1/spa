@@ -20,9 +20,9 @@ return [
             // 'downloadAction' => 'gridview/export/download',
             // 'i18n' => []
         ],
-//        'datecontrol' =>  [
-//            'class' => '\kartik\datecontrol\Module'
-//        ]
+        'datecontrol' =>  [
+            'class' => '\kartik\datecontrol\Module'
+        ]
 
     ],
     'language'=>'vi',

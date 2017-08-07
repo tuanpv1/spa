@@ -15,7 +15,10 @@ AppAsset::register($this);
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name='viewport' content="width=device-width, initial-scale=1">
+    <meta name='generator' content="designwebsitett.vn" />
+    <meta name='copyright' content="Công ty cổ phần thiết kế T&T" />
+    <meta name='author' content="designwebsitett.vn" />
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -43,14 +46,20 @@ AppAsset::register($this);
     </style>
 </head>
 <body class="home blog">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=1552129528172135";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 <?php $this->beginBody() ?>
 
 <?= Header::widget([]) ?>
 
 <?= $content ?>
 <?= Footer::widget([]) ?>
-<?= \frontend\widgets\FooterScript::widget() ?>
-<script lang="javascript">(function() {var pname = ( (document.title !='')? document.title : document.querySelector('h1').innerHTML );var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async=1; ga.src = '//live.vnpgroup.net/js/web_client_box.php?hash=5bd6d70ecf3a3101b5427295fd504215&data=eyJzc29faWQiOjQ2ODIyMTAsImhhc2giOiI3MmYwNjM5YWNhN2FkNjRjNjgwZmRiODAzMjY2NWNhMyJ9&pname='+pname;var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>
 <?php $this->endBody() ?>
 </html>
 <?php $this->endPage() ?>

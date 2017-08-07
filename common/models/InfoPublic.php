@@ -29,6 +29,9 @@ class InfoPublic extends \yii\db\ActiveRecord
     const STATUS_ACTIVE = 10; // hien
     const STATUS_BLOCK = 1; //an
     const STATUS_DELETED= 0; //an
+
+    const ID_DEFAULT = 1;
+
     public  function  getListStatus(){
         $list1 = [
             self::STATUS_ACTIVE => 'Hiện',
@@ -70,7 +73,6 @@ class InfoPublic extends \yii\db\ActiveRecord
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['image_menu','image_header', 'image_footer', 'email', 'phone', 'link_face', 'address','youtube','twitter','url'], 'string', 'max' => 500],
             ['image_header','required','message'=>Yii::t('app','{attribute} không được để trống'),'on'=>'create'],
-            ['image_footer','required','message'=>Yii::t('app','{attribute} không được để trống'),'on'=>'create'],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'email','message'=>Yii::t('app','{attribute} không hợp lệ!')],
             [['image_footer','image_header','image_menu'],
@@ -91,9 +93,9 @@ class InfoPublic extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app','ID'),
-            'image_header' => Yii::t('app','Logo Header'),
-            'image_footer' => Yii::t('app','Logo Footer'),
-            'image_menu' => Yii::t('app','Logo Menu'),
+            'image_header' => Yii::t('app','Hình ảnh logo'),
+            'image_footer' => Yii::t('app','Hình ảnh logo footer'),
+            'image_menu' => Yii::t('app','Hình ảnh logo giới thiệu'),
             'email' => Yii::t('app','Email'),
             'phone' => Yii::t('app','Điện thoại'),
             'link_face' => Yii::t('app','Link facebook'),

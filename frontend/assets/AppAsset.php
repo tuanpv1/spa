@@ -12,22 +12,26 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/fontawesome.css?ver=4.4.6',
-        'css/animate.css',
-        'css/owl.carousel.css',
-        'css/jcarousel.connected-carousels.css',
+        'http://fonts.googleapis.com/css?family=Open+Sans:400,300',
+        'http://fonts.googleapis.com/css?family=PT+Sans',
+        'http://fonts.googleapis.com/css?family=Raleway',
+        'https://fonts.googleapis.com/css?family=Roboto:400,700',
+        'https://fonts.googleapis.com/icon?family=Material+Icons',
+        'bootstrap/css/bootstrap.css',
+        'css/bootstrap-datetimepicker.min.css',
+        'css/font-awesome.min.css',
         'css/style.css',
+        'css/animate.min.css',
+        'css/style-projects.css',
+        'css/jquery.bxslider.css',
     ];
     public $js = [
-        'js/jquery.js',
-        'js/jquery-migrate.min.js',
-        'js/jquery-2.1.1.min.js',
+        'js/jquery.min.js',
+        'bootstrap/js/bootstrap.min.js',
         'js/wow.min.js',
-        'js/owl.carousel.js',
-        'js/jquery.jcarousel.min.js',
-        'js/jcarousel.connected-carousels.js',
-        'js/script.js',
-        'js/main.js',
+        'js/jquery.bxslider.min.js',
+        'js/bootstrap-datetimepicker.js',
+        'js/bootstrap-datetimepicker.es.js',
         'js/tp.js',
     ];
     public $depends = [

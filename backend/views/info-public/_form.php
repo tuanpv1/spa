@@ -44,71 +44,12 @@ use yii\helpers\Url;
             ]
         ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 143*80 để hiển thị tốt nhất ')); ?>
     <?php } ?>
-    <?php if ($model->isNewRecord) { ?>
-    <?= $form->field($model, 'image_footer')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'image/*'],
-        'pluginOptions' => [
-            'showPreview' => true,
-            'overwriteInitial' => false,
-            'showRemove' => false,
-            'showUpload' => false
-        ]
-    ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 230*150 để hiển thị tốt nhất ')); ?>
-    <?php } else { ?>
-        <?= $form->field($model, 'image_footer')->widget(FileInput::classname(), [
-            'options' => ['accept' => 'image/*'],
-            'pluginOptions' => [
-                'previewFileType' => 'any',
-                'initialPreview' => [
-                    Html::img(Url::to(InfoPublic::getImage($model->image_footer)), ['class' => 'file-preview-image', 'alt' => $model->image_footer, 'title' => $model->image_footer]),
-                ],
-                'showPreview' => true,
-                'initialCaption' =>InfoPublic::getImage($model->image_footer),
-                'overwriteInitial' => true,
-                'showRemove' => false,
-                'showUpload' => false
-            ]
-        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 230*150 để hiển thị tốt nhất ')); ?>
-    <?php } ?>
-
-    <?php if ($model->isNewRecord) { ?>
-    <?= $form->field($model, 'image_menu')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'image/*'],
-        'pluginOptions' => [
-            'showPreview' => true,
-            'overwriteInitial' => false,
-            'showRemove' => false,
-            'showUpload' => false
-        ]
-    ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 120*80 để hiển thị tốt nhất ')); ?>
-    <?php } else { ?>
-        <?= $form->field($model, 'image_menu')->widget(FileInput::classname(), [
-            'options' => ['accept' => 'image/*'],
-            'pluginOptions' => [
-                'previewFileType' => 'any',
-                'initialPreview' => [
-                    Html::img(Url::to(InfoPublic::getImage($model->image_menu)), ['class' => 'file-preview-image', 'alt' => $model->image_menu, 'title' => $model->image_menu]),
-                ],
-                'showPreview' => true,
-                'initialCaption' =>InfoPublic::getImage($model->image_menu),
-                'overwriteInitial' => true,
-                'showRemove' => false,
-                'showUpload' => false
-            ]
-        ])->hint(Yii::t('app','Vui lòng tải hình ảnh có kích thước 120*80 để hiển thị tốt nhất ')); ?>
-    <?php } ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'link_face')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'youtube')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'twitter')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 

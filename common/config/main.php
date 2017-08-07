@@ -20,6 +20,6 @@ return [
     'aliases' => [
         '@image_affiliate_company' => 'upload/image_affiliate_company',
         '@image_banner' => 'upload/image_banner',
-        '@image_new' => 'upload/image_news',
+        '@image_news' => 'upload/image_news',
     ],
 ];

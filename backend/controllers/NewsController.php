@@ -2,15 +2,20 @@
 
 namespace backend\controllers;
 
+use backend\models\Image;
 use common\auth\filters\NewsAuth;
 use common\auth\filters\Yii2Auth;
 use common\models\NewsCategoryAsm;
 use common\models\NewsVillageAsm;
 use common\models\User;
 use Exception;
+use kartik\helpers\Html;
 use Yii;
 use common\models\News;
 use common\models\NewsSearch;
+use yii\data\ArrayDataProvider;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -44,23 +49,29 @@ class NewsController extends Controller
      * Lists all News models.
      * @return mixed
      */
-    public function actionIndex($type = News::TYPE_COMMON)
+    public function actionIndex($type = News::TYPE_NEWS)
     {
-        $searchModel = new NewsSearch();
-        $params = Yii::$app->request->queryParams;
+        if ($type == News::TYPE_ABOUT) {
+            $model = News::findOne(['status'=>News::STATUS_ACTIVE,'type'=>News::TYPE_ABOUT]);
+            if($model){
+                return $this->redirect(['view','id'=>$model->id]);
+            }else{
+                return $this->redirect(['create','type'=>News::TYPE_ABOUT]);
+            }
+        } else {
+            $searchModel = new NewsSearch();
+            $params = Yii::$app->request->queryParams;
 
-        /** @var User $user */
-        $user = Yii::$app->user->identity;
+            $params['NewsSearch']['type'] = $type;
 
-        $params['NewsSearch']['type'] = $type;
+            $dataProvider = $searchModel->search($params);
 
-        $dataProvider = $searchModel->search($params);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'type' => $type,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'type' => $type,
+            ]);
+        }
     }
 
     /**
@@ -70,8 +81,21 @@ class NewsController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $imageModel = new Image();
+        $images = $model->getImagesNews();
+        $imageProvider = new ArrayDataProvider([
+            'key' => 'name',
+            'allModels' => $images,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'active' => 1,
+            'imageModel' => $imageModel,
+            'imageProvider' => $imageProvider,
         ]);
     }
 
@@ -80,64 +104,79 @@ class NewsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($type = News::TYPE_COMMON)
+    public function actionCreate($type)
     {
-//        var_dump($type);exit();
-        /** @var User $user */
-        $user = Yii::$app->user->identity;
         $model = new News();
-        $model->type = $type;
-
+        $thumbnailInit = [];
+        $imageDesInit = [];
+        $thumbnailPreview = [];
+        $imageDesPreview = [];
         if ($model->load(Yii::$app->request->post())) {
-            $db_transaction = Yii::$app->db->beginTransaction();
-            try {
-                $file = UploadedFile::getInstance($model, 'thumbnail');
-                if ($file) {
-                    $file_name = uniqid() . time() . '.' . $file->extension;
-                    if ($file->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
-                        $model->thumbnail = $file_name;
-
-                    } else {
-                        Yii::$app->getSession()->setFlash('error', 'Lỗi hệ thống, vui lòng thử lại');
+            $thumbnails = UploadedFile::getInstances($model, 'thumbnail');
+            $imageDes = UploadedFile::getInstances($model, 'image_des');
+            $images = [];
+            if (count($thumbnails) > 0) {
+                foreach ($thumbnails as $image) {
+                    $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
+                    if ($image->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_news') . "/" . $file_name)) {
+                        $new_file['name'] = $file_name;
+                        $new_file['type'] = News::IMAGE_TYPE_THUMBNAIL;
+                        $new_file['size'] = $image->size;
+                        $images[] = $new_file;
                     }
                 }
 
-                $video = UploadedFile::getInstance($model, 'video');
-                if ($video) {
-                    $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $video->extension;
-                    if ($video->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
-                        $model->video = $file_name;
-                    } else {
-                        Yii::$app->getSession()->setFlash('error', 'Lỗi hệ thống, vui lòng thử lại');
-                    }
-                }
-
-//                echo "<pre>"; print_r($model);die();
-
-                $model->user_id = $user->id;
-                $model->created_user_id = $user->id;
-                if($model->status == News::STATUS_ACTIVE){
-                    $model->published_at = time();
-                }
-
-                if ($model->save()) {
-                    $db_transaction->commit();
-                    Yii::$app->getSession()->setFlash('success', Yii::t('app','Thêm bài viết thành công'));
-                    return $this->redirect(['view', 'id' => $model->id]);
-                } else {
-                    Yii::error($model->getErrors());
-                    Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống vui lòng thử lại'));
-                }
-            } catch (Exception $e) {
-                $db_transaction->rollBack();
-                Yii::error($e);
-                Yii::$app->getSession()->setFlash('error', Yii::t('app','Không thành công, vui lòng thử lại'));
+            } else {
+                Yii::$app->session->setFlash('error', Yii::t('app', 'Ảnh đại diện không được để trống'));
+                return $this->render('create', [
+                    'model' => $model,
+                    'thumbnailInit' => $thumbnailInit,
+                    'thumbnailPreview' => $thumbnailPreview,
+                    'imageDesInit' => $imageDesInit,
+                    'imageDesPreview' => $imageDesPreview,
+                    'type' => $type,
+                ]);
             }
+            if (count($imageDes) > 0) {
+                foreach ($imageDes as $image) {
+                    $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
+                    if ($image->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_news') . "/" . $file_name)) {
+                        $new_file['name'] = $file_name;
+                        $new_file['type'] = News::IMAGE_TYPE_DES;
+                        $new_file['size'] = $image->size;
+                        $images[] = $new_file;
+                    }
+                }
+            }
+            $old_images = News::convertJsonToArray($model->images);
+            $model->images = Json::encode(ArrayHelper::merge($old_images, $images));
+            $model->type = $type;
+            $model->user_id = Yii::$app->user->id;
+            if ($model->save(false)) {
+                Yii::$app->session->setFlash('success', 'Thêm thành công!');
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                Yii::$app->session->setFlash('error', 'Thêm không thành công!');
+                Yii::$app->getErrorHandler();
+                return $this->render('create', [
+                    'model' => $model,
+                    'thumbnailInit' => $thumbnailInit,
+                    'thumbnailPreview' => $thumbnailPreview,
+                    'imageDesInit' => $imageDesInit,
+                    'imageDesPreview' => $imageDesPreview,
+                    'type' => $type,
+                ]);
+            }
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+                'thumbnailInit' => $thumbnailInit,
+                'thumbnailPreview' => $thumbnailPreview,
+                'imageDesInit' => $imageDesInit,
+                'imageDesPreview' => $imageDesPreview,
+                'type' => $type,
+            ]);
         }
-        return $this->render('create', [
-            'model' => $model,
-            'type' => $type,
-        ]);
     }
 
     /**
@@ -149,57 +188,83 @@ class NewsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $thumbnail = $model->thumbnail;
-        $old_video = $model->video;
-
+        $thumbnailInit = [];
+        $imageDesInit = [];
+        $thumbnailPreview = [];
+        $imageDesPreview = [];
+        $images = News::convertJsonToArray($model->images);
+        $old_images = News::convertJsonToArray($model->images);
+        foreach ($images as $key => $row) {
+            $key = $key + 1;
+            $urlDelete = Yii::$app->urlManager->createAbsoluteUrl(['/news/delete-image', 'name' => $row['name'], 'type' => $row['type'], 'id' => $id]);
+            $name = $row['name'];
+            $type = $row['type'];
+            $value = ['caption' => $name, 'width' => '120px', 'url' => $urlDelete, 'key' => $name];
+            $host_file = ((strpos($row['name'], 'http') !== false) || (strpos($row['name'], 'https') !== false)) ? $row['name'] : Yii::getAlias('@web/upload/image_news/') . $row['name'];
+            $preview = Html::img($host_file, ['class' => 'file-preview-image']);
+            switch ($row['type']) {
+                case (News::IMAGE_TYPE_THUMBNAIL):
+                    $thumbnailPreview[] = $preview;
+                    $thumbnailInit[] = $value;
+                    break;
+                case (News::IMAGE_TYPE_DES):
+                    $imageDesInit[] = $value;
+                    $imageDesPreview[] = $preview;
+                    break;
+            }
+        }
+        $errors = $model->errors;
         if ($model->load(Yii::$app->request->post())) {
-            $db_transaction = Yii::$app->db->beginTransaction();
-            try {
-                $file = UploadedFile::getInstance($model, 'thumbnail');
-                if ($file) {
-                    $file_name = uniqid() . time() . '.' . $file->extension;
-                    if ($file->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
-                        unlink(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $thumbnail);
-                        $model->thumbnail = $file_name;
-                    } else {
-                        Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống, vui lòng thử lại'));
-                    }
-                } else {
-                    $model->thumbnail = $thumbnail;
-                }
 
-                $video = UploadedFile::getInstance($model, 'video');
-                if ($video) {
-                    $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $video->extension;
-                    if ($video->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $file_name)) {
-                        unlink(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_new') . "/" . $old_video);
-                        $model->video = $file_name;
-                    }else {
-                        Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống, vui lòng thử lại'));
+            $thumbnails = UploadedFile::getInstances($model, 'thumbnail');
+            $imageDes = UploadedFile::getInstances($model, 'image_des');
+            $images = [];
+            if (count($thumbnails) > 0) {
+                foreach ($thumbnails as $image) {
+                    $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
+                    if ($image->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_news') . "/" . $file_name)) {
+                        $new_file['name'] = $file_name;
+                        $new_file['type'] = News::IMAGE_TYPE_THUMBNAIL;
+                        $new_file['size'] = $image->size;
+                        $images[] = $new_file;
                     }
                 }
-                else{
-                    $model->video = $old_video;
-                }
 
-                if ($model->save()) {
-                    $db_transaction->commit();
-                    Yii::$app->getSession()->setFlash('success', Yii::t('app','Cập nhật bài viết thành công'));
-                    return $this->redirect(['view', 'id' => $model->id]);
-                } else {
-                    Yii::error($model->getErrors());
-                    Yii::$app->getSession()->setFlash('error', Yii::t('app','Lỗi hệ thống vui lòng thử lại'));
+            }
+            if (count($imageDes) > 0) {
+                foreach ($imageDes as $image) {
+                    $file_name = Yii::$app->user->id . '.' . uniqid() . time() . '.' . $image->extension;
+                    if ($image->saveAs(Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_news') . "/" . $file_name)) {
+                        $new_file['name'] = $file_name;
+                        $new_file['type'] = News::IMAGE_TYPE_DES;
+                        $new_file['size'] = $image->size;
+                        $images[] = $new_file;
+                    }
                 }
+            }
+            $model->images = Json::encode(ArrayHelper::merge($old_images, $images));
+//            echo"<pre>";print_r($model->image);die();
+            if ($model->update(false)) {
+                Yii::$app->session->setFlash('success', 'Cập nhật thành công!');
                 return $this->redirect(['view', 'id' => $model->id]);
-            } catch (Exception $e) {
-                $db_transaction->rollBack();
-                Yii::error($e);
-                Yii::$app->getSession()->setFlash('error',Yii::t('app', 'Không thành công, vui lòng thử lại'));
+            } else {
+//                echo"<pre>";print_r($errors);die();
+                Yii::$app->session->setFlash('error', 'Cập nhật không thành công!');
+                return $this->render('update', [
+                    'model' => $model,
+                    'thumbnailInit' => $thumbnailInit,
+                    'thumbnailPreview' => $thumbnailPreview,
+                    'imageDesInit' => $imageDesInit,
+                    'imageDesPreview' => $imageDesPreview,
+                ]);
             }
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'type'=>$model->type,
+                'thumbnailInit' => $thumbnailInit,
+                'thumbnailPreview' => $thumbnailPreview,
+                'imageDesInit' => $imageDesInit,
+                'imageDesPreview' => $imageDesPreview,
             ]);
         }
     }
@@ -214,18 +279,12 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
         if ($model->status == News::STATUS_ACTIVE) {
-            Yii::$app->session->setFlash('error', 'Bạn không thể xóa bài viết ở trạng thái Hoạt động!');
-        } else {
-            $model->status = News::STATUS_DELETED;
-            if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'Xóa bài viết thành công!');
-            } else {
-                Yii::error($model->getErrors());
-                Yii::$app->session->setFlash('error', 'Lỗi hệ thống, vui lòng thử lại!');
-            }
+            Yii::$app->session->setFlash('error', 'Không được xóa đang ở trạng thái hoạt động!');
+            return $this->render('view', ['id' => $id]);
         }
-
-        return $this->redirect(['index', 'type' => $model->type]);
+        $this->findModel($id)->delete();
+        Yii::$app->session->setFlash('error', 'Xóa thành công');
+        return $this->redirect(['index']);
     }
 
     /**
@@ -249,7 +308,7 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
         $model->status = $status;
-        if($model->status == News::STATUS_ACTIVE){
+        if ($model->status == News::STATUS_ACTIVE) {
             $model->published_at = time();
         }
         if ($model->save()) {

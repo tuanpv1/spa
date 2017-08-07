@@ -1,6 +1,8 @@
 <?php
+
 namespace frontend\controllers;
 
+use common\models\Book;
 use common\models\Email;
 use common\models\IpAddressTable;
 use common\models\TableAgency;
@@ -27,6 +29,7 @@ use frontend\models\SignupForm;
 class SiteController extends Controller
 {
     public $enableCsrfValidation = false;
+
     /**
      * @inheritdoc
      */
@@ -81,43 +84,32 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $ip = Yii::$app->request->getUserIP();
-        $find_model_ip = IpAddressTable::findOne(['ip'=>$ip]); /** @var IpAddressTable $find_model_ip */
-        if(isset($find_model_ip) && !empty($find_model_ip)){
-            $old_number = $find_model_ip->number;
-
-            $find_model_ip->number = $old_number+1;
-            $find_model_ip->update();
-        }else{
-            $ip_table = new IpAddressTable();
-            $ip_table->ip = $ip;
-            $ip_table->number = 1;
-            $ip_table->save();
-        }
         $listBanner = Banner::findAll(['status' => Banner::STATUS_ACTIVE]);
 
-        $listNews = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
-            ->andWhere(['type' => News::TYPE_COMMON])
-            ->orderBy(['updated_at' => SORT_DESC])->all();
-
-        $listDoiTac = AffiliateCompany::findAll(['type' => AffiliateCompany::TYPE_DOITAC, 'status' => AffiliateCompany::STATUS_ACTIVE]);
-
-        $gioithieu = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
-            ->andWhere(['type' => News::TYPE_GIOITHIEU])
-            ->orderBy(['updated_at' => SORT_DESC])->one();
-
-        $doiNNV = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
-        ->andWhere(['type' => News::TYPE_TIENDO])
-        ->orderBy(['updated_at' => SORT_DESC])->one();
-
-        $listArray = News::find()
-            ->select('id')->andWhere(['status'=>News::STATUS_ACTIVE])
-            ->andWhere(['type'=>News::TYPE_COMMON])
-            ->orderBy(['updated_at'=>SORT_DESC])
+        $listCn = News::find()
+            ->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type' => News::TYPE_CN])
+            ->orderBy(['updated_at' => SORT_DESC])
+            ->limit(4)
             ->all();
 
-        return $this->render('index', ['listBanner' => $listBanner, 'listNews' => $listNews, 'listDoiTac' => $listDoiTac
-        ,'gioithieu' => $gioithieu,'doiNNV'=>$doiNNV,'listArray'=>$listArray]);
+        $gioithieu = News::find()->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type' => News::TYPE_ABOUT])
+            ->orderBy(['updated_at' => SORT_DESC])->one();
+
+        $listDv = News::find()
+            ->andWhere(['status' => News::STATUS_ACTIVE])
+            ->andWhere(['type' => News::TYPE_DV])
+            ->orderBy(['updated_at' => SORT_DESC])
+            ->limit(20)
+            ->all();
+
+        return $this->render('index', [
+            'listCn' => $listCn,
+            'gioithieu' => $gioithieu,
+            'listDv' => $listDv,
+            'listBanner' => $listBanner,
+        ]);
     }
 
     /**
@@ -256,46 +248,42 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionRegisterEmail(){
+    public function actionRegisterEmail()
+    {
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $model = new Email();
         $model->email = $email;
         $model->phone = $phone;
         $model->status = Email::STATUS_ACTIVE;
-        if($model->save(false)){
-            $content = "Khách hàng có địa chỉ email: ".$email.", số điện thoại: ".$phone." vừa đăng kí nhận tư vấn";
+        if ($model->save(false)) {
+            $content = "Khách hàng có địa chỉ email: " . $email . ", số điện thoại: " . $phone . " vừa đăng kí nhận tư vấn";
             $to = Yii::$app->params['emailSend'];
             $subject = "Vừa có khách hàng đăng kí nhận tư vấn";
-            if($this->sendMail($to,$subject,$content)){
-                $message = Yii::t('app','Đăng kí nhận tư vấn thành công.');
+            if ($this->sendMail($to, $subject, $content)) {
+                $message = Yii::t('app', 'Đăng kí nhận tư vấn thành công.');
                 return Json::encode(['success' => true, 'message' => $message]);
-            }else{
-                $message = Yii::t('app','khong gui dc mail.');
+            } else {
+                $message = Yii::t('app', 'khong gui dc mail.');
                 return Json::encode(['success' => true, 'message' => $message]);
             }
-        }else{
-            $message = Yii::t('app','Đăng kí nhận tư vấn không thành công.');
+        } else {
+            $message = Yii::t('app', 'Đăng kí nhận tư vấn không thành công.');
             return Json::encode(['success' => false, 'message' => $message]);
         }
     }
 
-    public function actionNews($type = News::TYPE_NEWS,$id = null)
+    public function actionNews($type = News::TYPE_NEWS)
     {
         $cat = null;
-        $this->layout = 'main-page.php';
         $listNews = News::find()
             ->andWhere(['status' => News::STATUS_ACTIVE]);
-        if($type == News::TYPE_NEWS){
-            $listNews->andWhere(['type'=>News::TYPE_NEWS]);
-        }elseif($type == News::TYPE_COMMON){
-            $listNews->andWhere(['type'=>News::TYPE_COMMON]);
-        }elseif($type == News::TYPE_PROJECT){
-            $listNews->andWhere(['type'=>News::TYPE_PROJECT]);
-        }
-        if(isset($id)){
-            $listNews->andWhere(['id_cat'=>$id]);
-            $cat = News::findOne($id);
+        if ($type == News::TYPE_NEWS) {
+            $listNews->andWhere(['type' => News::TYPE_NEWS]);
+        } elseif ($type == News::TYPE_DV) {
+            $listNews->andWhere(['type' => News::TYPE_DV]);
+        } elseif ($type == News::TYPE_CN) {
+            $listNews->andWhere(['type' => News::TYPE_CN]);
         }
 
         $listNews->orderBy(['created_at' => SORT_DESC]);
@@ -305,28 +293,53 @@ class SiteController extends Controller
         $pages->setPageSize($pageSize);
         $models = $listNews->offset($pages->offset)
             ->limit(6)->all();
-        return $this->render('index-news',[
+
+        $listDv = News::find()
+            ->andWhere(['status'=>News::STATUS_ACTIVE])
+            ->andWhere(['type'=>News::TYPE_DV])
+            ->limit(5)
+            ->all();
+        if($type == News::TYPE_NEWS){
+            $listQt = News::find()
+                ->andWhere(['type'=>News::TYPE_DV])
+                ->andWhere(['status'=>News::STATUS_ACTIVE])
+                ->limit(6)->all();
+        }elseif($type == News::TYPE_DV ){
+            $listQt = News::find()
+                ->andWhere(['type'=>News::TYPE_CN])
+                ->andWhere(['status'=>News::STATUS_ACTIVE])
+                ->limit(6)->all();
+        }elseif ($type == News::TYPE_CN){
+            $listQt = News::find()
+                ->andWhere(['type'=>News::TYPE_NEWS])
+                ->andWhere(['status'=>News::STATUS_ACTIVE])
+                ->limit(6)->all();
+        }
+
+        return $this->render('index-news', [
             'listNews' => $models,
             'pages' => $pages,
             'type' => $type,
-            'cat'=>$cat
+            'cat' => $cat,
+            'listDv'=>$listDv,
+            'listQt'=>$listQt,
         ]);
 
     }
 
     public function actionDetailNews($id)
     {
-        $this->layout = 'main-detail.php';
-        return $this->render('detail-news',[
-            'model' => News::findOne(['id'=>$id])
+        return $this->render('detail-news', [
+            'model' => News::findOne(['id' => $id])
         ]);
     }
 
-    public function actionInvestment(){ // loi ich dau tu
+    public function actionInvestment()
+    { // loi ich dau tu
         $this->layout = 'main-page.php';
         $listNews = News::find()
             ->andWhere(['status' => News::STATUS_ACTIVE])
-            ->andWhere(['type'=>News::TYPE_COMMON])
+            ->andWhere(['type' => News::TYPE_COMMON])
             ->orderBy(['updated_at' => SORT_DESC]);
         $countQuery = clone $listNews;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
@@ -335,56 +348,60 @@ class SiteController extends Controller
         $models = $listNews->offset($pages->offset)
             ->limit(6)->all();
         $this->layout = 'main-page.php';
-        return $this->render('investment',[
+        return $this->render('investment', [
             'listNews' => $models,
             'pages' => $pages,
         ]);
     }
 
-    public function actionDistribution(){ // he thong phan phoi
+    public function actionDistribution()
+    { // he thong phan phoi
         $this->layout = 'main-page.php';
         $listDistribution = TableAgency::find()
             ->andWhere(['status' => TableAgency::STATUS_ACTIVE])
-            ->orderBy(['updated_at' => SORT_DESC ])->all();
-        return $this->render('distribution',[
+            ->orderBy(['updated_at' => SORT_DESC])->all();
+        return $this->render('distribution', [
             'model' => $listDistribution,
         ]);
     }
 
-    public function actionGetInvestment(){
+    public function actionGetInvestment()
+    {
 
         $page = $this->getParameter('page');
 
         $listNews = News::find()
             ->andWhere(['status' => News::STATUS_ACTIVE])
-            ->andWhere(['type'=>News::TYPE_COMMON])
+            ->andWhere(['type' => News::TYPE_COMMON])
             ->orderBy(['created_at' => SORT_DESC]);
         $models = $listNews->offset($page)
             ->limit(6)->all();
-        return $this->renderPartial('_investment',[
+        return $this->renderPartial('_investment', [
             'listNews' => $models,
         ]);
 
     }
 
-    public function actionGetNews(){
+    public function actionGetNews()
+    {
 
         $page = $this->getParameter('page');
         $type = $this->getParameter('type');
 
         $listNews = News::find()
             ->andWhere(['status' => News::STATUS_ACTIVE])
-            ->andWhere(['type'=> $type])
+            ->andWhere(['type' => $type])
             ->orderBy(['created_at' => SORT_DESC]);
         $models = $listNews->offset($page)
             ->limit(6)->all();
-        return $this->renderPartial('_news',[
+        return $this->renderPartial('_news', [
             'listNews' => $models,
         ]);
 
     }
 
-    public function getParameter($param_name, $default = null) {
+    public function getParameter($param_name, $default = null)
+    {
         return \Yii::$app->request->get($param_name, $default);
     }
 
@@ -396,5 +413,26 @@ class SiteController extends Controller
             ->setSubject($subject)
             ->setTextBody($content)
             ->send();
+    }
+
+    public function actionSaveBook(){
+        $full_name = ucwords($_POST['full_name']);
+        $phone = $_POST['phone'];
+        $id_dv = $_POST['id_dv'];
+        $start_time = $_POST['start_time'];
+        $old = $_POST['old'];
+
+        $model = new Book();
+        $model->full_name = $full_name;
+        $model->phone = $phone;
+        $model->time_start = strtotime($start_time);
+        $model->id_dv = $id_dv;
+        $model->status = Book::STATUS_BOOKED;
+        $model->old = $old;
+        if(!$model->save()){
+            Yii::info($model->getErrors());
+            return Json::encode(['success' => false, 'message' => 'Không đặt lịch hẹn thành công']);
+        }
+        return Json::encode(['success' => true, 'message' => 'Chúc mừng khách hàng '.$full_name.' đã đặt lịch hẹn thành công']);
     }
 }

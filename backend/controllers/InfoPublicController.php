@@ -34,11 +34,18 @@ class InfoPublicController extends Controller
      * Lists all InfoPublic models.
      * @return mixed
      */
-    public function actionIndex($id = 1)
+    public function actionIndex()
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        $id = InfoPublic::ID_DEFAULT;
+        $model =  InfoPublic::findOne($id);
+        if($model){
+            return $this->render('view', [
+                'model' => $model
+            ]);
+        }else{
+            return $this->redirect(['info-public/create']);
+        }
+
     }
 
     /**

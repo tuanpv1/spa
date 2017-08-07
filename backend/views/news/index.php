@@ -35,12 +35,13 @@ $visible_village = false;
                     'filterModel' => $searchModel,
                     'columns' => [
                         [
-                            'attribute'=>'thumbnail',
-                            'width'=>'60px',
-                            'format' => 'html',
+                            'class' => '\kartik\grid\DataColumn',
+                            'attribute' => 'images',
+                            'format' => 'raw',
                             'value' => function ($model, $key, $index, $widget) {
-                                return $model->image ? Html::img(Yii::getAlias('@web') . "/" . Yii::getAlias('@image_new') . "/" . $model->thumbnail, ['width' => '100px']) : '';
-                            }
+                                $link = $model->getFirstImageLink();
+                                return $link ? Html::img($link, ['alt' => 'Thumbnail', 'width' => '200']) : '';
+                            },
                         ],
                         [
                             'class' => '\kartik\grid\DataColumn',

@@ -22,8 +22,7 @@ class Footer extends  Widget
 
     public function run()
     {
-        $listDoiTac = AffiliateCompany::findAll(['type' => AffiliateCompany::TYPE_DOITAC, 'status' => AffiliateCompany::STATUS_ACTIVE]);
         $footer = InfoPublic::findOne(['id'=>1]);
-        return $this->render('//footer/footer',['footer'=>$footer,'listDoiTac'=>$listDoiTac]);
+        return $this->render('footer',['footer'=>$footer]);
     }
 }

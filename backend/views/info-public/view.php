@@ -39,22 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'format' => 'raw',
                                 'value'=>$model->image_header ? Html::img(Yii::getAlias('@web') . "/" . Yii::getAlias('@image_banner') . "/" . $model->image_header, ['width' => '100px']) : '',
                             ],
-                            [
-                                'attribute'=>'image_footer',
-                                'format' => 'raw',
-                                'value'=>$model->image_footer ? Html::img(Yii::getAlias('@web') . "/" . Yii::getAlias('@image_banner') . "/" . $model->image_footer, ['width' => '100px']) : '',
-                            ],
-                            [
-                                'attribute'=>'image_menu',
-                                'format' => 'raw',
-                                'value'=>$model->image_menu ? Html::img(Yii::getAlias('@web') . "/" . Yii::getAlias('@image_banner') . "/" . $model->image_menu, ['width' => '100px']) : '',
-                            ],
                             'email:email',
                             'phone',
                             'link_face',
-                            'youtube',
-                            'twitter',
-                            'url',
                             'address',
                             [
                                 'attribute' => 'created_at',
