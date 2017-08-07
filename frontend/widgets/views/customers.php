@@ -20,10 +20,10 @@ use common\models\News;
     <div class="container">
         <div class="row">
             <div class="services-header">
-                <h4 class="services-header-title">KHÁCH HÀNG NÓI SAO VỀ MONALISA</h4>
+                <h4 class="services-header-title text-center">KHÁCH HÀNG NÓI SAO VỀ MONALISA</h4>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding-top: 20px">
             <div class="col-md-6">
                 <?php if ($cus_left) {
                     foreach ($cus_left as $item_left) {

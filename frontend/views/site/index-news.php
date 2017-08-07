@@ -16,8 +16,8 @@ $this->title = 'Tin tức làm đẹp';
 <!-- Main Container -->
 <div id="banners"></div>
 <div class="container">
-    <h1 class="blog-title text-center">
-        Cùng làm đẹp với Monalisa Spa
+    <h1 class="text-center">
+        <?= News::getTypeName($type) . ' Monalisa Spa' ?>
     </h1>
     <div class="row">
         <div class="col-md-9">
@@ -26,19 +26,27 @@ $this->title = 'Tin tức làm đẹp';
                     /** @var News $item */
                     ?>
                     <div class="blog-post">
-                        <h2 class="blog-title">
-                            <i class="fa fa-file-text"></i>
-                            <?= $item->title ?>
+                        <h2>
+                            <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
+                                <i class="fa fa-file-text"></i>
+                                <?= $item->title ?>
+                            </a>
                         </h2><br>
                         <div class="row">
                             <div class="col-md-5">
-                                <img src="<?= News::getFirstImageLinkTP($item->images) ?>" alt="<?= $item->title ?>"
-                                     title="<?= $item->title ?>"
-                                     align="right" width="80%" class="blog-image">
+                                <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
+                                    <img src="<?= News::getFirstImageLinkTP($item->images) ?>" alt="<?= $item->title ?>"
+                                         title="<?= $item->title ?>"
+                                         align="right" width="50%" class="blog-image">
+                                </a>
                             </div>
                             <div class="col-md-7">
                                 <p><?= $item->short_description ?></p>
                             </div>
+                        </div>
+                        <div class="row text-right">
+                            <i class="glyphicon glyphicon-eye-open"></i> Lượt xem: <?= $item->view_count ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="glyphicon glyphicon-time"></i> Ngày đăng: <?= date('d-m-Y', $item->created_at) ?>
                         </div>
                     </div>
                     <hr>
@@ -61,61 +69,7 @@ $this->title = 'Tin tức làm đẹp';
                 </div>
             <?php } ?>
         </div>
-
-        <div class="col-md-3">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <?php if ($listDv) {
-                        $i = 0;
-                        foreach ($listDv as $item) { ?>
-                            <li data-target="#carousel-example-generic" data-slide-to="<?=$i?>"
-                                class="<?= $i == 0 ? 'active' : '' ?>"></li>
-                            <?php $i++;
-                        }
-                    } ?>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    <?php if ($listDv) {
-                        $i = 0;
-                        foreach ($listDv as $item) {
-                            /** @var News $item */ ?>
-                            <div class="text-center item <?= $i == 0 ? 'active' : '' ?>">
-                                <img src="<?= News::getFirstImageLinkTP($item->images) ?>" alt="<?= $item->title ?>"
-                                     class="img-responsive"/>
-                            </div>
-                            <?php $i++;
-                        }
-                    } ?>
-                </div>
-                <!-- Controls -->
-                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-            </div>
-            <h4>Công nghệ làm đẹp</h4>
-            <div class="carousel slide">
-            <?php if ($listQt) {
-                foreach ($listQt as $item) {
-                    /** @var News $item */
-                    ?>
-                    <div class="row" style="padding-top: 20px">
-                        <div class="col-md-4">
-                            <img style="width: 80px" src="<?= News::getFirstImageLinkTP($item->images) ?>" alt="<?= $item->title ?>">
-                        </div>
-                        <div class="col-md-8">
-                            <a href=""><?= $item->title ?></a>
-                        </div>
-                    </div>
-                    <?php
-                }
-            } ?>
-            </div>
-        </div>
+        <?= \frontend\widgets\Header::actiongMenuRight($type) ?>
     </div>
 </div>
 

@@ -153,7 +153,7 @@ body {
 }
 
 a {
-    color: #55CBD2;
+    color: #0A6836;
     text-decoration: none;
     -o-transition: all .3s;
     -moz-transition: all .3s;
@@ -161,7 +161,7 @@ a {
     -ms-transition: all .3s;
 }
 
-a:hover { color: #888; text-decoration: none; }
+a:hover { color: #62BB46; text-decoration: none; }
 
 strong { font-weight: bold; }
 
@@ -241,7 +241,7 @@ address {
 * ==========================================================================
 */
 .navbar-nav > li > a {
-  padding: 10px 15px;
+  padding: 10px 10px;
   margin: 5px 5px;
   border-radius: 4px;
 }
@@ -748,6 +748,9 @@ footer h3 {
   .carousel-caption .carousel-title {
     font-size: 14px;
   }
+  #pad_tp{
+      padding-top: 20px;
+  }
 }
 #navbar-section{
 	position: fixed; /*Cho menu cố định 1 vị trí với top và left*/
@@ -777,4 +780,8 @@ h4 {
 
 .partner-block {
     text-align: center;
+}
+
+.glyphicon{
+    color: #136936;
 }

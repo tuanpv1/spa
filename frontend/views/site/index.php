@@ -68,15 +68,17 @@ $this->title = 'Công ty Monalisa Spa';
         <div class="container">
             <div class="row">
                 <div class="services-header">
-                    <h1 class="services-header-title"><?= $gioithieu->title ?></h1>
+                    <h1 class="services-header-title"><a title="<?= $gioithieu->title ?>" href="<?= Url::to(['site/detail-news','id'=>$gioithieu->id]) ?>"><?= $gioithieu->title ?></a></h1>
                 </div>
             </div>
 
             <!-- Begin Services Row 1 -->
             <div class="row services-row services-row-head services-row-1">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                    <a href="<?= Url::to(['site/detail-news','id'=>$gioithieu->id]) ?>" title="<?= $gioithieu->title ?>">
                     <img width="300px" src="<?= News::getFirstImageLinkTP($gioithieu->images) ?>"
                          alt="<?= $gioithieu->title ?>" title="<?= $gioithieu->title ?>">
+                    </a>
                 </div>
 
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
@@ -102,8 +104,8 @@ $this->title = 'Công ty Monalisa Spa';
                     <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
                         <img src="<?= News::getFirstImageLinkTP($item->images) ?>"
                              alt="<?= $item->title ?>" >
+                        <div style="padding-top: 10px" class="text-center"><?=  $item->title ?></div>
                     </a>
-                    <?= $item->title ?>
                 </li>
                 <?php
             }

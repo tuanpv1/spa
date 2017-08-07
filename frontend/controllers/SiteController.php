@@ -294,43 +294,26 @@ class SiteController extends Controller
         $models = $listNews->offset($pages->offset)
             ->limit(6)->all();
 
-        $listDv = News::find()
-            ->andWhere(['status'=>News::STATUS_ACTIVE])
-            ->andWhere(['type'=>News::TYPE_DV])
-            ->limit(5)
-            ->all();
-        if($type == News::TYPE_NEWS){
-            $listQt = News::find()
-                ->andWhere(['type'=>News::TYPE_DV])
-                ->andWhere(['status'=>News::STATUS_ACTIVE])
-                ->limit(6)->all();
-        }elseif($type == News::TYPE_DV ){
-            $listQt = News::find()
-                ->andWhere(['type'=>News::TYPE_CN])
-                ->andWhere(['status'=>News::STATUS_ACTIVE])
-                ->limit(6)->all();
-        }elseif ($type == News::TYPE_CN){
-            $listQt = News::find()
-                ->andWhere(['type'=>News::TYPE_NEWS])
-                ->andWhere(['status'=>News::STATUS_ACTIVE])
-                ->limit(6)->all();
-        }
-
         return $this->render('index-news', [
             'listNews' => $models,
             'pages' => $pages,
             'type' => $type,
             'cat' => $cat,
-            'listDv'=>$listDv,
-            'listQt'=>$listQt,
         ]);
 
     }
 
     public function actionDetailNews($id)
     {
+        $model = News::findOne(['id' => $id]);
+        $view_old = $model->view_count;
+        if($view_old == ''){
+            $view_old = 0;
+        }
+        $model->view_count = $view_old + 1;
+        $model->update();
         return $this->render('detail-news', [
-            'model' => News::findOne(['id' => $id])
+            'new' => $model
         ]);
     }
 
