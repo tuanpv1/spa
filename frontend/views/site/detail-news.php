@@ -13,7 +13,7 @@ if ($new) {
     /** @var News $new */
     ?>
     <div class="row container-kamn">
-        <img src="img/slider/slide5.jpg" class="blog-post" alt="Feature-img" align="right" width="100%">
+        <img src="<?= Yii::$app->getUrlManager()->getBaseUrl();  ?>/img/slider/slide5.jpg" class="blog-post" alt="Feature-img" align="right" width="100%">
     </div>
     <div id="banners"></div>
     <div class="container">

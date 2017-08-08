@@ -11,7 +11,7 @@ use yii\helpers\Url;
 $this->title = 'Tin tức làm đẹp';
 ?>
 <div class="row container-kamn">
-    <img src="img/slider/slide5.jpg" class="blog-post" alt="Feature-img" align="right" width="100%">
+    <img src="<?= Yii::$app->getUrlManager()->getBaseUrl();  ?>/img/slider/slide5.jpg" class="blog-post" alt="Feature-img" align="right" width="100%">
 </div>
 <!-- Main Container -->
 <div id="banners"></div>

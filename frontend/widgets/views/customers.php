@@ -12,7 +12,7 @@ use common\models\News;
 <!--quang cao -->
 <section class="services-section section-global-wrapper">
     <div class="col-xs-12">
-        <img width="100%" src="img/slider/call.jpg" alt="hihi">
+        <img width="100%" src="<?= Yii::$app->getUrlManager()->getBaseUrl();  ?>/img/slider/call.jpg" alt="hihi">
     </div>
 </section>
 <!--end quang cao-->
