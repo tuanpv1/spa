@@ -131,9 +131,11 @@ $this->title = 'Công ty Monalisa Spa';
                     ?>
                     <div class="col-sm-4 col-md-3">
                         <div class="thumbnail">
+                            <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>">
                             <img style="height: 200px" src="<?= News::getFirstImageLinkTP($item->images) ?>" alt="<?= $item->title ?>" >
+                            </a>
                             <div class="caption">
-                                <h4><?= $item->title ?></h4>
+                                <h4><a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a></h4>
                                 <p><?= $item->short_description ?></p>
                             </div>
                         </div>
