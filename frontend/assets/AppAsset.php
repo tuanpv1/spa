@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
         'css/animate.min.css',
         'css/style-projects.css',
         'css/jquery.bxslider.css',
+        'sliderengine/amazingslider-1.css',
     ];
     public $js = [
         'js/jquery.min.js',
@@ -32,6 +33,8 @@ class AppAsset extends AssetBundle
         'js/jquery.bxslider.min.js',
         'js/bootstrap-datetimepicker.js',
         'js/bootstrap-datetimepicker.es.js',
+        'sliderengine/amazingslider.js',
+        'sliderengine/initslider-1.js',
         'js/tp.js',
     ];
     public $depends = [

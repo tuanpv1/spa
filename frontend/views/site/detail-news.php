@@ -13,7 +13,8 @@ if ($new) {
     /** @var News $new */
     ?>
     <div class="row container-kamn">
-        <img src="<?= Yii::$app->getUrlManager()->getBaseUrl();  ?>/img/slider/slide5.jpg" class="blog-post" alt="Feature-img" align="right" width="100%">
+        <img src="<?= Yii::$app->getUrlManager()->getBaseUrl(); ?>/img/slider/slide5.jpg" class="blog-post"
+             alt="Feature-img" align="right" width="100%">
     </div>
     <div id="banners"></div>
     <div class="container">
@@ -34,6 +35,7 @@ if ($new) {
                         <img height="200px" src="<?= News::getFirstImageLinkTP($new->images) ?>"
                              alt="<?= $new->title ?>" title="<?= $new->title ?>">
                     </div>
+
                     <div style="padding-top: 15px" class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                         <i class="glyphicon glyphicon-eye-open"></i> Xem: <?= $new->view_count ?> &nbsp;
                         <i class="glyphicon glyphicon-time"></i> Ngày đăng: <?= date('d-m-Y', $new->created_at) ?><br>
@@ -41,6 +43,45 @@ if ($new) {
                     </div>
 
                     <div class="col-xs-12">
+                        <?php if ($new->type != News::TYPE_NEWS) { ?>
+                            <hr>
+                            <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:460px;margin:0px auto 56px;">
+                                <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
+                                    <ul class="amazingslider-slides" style="display:none;">
+                                        <?php
+                                        $img = $new->getImagesNews();
+                                        if ($img) {
+                                            foreach ($img as $item) {
+                                                ?>
+                                                <li>
+                                                    <img src="<?= News::getImageFe($item->name) ?>"
+                                                         title="<?= $new->title ?>" alt="<?= $new->title ?>"/>
+                                                </li>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                    <ul class="amazingslider-thumbnails" style="display:none;">
+                                        <?php
+                                        $img = $new->getImagesNews();
+                                        if ($img) {
+                                            foreach ($img as $item) {
+                                                ?>
+                                                <li>
+                                                    <img id="product_image" alt="<?= $new->title ?>"
+                                                         title="<?= $new->title ?>"
+                                                         src="<?= News::getImageFe($item->name) ?>"/>
+                                                </li>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr>
+                        <?php } ?>
                         <?= $new->content ?>
                     </div>
                 </div>
