@@ -16,7 +16,7 @@ use yii\helpers\Url;
 $videoPreview = !$model->isNewRecord && !empty($model->video);
 // http://kcfinder.sunhater.com/install#dynamic
 $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
-    'uploadURL' => Yii::getAlias('@web') . '/uploads/',
+    'uploadURL' => Yii::getAlias('@web') . '/upload/image_news',
     'access' => [
         'files' => [
             'upload' => true,

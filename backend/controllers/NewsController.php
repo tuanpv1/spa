@@ -19,6 +19,7 @@ use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 use yii\web\UploadedFile;
 
 /**
@@ -285,6 +286,65 @@ class NewsController extends Controller
         $this->findModel($id)->delete();
         Yii::$app->session->setFlash('error', 'Xóa thành công');
         return $this->redirect(['index']);
+    }
+
+
+    public function actionDeleteImage()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $new_id = Yii::$app->request->get('id');
+        $name = Yii::$app->request->get('name');
+
+        if (!$new_id || !$name) {
+            return [
+                'success' => false,
+                'message' => 'Thiếu tham số!',
+                'error' => 'Thiếu tham số!',
+            ];
+        }
+        $content = News::findOne(['id' => $new_id]);
+        if (!$content) {
+            return [
+                'success' => false,
+                'message' => 'Không thấy nội dung!',
+                'error' => 'Không thấy nội dung!',
+            ];
+        } else {
+            $index = -1;
+            $images = News::convertJsonToArray($content->images);
+            Yii::trace($images);
+            foreach ($images as $key => $row) {
+                if ($row['name'] == $name) {
+                    $index = $key;
+                }
+            }
+            if ($index == -1) {
+                return [
+                    'success' => false,
+                    'message' => 'Không thấy ảnh!',
+                    'error' => 'Không thấy ảnh!',
+                ];
+            } else {
+                array_splice($images, $index, 1);
+                Yii::trace($images);
+                $content->images = Json::encode($images);
+                if ($content->save(false)) {
+                    $tmp = Yii::getAlias('@webroot') . "/" . Yii::getAlias('@image_news') . "/";
+                    if (file_exists($tmp . $name)) {
+                        unlink($tmp . $name);
+                    }
+                    return [
+                        'success' => true,
+                        'message' => 'Xóa ảnh thành công',
+                    ];
+                } else {
+                    return [
+                        'success' => false,
+                        'message' => $content->getErrors(),
+                    ];
+                }
+            }
+        }
     }
 
     /**
