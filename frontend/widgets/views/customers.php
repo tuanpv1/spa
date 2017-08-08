@@ -32,7 +32,7 @@ use common\models\News;
                         <div class="blockquote-box blockquote-success animated wow fadeInLeft clearfix">
                             <div class="square pull-left">
                                 <img src="<?= News::getFirstImageLinkTP($item_left->images) ?>"
-                                     alt="<?= $item_left->title ?>" height="150" width="150">
+                                     alt="<?= $item_left->title ?>" height="100" width="100">
                             </div>
                             <h4>
                                 <?= $item_left->title ?>
@@ -54,7 +54,7 @@ use common\models\News;
                         <div class="blockquote-box blockquote-success animated wow fadeInRight clearfix">
                             <div class="square pull-left">
                                 <img src="<?= News::getFirstImageLinkTP($item_right->images) ?>"
-                                     alt="<?= $item_right->title ?>" height="150" width="150">
+                                     alt="<?= $item_right->title ?>" height="100" width="100">
                             </div>
                             <h4>
                                 <?= $item_right->title ?>

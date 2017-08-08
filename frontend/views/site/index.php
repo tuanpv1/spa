@@ -95,14 +95,14 @@ $this->title = 'Công ty Monalisa Spa';
 
 <!--partner block-->
 <div class="container">
-    <ul class="bxslider3">
+    <ul class="bxslider3 text-center">
         <?php if ($listDv) {
             foreach ($listDv as $item) {
                 /** @var News $item */
                 ?>
                 <li>
                     <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
-                        <img src="<?= News::getFirstImageLinkTP($item->images) ?>"
+                        <img style="height: 200px" src="<?= News::getFirstImageLinkTP($item->images) ?>"
                              alt="<?= $item->title ?>" >
                         <div style="padding-top: 10px" class="text-center"><?=  $item->title ?></div>
                     </a>

@@ -149,7 +149,9 @@ class BannerController extends Controller
     {
         $model = $this->findModel($id);
         $tmp = Yii::getAlias('@web') . "/" . Yii::getAlias('@image_banner') . "/" ;
-        unlink($tmp.$model->image);
+        if(file_exists($tmp.$model->image)){
+            unlink($tmp.$model->image);
+        }
         $model->delete();
         Yii::$app->getSession()->setFlash('success', 'Xóa banner thành công');
         return $this->redirect(['index']);

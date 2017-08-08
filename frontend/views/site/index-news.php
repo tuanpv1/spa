@@ -46,7 +46,8 @@ $this->title = 'Tin tức làm đẹp';
                         </div>
                         <div class="row text-right">
                             <i class="glyphicon glyphicon-eye-open"></i> Lượt xem: <?= $item->view_count ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="glyphicon glyphicon-time"></i> Ngày đăng: <?= date('d-m-Y', $item->created_at) ?>
+                            <i class="glyphicon glyphicon-time"></i> Ngày
+                            đăng: <?= date('d-m-Y', $item->created_at) ?>
                         </div>
                     </div>
                     <hr>

@@ -59,7 +59,7 @@
                             <input type="text" class="form-control" name="old" id="old" placeholder="Nhập số tuổi">
                             <p style="color:red;" id="error_old">Tuổi phải là số</p>
                         </div>
-                        <p id="error_validate" style="color:red;"> Vui lòng nhập các trường bắt buộc có dâu * </p>
+                        <p id="error_validate" style="color:red;"> Vui lòng nhập các trường bắt buộc có dấu * </p>
                     </fieldset>
                 </form>
                 <button type="submit" id="btn" class="btn btn-primary">Đặt lịch</button>
