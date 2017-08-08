@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 
+use common\helpers\CUtils;
 use common\models\Banner;
 use common\models\News;
 use yii\helpers\Url;
@@ -136,7 +137,7 @@ $this->title = 'Công ty Monalisa Spa';
                             </a>
                             <div class="caption">
                                 <h4><a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a></h4>
-                                <p><?= $item->short_description ?></p>
+                                <p><?= CUtils::subString($item->short_description,130) ?></p>
                             </div>
                         </div>
                     </div>
