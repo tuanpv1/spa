@@ -33,14 +33,14 @@ $this->title = 'Tin tức làm đẹp';
                             </a>
                         </h2><br>
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
                                     <img src="<?= News::getFirstImageLinkTP($item->images) ?>" alt="<?= $item->title ?>"
                                          title="<?= $item->title ?>"
                                          align="right" width="100%" class="blog-image">
                                 </a>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-8">
                                 <p><?= $item->short_description ?></p>
                             </div>
                         </div>
