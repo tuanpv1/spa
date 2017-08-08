@@ -12,13 +12,13 @@ use yii\helpers\Url;
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand wow fadeInDownBig" href="<?= Yii::$app->getHomeUrl() ?>"><img class="office-logo" src="<?= $link_image_logo?$link_image_logo:'' ?>" alt="Monalisa Spa"></a>
+            <a class="navbar-brand wow fadeInDownBig" href="<?= Url::to(['site/index']) ?>"><img class="office-logo" src="<?= $link_image_logo?$link_image_logo:'' ?>" alt="Monalisa Spa"></a>
         </div>
 
         <div id="navbar-spy" class="collapse navbar-collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav pull-right">
                 <li class="active">
-                    <a href="<?= Yii::$app->getHomeUrl() ?>">Trang chủ</a>
+                    <a href="<?= Url::to(['site/index']) ?>">Trang chủ</a>
                 </li>
                 <li>
                     <a href="<?= Url::to(['site/news','type' => News::TYPE_DV]) ?>">Dịch vụ</a>
@@ -30,7 +30,7 @@ use yii\helpers\Url;
                     <a href="<?= Url::to(['site/news']) ?>">Tin làm đẹp</a>
                 </li>
                 <li>
-                    <a href="<?= Yii::$app->getHomeUrl() ?>#contact_us">Liên hệ</a>
+                    <a href="<?= Url::to(['site/index']) ?>#contact_us">Liên hệ</a>
                 </li>
                 <li>
                     <a href="#" data-toggle="modal" data-target="#myModal"> Đặt lịch hẹn</a>
