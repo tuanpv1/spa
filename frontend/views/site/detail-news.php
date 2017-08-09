@@ -43,7 +43,7 @@ if ($new) {
                     </div>
 
                     <div class="col-xs-12">
-                        <?php if ($new->type != News::TYPE_NEWS) { ?>
+                        <?php if ($new->type != News::TYPE_NEWS && $new->type != News::TYPE_ABOUT) { ?>
                             <hr>
                             <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:460px;margin:0px auto 56px;">
                                 <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
