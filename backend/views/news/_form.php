@@ -211,12 +211,15 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
     <?= $form->field($model, 'short_description')->textarea(['rows' => 4]) ?>
 
     <?php if($type != News::TYPE_KH){ ?>
-        <?= $form->field($model, 'content')->widget(\common\widgets\CKEditor::className(), [
-            'options' => [
-                'rows' => 8,
-            ],
-            'preset' => 'basic'
-        ]) ?>
+        <?php  echo $form->field($model, 'content')->widget(\common\widgets\CKEditor::className(), [
+//            'options' => [
+//                'rows' => 8,
+//            ],
+            'preset' => 'basic',
+        ]);
+        $_SESSION['KCFINDER'] = array(
+            'disabled' => false
+        );?>
     <?php } ?>
 
     <div class="form-group">
