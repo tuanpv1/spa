@@ -1,5 +1,6 @@
 <?php
 use backend\assets\AppAsset;
+use common\models\Book;
 use common\models\News;
 use common\models\User;
 use common\widgets\Alert;
@@ -57,6 +58,7 @@ AppAsset::register($this);
         if (Yii::$app->user->isGuest) {
 
         } else {
+            $count = Book::find()->andWhere(['status'=>Book::STATUS_BOOKED])->count();
 
             $rightItems[] = [
                 'encode' => false,
@@ -157,7 +159,7 @@ AppAsset::register($this);
         ],
         [
             'encode' => false,
-            'label' => Yii::t('app','QL Lịch hẹn'),
+            'label' => $count?'QL Lịch hẹn <span style="color: red" class="icon-ring">('.$count.')</span>':'QL Lịch hẹn',
             'url' => ['book/index'],
         ],
         [
