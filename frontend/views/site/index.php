@@ -35,7 +35,7 @@ $this->title = 'Công ty Monalisa Spa';
                         foreach ($listBanner as $item) {
                             /** @var Banner $item */ ?>
                             <!-- Begin Slide -->
-                            <div class="item <?= $i == 0 ? 'active' : '' ?>">
+                            <div class="text-center item <?= $i == 0 ? 'active' : '' ?>">
                                 <img src="<?= $item->getImageLink() ?>" height="400" alt="<?= $item->name ?>">
                                 <div class="carousel-caption">
                                     <h3 class="carousel-title hidden-xs"><?= $item->name ?></h3>

@@ -31,6 +31,6 @@
     </div>
     <hr>
     <div class="copyright text center">
-        <p>&copy; Copyright 2017, <a href="http::/monalisaspa.vn">Monalisa Spa</a>.</p>
+        <p>&copy; Copyright 2017 <a href="http::/monalisaspa.vn">Monalisa Spa</a>.</p>
     </div>
 </footer>

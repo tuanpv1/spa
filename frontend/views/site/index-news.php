@@ -64,9 +64,9 @@ $this->title = 'Tin tức làm đẹp';
             <input type="hidden" name="numberCount" id="numberCount" value="<?= sizeof($listNews) ?>">
             <input type="hidden" name="total" id="total" value="<?= $pages->totalCount ?>">
             <?php if (count($listNews) >= 6) { ?>
-                <div class="view-more-page tac">
-                    <a class="next page-numbers" id="more" onclick="loadMore();">Xem
-                        thêm<span></span></a>
+                <div style="margin-bottom: 20px" class="view-more-page tac text-center">
+                    <button class="btn btn-primary next page-numbers" id="more" onclick="loadMore();">Xem
+                        thêm<span></span></button>
                 </div>
             <?php } ?>
         </div>

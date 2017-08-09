@@ -502,12 +502,18 @@ footer .widget i {
 }
 footer{
    margin-top:40px;
-   padding: 20px; 
-   background: black;
+   padding: 20px;
+    background: -webkit-linear-gradient(left, #C0FF9C, #60bb46);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #C0FF9C, #60bb46);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #C0FF9C, #60bb46);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(right, #C0FF9C, #60bb46);
 }
 
 footer h3 {
-    color: #dadada;
+    color: #136936;
     margin-bottom: 20px;
 }
 
@@ -530,9 +536,9 @@ footer h3 {
 }
 
 .copyright {
-    color: #fff;
+    color: #136936;
     padding: 20px 0px 10px 0px;
-    background-color: rgb(23, 23, 23);
+    background-color: white;
 }
 
 /*
@@ -727,7 +733,7 @@ footer h3 {
 * ==========================================================================
 */
 .carousel-caption .carousel-title {
-  color: #ffffff;
+  color: #136936;
 }
 @media (min-width: 768px) and (max-width: 1199px) {
   .carousel-caption {

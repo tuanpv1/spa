@@ -33,7 +33,7 @@ use yii\helpers\Url;
                     <a href="<?= Url::to(['site/index']) ?>#contact_us">Liên hệ</a>
                 </li>
                 <li>
-                    <a href="#" data-toggle="modal" data-target="#myModal"> Đặt lịch hẹn</a>
+                    <a href="#" data-toggle="modal" data-target="#myModal"><marquee scrollamount="100" scrolldelay="300" style="height: 20px; width: 100px;">Đặt lịch hẹn</marquee></a>
                 </li>
             </ul>
         </div>
