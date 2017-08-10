@@ -180,25 +180,25 @@ AppAsset::register($this);
             'label' => Yii::t('app','Cấu hình'),
             'url' => ['info-public/index'],
         ],
-//        [
-//            'label' => Yii::t('app','QL Phân quyền'),
-//            'url' => 'javascript:;',
-//            'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
-//            'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
-//            'items' => [
-//                [
-//                    'encode' => false,
-//                    'label' => Yii::t('app','QL Quyền'),
-//                    'url' => ['rbac-backend/permission'],
-//                    'require_auth' => true,
-//                ],
-//                [
-//                    'encode' => false,
-//                    'label' => Yii::t('app','QL Nhóm quyền'),
-//                    'url' => ['rbac-backend/role'],
-//                ],
-//            ]
-//        ],
+        [
+            'label' => Yii::t('app','QL Phân quyền'),
+            'url' => 'javascript:;',
+            'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
+            'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
+            'items' => [
+                [
+                    'encode' => false,
+                    'label' => Yii::t('app','QL Quyền'),
+                    'url' => ['rbac-backend/permission'],
+                    'require_auth' => true,
+                ],
+                [
+                    'encode' => false,
+                    'label' => Yii::t('app','QL Nhóm quyền'),
+                    'url' => ['rbac-backend/role'],
+                ],
+            ]
+        ],
     ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],

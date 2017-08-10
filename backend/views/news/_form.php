@@ -222,6 +222,10 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
         );?>
     <?php } ?>
 
+    <?php if($type== News::TYPE_DV){ ?>
+        <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
+    <?php } ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Tạo mới') : Yii::t('app', 'Cập nhật'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

@@ -67,31 +67,30 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                         ],
                         [
-                            'class' => 'kartik\grid\EditableColumn',
+                            'class' => '\kartik\grid\DataColumn',
                             'attribute' => 'status',
-                            'label' => \Yii::t('app', 'Trạng thái'),
-                            'width' => '200px',
-                            'refreshGrid' => true,
-                            'editableOptions' => function ($model, $key, $index) {
-                                return [
-                                    'header' => Yii::t("app","Trạng thái"),
-                                    'size' => 'md',
-                                    'displayValueConfig' =>Book::listStatus(),
-                                    'inputType' => \kartik\editable\Editable::INPUT_DROPDOWN_LIST,
-                                    'data' => Book::listStatus(),
-                                    'placement' => \kartik\popover\PopoverX::ALIGN_LEFT,
-                                    'formOptions' => [
-                                        'action' => ['book/update-status', 'id' => $model->id]
-                                    ],
-                                ];
+                            'format' => 'html',
+                            'value' => function ($model, $key, $index, $widget) {
+                                /** @var $model \common\models\Book */
+                                if ($model->status == Book::STATUS_BOOKED) {
+                                    return '<span class="label label-danger">' . $model->getStatusName() . '</span>';
+                                }
+                                if($model->status == Book::STATUS_CANCEL){
+                                    return '<span class="label label-warning">' . $model->getStatusName() . '</span>';
+                                }
+                                if($model->status == Book::STATUS_COME){
+                                    return '<span class="label label-success">' . $model->getStatusName() . '</span>';
+                                }
+                                if($model->status == Book::STUTUS_CONFIRM){
+                                    return '<span class="label label-info">' . $model->getStatusName() . '</span>';
+                                }
                             },
                             'filterType' => GridView::FILTER_SELECT2,
                             'filter' => Book::listStatus(),
                             'filterWidgetOptions' => [
                                 'pluginOptions' => ['allowClear' => true],
                             ],
-
-                            'filterInputOptions' => ['placeholder' => Yii::t('app','Tất cả')],
+                            'filterInputOptions' => ['placeholder' => "Tất cả"],
                         ],
                         [
                             'attribute'           => 's_created_at',

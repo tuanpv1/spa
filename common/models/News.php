@@ -118,13 +118,13 @@ class News extends \yii\db\ActiveRecord
         return [
             [['type', 'view_count', 'like_count', 'comment_count', 'favorite_count', 'honor',
                 'status', 'created_user_id', 'created_at', 'updated_at', 'user_id'
-                , 'published_at','type_video','position','id_cat'], 'integer'],
-            [['title', 'user_id'], 'required'],
+                , 'published_at','type_video','position','id_cat','price'], 'integer'],
+            [['title', 'user_id','price'], 'required'],
             [['video'], 'file', 'extensions' => ['doc', 'docx','pdf'], 'maxSize' => 1024 * 1024 * 500, 'tooBig' => 'Video vượt quá dung lượng cho phép!'],
             [['thumbnail'], 'required', 'on' => 'create'],
             [['content', 'description'], 'string'],
             [['title', 'title_ascii', 'thumbnail'], 'string', 'max' => 512],
-            [['tags', 'source_name', 'source_url', 'price'], 'string', 'max' => 200],
+            [['tags', 'source_name', 'source_url'], 'string', 'max' => 200],
             [['short_description','video','url_video_new'], 'string', 'max' => 1000],
             [['video_url'],'safe'],
             [['images','thumbnail','image_des'], 'image', 'extensions' => 'png,jpg,jpeg,gif',
