@@ -17,7 +17,7 @@
             <div id="pad_tp" class="col-md-4 col-xs-12">
                 <h3><i class="fa fa-map-marker"></i> Liên Hệ:</h3>
                 <p class="footer-contact">
-                    <address>Địa chỉ: <?= $footer?$footer->address:'' ?></address><br>
+                    Địa chỉ: <?= $footer?$footer->address:'' ?><br>
                     Hotline1: <?=$footer?$footer->phone:''?><br>
                     Hotline2: <?=$footer?$footer->url:''?><br>
                     Email: <?=$footer?$footer->email:''?><br>
