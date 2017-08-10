@@ -163,29 +163,21 @@ AppAsset::register($this);
             'url' => ['book/index'],
         ],
         [
-            'label' => Yii::t('app','QL Tài khoản'),
+            'encode' => false,
+            'label' => Yii::t('app','Cấu hình'),
+            'url' => ['info-public/index'],
+        ],
+        [
+            'label' => Yii::t('app','QL Phân quyền & tài khoản'),
             'url' => 'javascript:;',
             'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
             'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
             'items' => [
                 [
                     'encode' => false,
-                    'label' => Yii::t('app','QL Tài khoản Admin'),
+                    'label' => Yii::t('app','QL Tài khoản'),
                     'url' => ['user/index', "type" => User::TYPE_ADMIN],
                 ],
-            ]
-        ],
-        [
-            'encode' => false,
-            'label' => Yii::t('app','Cấu hình'),
-            'url' => ['info-public/index'],
-        ],
-        [
-            'label' => Yii::t('app','QL Phân quyền'),
-            'url' => 'javascript:;',
-            'options' => ['class' => 'menu-dropdown mega-menu-dropdown'],
-            'linkOptions' => ['data-hover' => 'megamenu-dropdown', 'data-close-others' => 'true'],
-            'items' => [
                 [
                     'encode' => false,
                     'label' => Yii::t('app','QL Quyền'),
