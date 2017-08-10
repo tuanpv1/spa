@@ -237,11 +237,11 @@ class User extends ActiveRecord implements IdentityInterface
         if (strlen($this->setting_new_password) < '6') {
             $this->addError('setting_new_password', 'Mật khẩu phải chứa tối thiểu 6 ký tự.');
         }
-        elseif(!preg_match("@[0-9]@",$this->setting_new_password)) {
-            $this->addError('setting_new_password', 'Mật khẩu phải chứa ít nhất 1 số.');
-        } elseif(!preg_match("@[A-Z]@",$this->setting_new_password)) {
-            $this->addError('setting_new_password', 'Mật khẩu phải chứa ít nhất 1 chữ viết hoa.');
-        }
+//        elseif(!preg_match("@[0-9]@",$this->setting_new_password)) {
+//            $this->addError('setting_new_password', 'Mật khẩu phải chứa ít nhất 1 số.');
+//        } elseif(!preg_match("@[A-Z]@",$this->setting_new_password)) {
+//            $this->addError('setting_new_password', 'Mật khẩu phải chứa ít nhất 1 chữ viết hoa.');
+//        }
     }
 
     public function checkPassword($attribute)
@@ -249,11 +249,11 @@ class User extends ActiveRecord implements IdentityInterface
         if (strlen($this->password) < '6') {
             $this->addError('password', 'Mật khẩu phải chứa tối thiểu 6 ký tự.');
         }
-        elseif(!preg_match("@[0-9]@",$this->password)) {
-            $this->addError('password', 'Mật khẩu phải chứa ít nhất 1 số.');
-        } elseif(!preg_match("@[A-Z]@",$this->password)) {
-            $this->addError('password', 'Mật khẩu phải chứa ít nhất 1 chữ viết hoa.');
-        }
+//        elseif(!preg_match("@[0-9]@",$this->password)) {
+//            $this->addError('password', 'Mật khẩu phải chứa ít nhất 1 số.');
+//        } elseif(!preg_match("@[A-Z]@",$this->password)) {
+//            $this->addError('password', 'Mật khẩu phải chứa ít nhất 1 chữ viết hoa.');
+//        }
     }
 
     public function validator_password($attribute, $params)

@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="caption">
                     <i class="fa fa-cogs font-green-sharp"></i>
                     <span
-                        class="caption-subject font-green-sharp bold uppercase">Quản lý tài khoản <?= User::getTypeNameByID($type) ?> </span>
+                        class="caption-subject font-green-sharp bold uppercase">Quản lý tài khoản </span>
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse">
