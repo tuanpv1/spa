@@ -41,6 +41,9 @@ $this->title = 'Tin tức làm đẹp';
                                 </a>
                             </div>
                             <div class="col-md-8">
+                                <?php if($type == News::TYPE_DV){ ?>
+                                    <p>Giá: <?= $item->price?News::formatNumber($item->price):0 ?> VND</p>
+                                <?php } ?>
                                 <p><?= $item->short_description ?></p>
                             </div>
                         </div>

@@ -110,6 +110,11 @@ class News extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function formatNumber($number)
+    {
+        return (new \yii\i18n\Formatter())->asInteger($number);
+    }
+
     /**
      * @inheritdoc
      */
