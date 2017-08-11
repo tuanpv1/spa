@@ -29,6 +29,8 @@ use yii\helpers\Url;
                     </a>
                 </div>
                 <div class="col-md-8">
+                    <p>Giá: <?= $item->price?News::formatNumber($item->price):0 ?> VND</p>
+                    <p>Thời gian sử dụng dich vụ: <?= $item->honor?$item->honor.' Phút':'Liên hệ để biết chi tiết' ?> </p>
                     <p><?= $item->short_description ?></p>
                 </div>
             </div>

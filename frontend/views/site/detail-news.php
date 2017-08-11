@@ -81,7 +81,11 @@ if ($new) {
                                 </div>
                             </div>
                             <hr>
-                        <?php } ?>
+                        <?php }
+                        if($new->type == News::TYPE_DV){ ?>
+                            <p>Giá: <?= $item->price?News::formatNumber($item->price):0 ?> VND</p>
+                            <p>Thời gian sử dụng dich vụ: <?= $item->honor?$item->honor.' Phút':'Liên hệ để biết chi tiết' ?> </p>
+                        <?php }?>
                         <?= $new->content ?>
                     </div>
                 </div>
