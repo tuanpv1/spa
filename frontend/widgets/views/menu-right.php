@@ -29,7 +29,7 @@ use yii\helpers\Url;
                 foreach ($listDv as $item) {
                     /** @var News $item */ ?>
                     <div class="text-center item <?= $i == 0 ? 'active' : '' ?>">
-                        <img src="<?= News::getFirstImageLinkTP($item->images) ?>" alt="<?= $item->title ?>"
+                        <img src="<?= News::getFirstImageLinkTP($item->images) ?>" title="<?= $item->title ?>" alt="<?= $item->title ?>"
                              class="img-responsive"/>
                     </div>
                     <?php $i++;
@@ -54,7 +54,7 @@ use yii\helpers\Url;
                     <div class="col-md-4">
                         <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
                             <img style="width: 80px" src="<?= News::getFirstImageLinkTP($item->images) ?>"
-                                 alt="<?= $item->title ?>">
+                                 alt="<?= $item->title ?>" title="<?= $item->title ?>">
                         </a>
                     </div>
                     <div class="col-md-8">
