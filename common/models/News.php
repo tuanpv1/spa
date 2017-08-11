@@ -49,7 +49,7 @@ use yii\helpers\Url;
 class News extends \yii\db\ActiveRecord
 {
 
-    const MAX_SIZE_UPLOAD = 5*1024*1024;
+    const MAX_SIZE_UPLOAD = 5 * 1024 * 1024;
     public $thumbnail;
     public $image_des;
 
@@ -76,15 +76,17 @@ class News extends \yii\db\ActiveRecord
     const TYPE_NOT_VIDEO = 2;// không cÓ VIDEO
 
     // phân biệt để làm ẩn hiện khung tải video hay url
-    const TYPE_UPLOAD_VIDEO = 1 ;// TẢI LÊN VIDEO
-    const TYPE_URL = 2 ;
+    const TYPE_UPLOAD_VIDEO = 1;// TẢI LÊN VIDEO
+    const TYPE_URL = 2;
 
-    public static function getTypeTP(){
+    public static function getTypeTP()
+    {
         return $ls = [
-            self::TYPE_UPLOAD_VIDEO  => 'Tải video',
-            self::TYPE_URL  => 'Tải URL',
+            self::TYPE_UPLOAD_VIDEO => 'Tải video',
+            self::TYPE_URL => 'Tải URL',
         ];
     }
+
     // end add
 
     public static function getListImageType()
@@ -123,16 +125,16 @@ class News extends \yii\db\ActiveRecord
         return [
             [['type', 'view_count', 'like_count', 'comment_count', 'favorite_count', 'honor',
                 'status', 'created_user_id', 'created_at', 'updated_at', 'user_id'
-                , 'published_at','type_video','position','id_cat','price'], 'integer'],
-            [['title', 'user_id','price'], 'required'],
-            [['video'], 'file', 'extensions' => ['doc', 'docx','pdf'], 'maxSize' => 1024 * 1024 * 500, 'tooBig' => 'Video vượt quá dung lượng cho phép!'],
+                , 'published_at', 'type_video', 'position', 'id_cat', 'price'], 'integer'],
+            [['title', 'user_id', 'price'], 'required'],
+            [['video'], 'file', 'extensions' => ['doc', 'docx', 'pdf'], 'maxSize' => 1024 * 1024 * 500, 'tooBig' => 'Video vượt quá dung lượng cho phép!'],
             [['thumbnail'], 'required', 'on' => 'create'],
             [['content', 'description'], 'string'],
             [['title', 'title_ascii', 'thumbnail'], 'string', 'max' => 512],
             [['tags', 'source_name', 'source_url'], 'string', 'max' => 200],
-            [['short_description','video','url_video_new'], 'string', 'max' => 1000],
-            [['video_url'],'safe'],
-            [['images','thumbnail','image_des'], 'image', 'extensions' => 'png,jpg,jpeg,gif',
+            [['short_description', 'video', 'url_video_new'], 'string', 'max' => 1000],
+            [['video_url'], 'safe'],
+            [['images', 'thumbnail', 'image_des'], 'image', 'extensions' => 'png,jpg,jpeg,gif',
                 'maxSize' => News::MAX_SIZE_UPLOAD, 'tooBig' => 'Ảnh upload vượt quá dung lượng cho phép!'
             ],
         ];
@@ -160,7 +162,7 @@ class News extends \yii\db\ActiveRecord
             'like_count' => Yii::t('app', 'Like Count'),
             'comment_count' => Yii::t('app', 'Comment Count'),
             'favorite_count' => Yii::t('app', 'Favorite Count'),
-            'honor' => Yii::t('app', 'Honor'),
+            'honor' => Yii::t('app', 'Thời gian sử dụng DV'),
             'source_name' => Yii::t('app', 'Source Name'),
             'source_url' => Yii::t('app', 'Url'),
             'status' => Yii::t('app', 'Trạng thái'),
@@ -169,8 +171,8 @@ class News extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
             'user_id' => Yii::t('app', 'User ID'),
             'price' => Yii::t('app', 'Giá'),
-            'position' => Yii::t('app','Vị trí'),
-            'id_cat' => Yii::t('app','Thuộc danh mục')
+            'position' => Yii::t('app', 'Vị trí'),
+            'id_cat' => Yii::t('app', 'Thuộc danh mục')
         ];
     }
 
@@ -285,7 +287,8 @@ class News extends \yii\db\ActiveRecord
         return $link;
     }
 
-    public static function getImageFe($name){
+    public static function getImageFe($name)
+    {
 //        echo  "<pre>";print_r($row);die();
         $link = Url::to(Yii::getAlias('@web/upload/image_news/') . $name, true);
         return $link;
