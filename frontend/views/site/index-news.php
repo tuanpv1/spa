@@ -11,7 +11,12 @@ use yii\helpers\Url;
 $this->title = 'Tin tức làm đẹp';
 ?>
 <div class="row container-kamn">
-    <img src="<?= Yii::$app->getUrlManager()->getBaseUrl();  ?>/img/slider/slide5.jpg" class="blog-post" alt="Feature-img" align="right" width="100%">
+    <img src="<?= Yii::$app->getUrlManager()->getBaseUrl();  ?>/img/slider/slide5.jpg"
+         class="blog-post"
+         alt="Monalisa spa không gian sang trọng"
+         title="Monalisa spa không gian sang trọng"
+         align="right"
+         width="100%">
 </div>
 <!-- Main Container -->
 <div id="banners"></div>
@@ -42,8 +47,9 @@ $this->title = 'Tin tức làm đẹp';
                             </div>
                             <div class="col-md-8">
                                 <?php if($type == News::TYPE_DV){ ?>
-                                    <p>Giá: <?= $item->price?News::formatNumber($item->price):0 ?> VND</p>
-                                    <p>Thời gian sử dụng dich vụ: <?= $item->honor?$item->honor.' Phút':'Liên hệ để biết chi tiết' ?> </p>
+                                    <p>Giá: <?= $item->price ? News::formatNumber($item->price) : 0 ?> VND</p>
+                                    <p>Thời gian sử dụng dich
+                                        vụ: <?= $item->honor ? $item->honor . ' Phút' : 'Liên hệ để biết chi tiết' ?> </p>
                                 <?php } ?>
                                 <p><?= $item->short_description ?></p>
                             </div>
