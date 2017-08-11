@@ -279,13 +279,14 @@ class NewsController extends Controller
     public function actionDelete($id)
     {
         $model = $this->findModel($id);
+        $type = $model->type;
         if ($model->status == News::STATUS_ACTIVE) {
             Yii::$app->session->setFlash('error', 'Không được xóa đang ở trạng thái hoạt động!');
             return $this->redirect(['view', 'id' => $id]);
         }
         $this->findModel($id)->delete();
         Yii::$app->session->setFlash('error', 'Xóa thành công');
-        return $this->redirect(['index']);
+        return $this->redirect(['index','type'=>$type]);
     }
 
 
