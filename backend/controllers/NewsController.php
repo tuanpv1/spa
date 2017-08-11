@@ -40,9 +40,6 @@ class NewsController extends Controller
                 'class' => Yii2Auth::className(),
                 'autoAllow' => false,
             ],
-            [
-                'class' => NewsAuth::className(),
-            ],
         ];
     }
 
