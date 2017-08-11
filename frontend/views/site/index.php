@@ -103,7 +103,7 @@ $this->title = 'Công ty Monalisa Spa';
                 ?>
                 <li>
                     <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>">
-                        <img style="height: 200px" src="<?= News::getFirstImageLinkTP($item->images) ?>"
+                        <img style="height: 150px" src="<?= News::getFirstImageLinkTP($item->images) ?>"
                              alt="<?= $item->title ?>" >
                         <div style="padding-top: 10px" class="text-center"><?=  $item->title ?></div>
                     </a>
