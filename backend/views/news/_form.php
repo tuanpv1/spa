@@ -215,7 +215,7 @@ $kcfOptions = array_merge(\common\widgets\CKEditor::$kcfDefaultOptions, [
 //            'options' => [
 //                'rows' => 8,
 //            ],
-                'preset' => 'basic',
+                'preset' => 'full',
             ]);
             $_SESSION['KCFINDER'] = array(
                 'disabled' => false
