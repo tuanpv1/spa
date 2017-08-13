@@ -44,11 +44,11 @@
                         </div>
                         <div class="form-group form-group-message">
                             <label class="control-label" for="message">Loại dịch vụ (*):</label>
-                            <select name="cars" class="form-control">
+                            <select id="id_dv" name="id_dv" class="form-control">
                                 <?php if ($array_dv) {
                                     foreach ($array_dv as $item) {
                                         ?>
-                                        <option id="id_dv" name="id_dv" value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                        <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
                                         <?php
                                     }
                                 } ?>
