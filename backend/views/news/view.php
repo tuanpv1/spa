@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="portlet-body">
                 <p>
                     <?= Html::a('Cập nhật', ['update', 'id' => $model->id,'type'=>$model->type], ['class' => 'btn btn-primary']) ?>
+                    <?php if($model->type != News::TYPE_ABOUT){ ?>
                     <?= Html::a('Xóa', ['delete', 'id' => $model->id], [
                         'class' => 'btn btn-danger',
                         'data' => [
@@ -34,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'method' => 'post',
                         ],
                     ]) ?>
+                    <?php } ?>
                 </p>
                 <div class="tabbable-custom nav-justified">
                     <ul class="nav nav-tabs nav-justified">
